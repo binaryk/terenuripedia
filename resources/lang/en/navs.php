@@ -17,7 +17,7 @@ return [
     'change_password' => 'Change Password',
     'administration' => 'Administration',
     'dashboard' => 'Dashboard',
-    'home' => 'Home',
+    'home' => 'Acasa',
     'login' => 'Login',
     'logout' => 'Logout',
     'macros' => 'Macros',

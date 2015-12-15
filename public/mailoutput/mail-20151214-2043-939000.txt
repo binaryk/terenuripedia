@@ -1,0 +1,12 @@
+To: Vanzator2 <vanzator@vanzator2.com>
+Subject: TerenuriPedia: Confirm your account!
+Message-ID: <93473e99832db779add7f8c1a5b23e44@localhost>
+Date: Mon, 14 Dec 2015 20:43:40 +0000
+From: 
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Click here to confirm your account: http://localhost:8000/account/confirm/6=
+928f532f3aceccbaadad8ab16e37e03
+

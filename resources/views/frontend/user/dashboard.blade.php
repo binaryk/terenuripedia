@@ -21,10 +21,6 @@
                         <div role="tabpanel" class="tab-pane active" id="profile">
                             <table class="table table-striped table-hover table-bordered dashboard-table">
                                 <tr>
-                                    <th>{{ trans('validation.attributes.avatar') }}</th>
-                                    <td><img src="{!! $user->picture !!}" class="user-profile-image" /></td>
-                                </tr>
-                                <tr>
                                     <th>{{ trans('validation.attributes.name') }}</th>
                                     <td>{!! $user->name !!}</td>
                                 </tr>
@@ -32,6 +28,16 @@
                                     <th>{{ trans('validation.attributes.email') }}</th>
                                     <td>{!! $user->email !!}</td>
                                 </tr>
+                                <tr>
+                                    <th>{{ trans('validation.attributes.phone') }}</th>
+                                    <td>{!! $user->phone !!}</td>
+                                </tr>
+                                @role('Saller')
+                                <tr>
+                                    <th>{{ trans('validation.attributes.type') }}</th>
+                                    <td>{!! $user::type()[$user->type_id] !!}</td>
+                                </tr>
+                                @endauth
                                 <tr>
                                     <th>{{ trans('validation.attributes.created_at') }}</th>
                                     <td>{!! $user->created_at !!} ({!! $user->created_at->diffForHumans() !!})</td>

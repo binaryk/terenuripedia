@@ -37,7 +37,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $guarded = ['id','password_confirmation'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -83,5 +83,40 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function isDeactivated()
     {
         return $this->status == 0;
+    }
+
+    public static function insertRecord($data )
+    {
+        return self::create($data);
+    }
+
+    public static function category()
+    {
+        return ['buyer' => '3','saller' => '4'];
+    }
+
+    public static function type()
+    {
+        return [
+            '1' => 'Proprietar',// - asignat cu culoarea albastra
+            '2' => 'Broker',// - Galben
+            '3' => 'Banca',// - Rosu
+        ];
+    }
+
+    public static function color()
+    {
+        switch(auth()->user()->type_id){
+            case 1:
+                return '#0D9AEC';
+            break;
+            case 2:
+                return '#ECBC0D';
+            break;
+            case 3:
+                return '#EC0D0D';
+            break;
+        }
+        return '#000';
     }
 }

@@ -46,3 +46,19 @@ if (!function_exists('gravatar')) {
         return app('gravatar');
     }
 }
+
+
+function _color(){
+    switch(auth()->user()->type_id){
+        case 1:
+            return '#0D9AEC';
+            break;
+        case 2:
+            return '#ECBC0D';
+            break;
+        case 3:
+            return '#EC0D0D';
+            break;
+    }
+    return '#000';
+}

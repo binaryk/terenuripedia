@@ -304,6 +304,39 @@ class PermissionTableSeeder extends Seeder
         $deletePermissions->updated_at   = Carbon::now();
         $deletePermissions->save();
 
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'proprietar';
+        $deletePermissions->display_name = 'Proprietar';
+        $deletePermissions->system       = true;
+        $deletePermissions->group_id     = 5;
+        $deletePermissions->sort         = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'broker';
+        $deletePermissions->display_name = 'Broker';
+        $deletePermissions->system       = true;
+        $deletePermissions->group_id     = 5;
+        $deletePermissions->sort         = 2;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'banca';
+        $deletePermissions->display_name = 'Banca';
+        $deletePermissions->system       = true;
+        $deletePermissions->group_id     = 5;
+        $deletePermissions->sort         = 3;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
         if (env('DB_DRIVER') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }

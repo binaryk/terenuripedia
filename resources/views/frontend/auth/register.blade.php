@@ -1,10 +1,7 @@
 @extends('frontend.layouts.master')
-
 @section('content')
 	<div class="row">
-
 		<div class="col-md-8 col-md-offset-2">
-
 			<div class="panel panel-default">
 				<div class="panel-heading">{{ trans('labels.register_box_title') }}</div>
 
@@ -26,6 +23,20 @@
 							</div>
 						</div>
 
+						<div class="form-group">
+							{!! Form::label('phone', trans('validation.attributes.phone'), ['class' => 'col-md-4 control-label']) !!}
+							<div class="col-md-6">
+								{!! Form::input('phone', 'phone', old('phone'), ['class' => 'form-control']) !!}
+							</div>
+						</div>
+					@if($category == "saller")
+						<div class="form-group type_id">
+							{!! Form::label('type_id', trans('validation.attributes.type'), ['class' => 'col-md-4 control-label']) !!}
+							<div class="col-md-6">
+								{!! Form::selectType('type_id', '1', ['class' => 'form-control']) !!}
+							</div>
+						</div>
+					@endif
 						<div class="form-group">
 							{!! Form::label('password', trans('validation.attributes.password'), ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">

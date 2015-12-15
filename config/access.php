@@ -1,5 +1,4 @@
 <?php
-
 return array(
 
 	/*
@@ -79,7 +78,7 @@ return array(
 		/*
 		 * Whether or not the users email can be changed on the edit profile screen
 		 */
-		'change_email' => false,
+		'change_email' => true,
 	],
 
 	/*
@@ -89,11 +88,14 @@ return array(
 		/*
 		 * Whether a role must contain a permission or can be used standalone as a label
 		 */
-		'role_must_contain_permission' => true
+		'role_must_contain_permission' => true,
+		'saller' => 'Saller',
+		'buyer' => 'Buyer',
 	],
 
 	/*
 	 * Socialite session variable name
 	 */
 	'socialite_session_name' => 'socialite_provider',
+
 );

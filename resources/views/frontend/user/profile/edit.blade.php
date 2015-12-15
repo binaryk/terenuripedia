@@ -19,6 +19,22 @@
                                     </div>
                               </div>
 
+                              <div class="form-group">
+                                    {!! Form::label('phone', trans('validation.attributes.phone'), ['class' => 'col-md-4 control-label']) !!}
+                                    <div class="col-md-6">
+                                        {!! Form::input('text', 'phone', null, ['class' => 'form-control']) !!}
+                                    </div>
+                              </div>
+
+                            @role('Saller')
+                                <div class="form-group type_id">
+                                    {!! Form::label('type_id', trans('validation.attributes.type'), ['class' => 'col-md-4 control-label']) !!}
+                                    <div class="col-md-6">
+                                        {!! Form::selectType('type_id', null, ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            @endauth
+
                               @if ($user->canChangeEmail())
                                   <div class="form-group">
                                       {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-md-4 control-label']) !!}

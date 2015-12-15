@@ -1,0 +1,12 @@
+To: Lupacescu <user@user.comsd>
+Subject: TerenuriPedia: Confirm your account!
+Message-ID: <ad86540afaa6748f506698d552a4932b@localhost>
+Date: Mon, 14 Dec 2015 19:39:32 +0000
+From: 
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Click here to confirm your account: http://localhost:8000/account/confirm/f=
+7ee6abc1b72b1270876723624f9268e
+

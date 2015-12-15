@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services\Macros;
+use App\Models\Access\User\User;
 
 /**
  * Class Dropdowns
@@ -18,6 +19,18 @@ trait Dropdowns
     public function selectState($name, $selected = null, $options = array())
     {
         return $this->selectStateUS($name, $selected, $options);
+    }
+
+    /**
+     * @param  $name
+     * @param  null     $selected
+     * @param  array    $options
+     * @return string
+     */
+    public function selectType($name, $selected = null, $options = array())
+    {
+        $list = User::type();
+        return $this->select($name, $list, $selected, $options);
     }
 
     /**

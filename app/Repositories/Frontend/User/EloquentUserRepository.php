@@ -53,7 +53,21 @@ class EloquentUserRepository implements UserContract
         /**
          * See if creating a user from a social account or the application
          */
-        if ($provider) {
+        $user = User::insertRecord($data);
+        $user->detachPermissions([24,25,26]);
+        switch($data['type_id']){
+            case 1:
+                $user->attachPermissions([24]);
+                break;
+            case 2:
+                $user->attachPermissions([25]);
+                break;
+            case 3:
+                $user->attachPermissions([26]);
+                break;
+
+        }
+        /*if ($provider) {
             $user = User::create([
                 'name'              => $data['name'],
                 'email'             => $data['email'],
@@ -71,7 +85,7 @@ class EloquentUserRepository implements UserContract
                 'confirmed'         => config('access.users.confirm_email') ? 0 : 1,
                 'status'            => 1,
             ]);
-        }
+        }*/
 
         /**
          * Add the default site role to the new user
@@ -199,8 +213,26 @@ class EloquentUserRepository implements UserContract
      */
     public function updateProfile($input)
     {
-        $user       = access()->user();
-        $user->name = $input['name'];
+        $user        = access()->user();
+        $user->name  = $input['name'];
+        $user->phone = $input['phone'];
+
+        if($user->hasRole('Saller')){
+            $user->type_id = $input['type_id'];
+            $user->detachPermissions([24,25,26]);
+            switch($input['type_id']){
+                case 1:
+                    $user->attachPermissions([24]);
+                    break;
+                case 2:
+                    $user->attachPermissions([25]);
+                    break;
+                case 3:
+                    $user->attachPermissions([26]);
+                    break;
+
+            }
+        }
 
         if ($user->canChangeEmail()) {
             //Address is not current address

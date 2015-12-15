@@ -40,5 +40,6 @@ return [
     'send_password_reset_link_button' => 'Send Password Reset Link',
     'toggle_navigation' => 'Toggle Navigation',
     'update_information_box_title' => 'Update Information',
+    'fonds' => 'Administrare fonduri',
 
 ];

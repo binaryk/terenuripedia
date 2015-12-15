@@ -1,0 +1,12 @@
+To: Lupacescu <user@usssser.com>
+Subject: TerenuriPedia: Confirm your account!
+Message-ID: <6e91e05c745656c722fb84b36a8f8a60@localhost>
+Date: Tue, 15 Dec 2015 11:46:20 +0000
+From: 
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Click here to confirm your account: http://localhost:8000/account/confirm/b=
+c6bfb133d2b702fee4f4630238bfcd3
+

@@ -1,0 +1,84 @@
+/*html{
+    background-color:dodgerblue;
+}
+body{
+    background-color:dodgerblue;
+}*/
+h2{
+    color:white;
+    font-size: 50px;
+}
+footer{
+    background:none;
+}
+p{
+    color:white;
+}
+.map{
+    height:100%;
+}
+label{
+    color:white;
+}
+h4{
+    color: white;
+}
+article{
+    margin-right: -15px;
+    margin-left: -15px;
+    background-color: royalblue;
+    color: white;
+    border:solid 1px  #fff0ff;
+}
+.navigator-const {
+    position: absolute;
+    z-index: 999;
+    background: rgba(94,212,255,1);
+background: -moz-linear-gradient(top, rgba(94,212,255,1) 0%, rgba(113,206,239,1) 38%, rgba(33,180,226,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(94,212,255,1)), color-stop(38%, rgba(113,206,239,1)), color-stop(100%, rgba(33,180,226,1)));
+background: -webkit-linear-gradient(top, rgba(94,212,255,1) 0%, rgba(113,206,239,1) 38%, rgba(33,180,226,1) 100%);
+background: -o-linear-gradient(top, rgba(94,212,255,1) 0%, rgba(113,206,239,1) 38%, rgba(33,180,226,1) 100%);
+background: -ms-linear-gradient(top, rgba(94,212,255,1) 0%, rgba(113,206,239,1) 38%, rgba(33,180,226,1) 100%);
+background: linear-gradient(to bottom, rgba(94,212,255,1) 0%, rgba(113,206,239,1) 38%, rgba(33,180,226,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5ed4ff', endColorstr='#21b4e2', GradientType=0 );
+    right: 0;
+    width: 27%;
+}
+.nav-tabs li a{color: #fff;font-weight: 500;}
+.nav-tabs .active a{color: #fff!important;font-weight: 500}
+.nav-tabs {
+    border: none;
+    border-right: 1px solid #5A6571;
+    background: #50667f;
+    width: 100%;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    cursor: default;
+    background-color: #28353d;
+    border-radius: 0px;
+    border: none;
+    border-right: 1px solid #5A6571;
+}
+.nav-tabs>li>a:hover {background-color: #28353d;border-color: transparent}
+i.tab-i {
+    padding-right: 12px;
+}
+.nav-tabs>li>a {
+    margin-right: -1px;
+    line-height: 1;
+    border: none;
+    border-radius: 0px;
+    padding: 19px;
+}
+li.salvare {
+    background: #8889cc;
+}
+.nav-tabs>li {width: 25%;}
+.nav-tabs>li>a {
+    margin-right: 0px;
+    line-height: 1;
+    border: none;
+    border-radius: 0px;
+    padding: 13px;
+}
+.form-control {padding: 0px;}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use App\Models\Access\User\User;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
@@ -29,23 +30,30 @@ class AuthController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function getRegister()
+    public function getRegister($category)
     {
-        return view('frontend.auth.register');
+        return view('frontend.auth.register')->with(compact('category'));
     }
 
     /**
      * @param  RegisterRequest                     $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postRegister(RegisterRequest $request)
+    public function postRegister(RegisterRequest $request, $type = '')
     {
+        $data = $request->all();
+        $data['confirmation_code'] = md5(uniqid(mt_rand(), true));
+        $data['confirmed']  = config('access.users.confirm_email') ? 0 : 1;
+        $data['status']     = 1;
         if (config('access.users.confirm_email')) {
-            $this->auth->create($request->all());
+            $user = $this->auth->create($data);
+            $user->attachRole( User::category()[$type] );
             return redirect()->route('home')->withFlashSuccess('Your account was successfully created. We have sent you an e-mail to confirm your account.');
         } else {
             //Use native auth login because do not need to check status when registering
-            auth()->login($this->auth->create($request->all()));
+            $user = $this->auth->create($data) ;
+            $user->attachRole( User::category()[$type] );
+            auth()->login($user);
             return redirect()->route('frontend.dashboard');
         }
     }
@@ -228,5 +236,10 @@ class AuthController extends Controller
         }
 
         return $socialite_links;
+    }
+
+    public function preRegister()
+    {
+        return view('frontend.auth.preregister');
     }
 }
