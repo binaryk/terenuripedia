@@ -18,6 +18,11 @@ $router->group(['namespace' => 'Frontend'], function () use ($router) {
     require (__DIR__ . '/Routes/Frontend/Payment.php');
 });
 
+
+$router->group(['namespace' => 'Buyer'], function () use ($router) {
+    require (__DIR__ . '/Routes/Terrain/Buyer.php');
+});
+
 $router->group(['namespace' => 'Terrains'], function () use ($router) {
     require (__DIR__ . '/Routes/Terrain/Terrain.php');
 });

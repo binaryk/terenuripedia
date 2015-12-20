@@ -3,7 +3,6 @@
 @section('content')
 
 <div>frontend/index.blade.php</div>
-
 @stop
 
 

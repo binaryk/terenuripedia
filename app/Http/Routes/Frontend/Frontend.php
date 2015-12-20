@@ -3,8 +3,12 @@
 /**
  * Frontend Controllers
  */
-get('/', 'FrontendController@index')->name('home');
 get('macros', 'FrontendController@macros');
+if( auth()->user())
+{
+
+}
+get('/', 'FrontendController@index')->name('home');
 
 /**
  * These frontend controllers require the user to be logged in
@@ -20,4 +24,15 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     get('profile/fonduri/balanta-curenta', 'FondsController@current_balance')->name('frontend.profile.fonds.current_balance');
     get('profile/fonduri/get-subscriptions', 'FondsController@subscriptions')->name('frontend.profile.fonds.get_subscriptions');
 
+//    if(access()->hasRole('Saller')){
+//        get('/', 'FrontendController@saller')->name('home.saller');
+//    }else{
+//        get('/', 'FrontendController@buyer')->name('home.buyer');
+//    }
+
+
+
 });
+
+
+

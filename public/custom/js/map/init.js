@@ -1,11 +1,14 @@
-  var infowindow;
+ var infowindow;
+ var map;
  function initialize_search(){
-      goo = google.maps,
-          map_in=new goo.Map(document.getElementById('map_in'), {
-              zoom: 12,
-              center: new goo.LatLng(44.42684, 26.1025)
-          });
-      drawman = new goo.drawing.DrawingManager({
+   goo = google.maps;
+
+      map_in=new goo.Map(document.getElementById('map_in'), {
+          zoom: 11,
+          center: new goo.LatLng(44.42684, 26.1025)
+      });
+
+       drawman = new goo.drawing.DrawingManager({
           map: map_in,
       }),
       shapes = [],
@@ -19,54 +22,53 @@
           }
           shapes = [];
       };
-      var map = new google.maps.Map(document.getElementById('map_in'),
-          map_in);
+      map = new google.maps.Map(document.getElementById('map_in'),map_in);
       goo.event.addDomListener(map, 'tilesloaded', function() {
          hideDrawingManager();
       });
   };
    function initialize() {
-             goo = google.maps,
-             map_in=new goo.Map(document.getElementById('map_in'), {
-                     zoom: 12,
-                  center: new goo.LatLng(44.42684, 26.1025)
-              });
-             shapes = [],
-             selected_shape = null,
-             drawman = new goo.drawing.DrawingManager({
-                 map: map_in,
-                 polygonOptions: {editable:true,fillColor: _config["polygonColor"],strokeColor: _config["polygonColor"],strokeWeight:2}
-             }),
-             byId = function(s) {
-                 return document.getElementById(s);
-             },
-             clearSelection = function() {
-                 if (selected_shape) {
-                     selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', false);
-                     selected_shape = null;
-                 }
-             },
-             setSelection = function(shape) {
-                 clearSelection();
-                 selected_shape = shape;
-                 selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', true);
-             },
-             clearShapes = function() {
-                 for (var i = 0; i < shapes.length; ++i) {
-                     shapes[i].setMap(null);
-                 }
-                 shapes = [];
-                 disableElement('#btnPolygon',false);
-                 drawman.drawingControl=true;
-             };
-             hideDrawingManager=function(){
-                 drawman.setMap(null);
-             };
-             disableDrawingControl=function(){
-                 drawman.drawingControl=false;
-                 disableElement('#btnPolygon',true);
-                 $('#btnHand').click();
-             };
+ goo = google.maps,
+ map_in=new goo.Map(document.getElementById('map_in'), {
+         zoom: 12,
+      center: new goo.LatLng(44.42684, 26.1025)
+  });
+ shapes = [],
+ selected_shape = null,
+ drawman = new goo.drawing.DrawingManager({
+     map: map_in,
+     polygonOptions: {editable:true,fillColor: _config["polygonColor"],strokeColor: _config["polygonColor"],strokeWeight:2}
+ }),
+ byId = function(s) {
+     return document.getElementById(s);
+ },
+ clearSelection = function() {
+     if (selected_shape) {
+         selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', false);
+         selected_shape = null;
+     }
+ },
+ setSelection = function(shape) {
+     clearSelection();
+     selected_shape = shape;
+     selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', true);
+ },
+ clearShapes = function() {
+     for (var i = 0; i < shapes.length; ++i) {
+         shapes[i].setMap(null);
+     }
+     shapes = [];
+     disableElement('#btnPolygon',false);
+     drawman.drawingControl=true;
+ };
+ hideDrawingManager=function(){
+     drawman.setMap(null);
+ };
+ disableDrawingControl=function(){
+     drawman.drawingControl=false;
+     disableElement('#btnPolygon',true);
+     $('#btnHand').click();
+ };
         var map = new google.maps.Map(document.getElementById('map_in'),
            map_in);
          goo.event.addListenerOnce(map, 'tilesloaded', function() {
@@ -74,13 +76,29 @@
          });
          goo.event.addDomListener(drawman, 'overlaycomplete', function(e) {
              var shape = e.overlay;
+           console.log(e.overlay);
+           
              shape.type = e.type;
              goo.event.addListener(shape, 'click', function() {
                  setSelection(this);
              });
              setSelection(shape);
              shapes.push(shape);
+           console.log(shape);
+           
+           console.log(shapes);
+           
          });
+
+      /*   google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
+           vanPolygon = true;
+           overlayClickListener(event.overlay);
+           $('#polydata').val(event.overlay.getPath().getArray());
+           poly = event.overlay;
+           genPolygonID();
+           setPolyCoords2Array(poly);
+         });*/
+
          goo.event.addListener(map_in, 'click', clearSelection);
          goo.event.addDomListener(byId('clear_shapes'), 'click', clearShapes);
          goo.event.addDomListener(drawman,'polygoncomplete',disableDrawingControl);
@@ -99,17 +117,21 @@
                      type: this.t_(shape.type),
                      id: shape.id || null
                  };
-                 switch (tmp.type) {
+               tmp.type = 'POLYGON';
+                switch (tmp.type) {
                      case 'POLYGON':
                          tmp.geometry = this.m_(shape.getPaths(), encoded);
                          break;
+
                  }
+                 //tmp.geometry = this.m_(shape.getPaths(), encoded);
                  shapes.push(tmp);
              }
              return shapes;
          },
          //returns array with google.maps.Overlays
-         OUT: function(arr, //array containg the stored shape-definitions
+         OUT: function(
+             arr, //array containg the stored shape-definitions
              map,//map where to draw the shape
              shapeColor
          ) {
@@ -119,6 +141,7 @@
                  shape, tmp;
              for (var i = 0; i < arr.length; i++) {
                  shape = arr[i];
+                 //shape.type = 'POLYGON';
                  switch (shape.type) {
                      case 'POLYGON':
                          tmp = new goo.Polygon({
@@ -171,7 +194,7 @@
                  })
                  shapes.push(tmp);
              }
-             var clusterer = new MarkerClusterer(map, shapes);
+             //var clusterer = new MarkerClusterer(map, shapes);
              return shapes;
          },
          l_: function(path, e) {

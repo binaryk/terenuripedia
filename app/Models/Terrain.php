@@ -8,6 +8,24 @@ class Terrain extends Model
 {
     protected $guarded = ['_token','id_tip_caracteristici'];
 
+    public static function createRecord($data)
+    {
+        if(self::where('id',$data['terrain_id'])->count() > 0){
+            self::where('id',$data['terrain_id'])->update([
+                'photo'      => $data['path'] . $data['file']
+            ]);
+            return self::find($data['terrain_id']);
+        }else{
+            return "Nu exista teren cu acest id";
+        }
+
+    }
+
+	public function owner()
+	{
+		return $this->belongsTo('\App\Models\Access\User\User','user_id');
+	}
+
     public function coords(){
     	return $this->hasMany('\App\Models\TerrainCoord', 'terrain_id');
     }
@@ -18,7 +36,7 @@ class Terrain extends Model
 
 	public static function tip(){
     	return [
-    		'0' => '-- Alege --',
+    		'' => '-- Alege --',
     		'1' =>	'Terenurile cu destinatie agricola',
     		'2' =>	'Terenurile cu destinatie forestiera',
     		'3' =>	'Terenurile aflate permanent sub ape',
@@ -30,7 +48,7 @@ class Terrain extends Model
     public static function locatie(){
     	return 
     	[
-    	'0' => '-- Alege --',
+    	'' => '-- Alege --',
     	'1' => 'Bucuresti sectorul 1',
     	'2' => 'Bucuresti sectorul 2',
     	'3' => 'Bucuresti sectorul 3',

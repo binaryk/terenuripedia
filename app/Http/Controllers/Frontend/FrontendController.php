@@ -29,4 +29,15 @@ class FrontendController extends Controller
     {
         return view('frontend.macros');
     }
+
+    public function saller()
+    {
+        dd('saller');
+    }
+
+    public function buyer()
+    {
+        dd('buyer');
+    }
+
 }

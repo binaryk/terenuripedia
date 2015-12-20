@@ -55,16 +55,19 @@ class EloquentUserRepository implements UserContract
          */
         $user = User::insertRecord($data);
         $user->detachPermissions([24,25,26]);
-        switch($data['type_id']){
-            case 1:
-                $user->attachPermissions([24]);
-                break;
-            case 2:
-                $user->attachPermissions([25]);
-                break;
-            case 3:
-                $user->attachPermissions([26]);
-                break;
+        if( array_key_exists('type_id', $data)){
+            switch($data['type_id']){
+                case 1:
+                    $user->attachPermissions([24]);
+                    break;
+                case 2:
+                    $user->attachPermissions([25]);
+                    break;
+                case 3:
+                    $user->attachPermissions([26]);
+                    break;
+
+            }
 
         }
         /*if ($provider) {

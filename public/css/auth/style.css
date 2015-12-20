@@ -7073,6 +7073,8 @@ article{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5ed4ff', endColorstr='#21b4e2', GradientType=0 );
   right: 0;
   width: 27%;
+  height: 100vh;
+  overflow-y: scroll;
 }
 .navbar.navbar-default, .navbar .container-fluid{
   z-index: 5;

@@ -36,23 +36,23 @@ class AuthController extends Controller
     }
 
     /**
-     * @param  RegisterRequest                     $request
+     * @param  RegisterRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postRegister(RegisterRequest $request, $type = '')
     {
         $data = $request->all();
         $data['confirmation_code'] = md5(uniqid(mt_rand(), true));
-        $data['confirmed']  = config('access.users.confirm_email') ? 0 : 1;
-        $data['status']     = 1;
+        $data['confirmed'] = config('access.users.confirm_email') ? 0 : 1;
+        $data['status'] = 1;
         if (config('access.users.confirm_email')) {
             $user = $this->auth->create($data);
-            $user->attachRole( User::category()[$type] );
+            $user->attachRole(User::category()[$type]);
             return redirect()->route('home')->withFlashSuccess('Your account was successfully created. We have sent you an e-mail to confirm your account.');
         } else {
             //Use native auth login because do not need to check status when registering
-            $user = $this->auth->create($data) ;
-            $user->attachRole( User::category()[$type] );
+            $user = $this->auth->create($data);
+            $user->attachRole(User::category()[$type]);
             auth()->login($user);
             return redirect()->route('frontend.dashboard');
         }
@@ -68,7 +68,7 @@ class AuthController extends Controller
     }
 
     /**
-     * @param  LoginRequest                        $request
+     * @param  LoginRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postLogin(LoginRequest $request)
@@ -104,7 +104,7 @@ class AuthController extends Controller
     }
 
     /**
-     * @param  Request     $request
+     * @param  Request $request
      * @param  $provider
      * @return mixed
      */
@@ -205,7 +205,7 @@ class AuthController extends Controller
     protected function getSocialLinks()
     {
         $socialite_enable = [];
-        $socialite_links  = '';
+        $socialite_links = '';
 
         if (getenv('BITBUCKET_CLIENT_ID') != '') {
             $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');

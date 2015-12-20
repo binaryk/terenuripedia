@@ -19,56 +19,76 @@ app.controller(
         });
     });   
 
-    $scope.add_ = function () {
-      console.log('add');
+    $scope.add = function () {
       $scope.currentTerrain=null;
+      $timeout(function(){
+        $scope.init_on_update(null);
+      }, 500)
       $scope.edit          = false;
-      $('#clear_shapes').click();
-      //toastr.info('Intorduceți datele pentru acest teren.');
 
+      $('#clear_shapes').click();
+      toastr.info('Intorduceți datele pentru acest teren.');
+      $('a[href=#data]').click();
     }
 
     $scope.saveTerrain = function(){
         var data = FormService.datasource();
-        var tc   = new Terrain([{d: 0}]);
         var geometry = JSON.stringify(IO.IN(shapes, true));
+        var geometry_text = JSON.stringify(IO.IN(shapes, false));
         if(IO.IN(shapes, true).length == 0){
           toastr.error("Vă rugăm să desenați terenul.")
         }else{
           data['geometry'] = geometry;
+          data['geometry_text'] = geometry_text;
+          
           if($scope.edit){
             TerrainService.put($scope.currentTerrain.id, data).then(function(data){
               swal('Succes!', 'Datele au fost actualizate cu succes.', 'success');
+              $('a[href=#lista]').click();
+              $('#clear_shapes').click();
+              console.log(data);
+              $scope.currentTerrain.geometry = geometry;
+              $scope.currentTerrain.characteristics = data.node.characteristics;
+              $scope.currentTerrain = null;
             });
           }else{
             TerrainService.store(data).then(function(data){
               $scope.terrains.push(data.out);
+              /*salvez id-ul, pentru a-l prelua la fileinput*/
+              $('#inserted_terrain').val(data.out.id);
               swal('Succes!', 'Datele au fost salvate cu succes. Acum puteți vizualiza terenul în listă.', 'success');
+              $('a[href=#lista]').click();
+              $('#clear_shapes').click();
+              $timeout(function(){
+                $("#file-document").fileinput('upload');
+              });
             });
-            FormService.emptyControls();
           }
+          $timeout(function(){
+            $scope.init_on_update(null);
+          }, 500);
+          FormService.emptyControls();
         }
 
 
     };
 
     $scope.editTerrain = function(item){
-      console.log('edit');
-        $scope.currentTerrain=item;
+      $scope.currentTerrain=item;
         $scope.edit          = true;
         var coords = JSON.parse(item.geometry);
+        console.log(item);
+      
         initialize();
         IO.OUT(coords,map_in, _config["polygonColor"]);
         $timeout(function(){
           $scope.init_on_update(item);
-        }, 1000)
-        /*TerrainService.edit(item.id).then(function(data){
-
-        });*/
+        }, 500)
         /*la editare nu trebuie sa putem adauga polyline*/
         drawman.drawingControl=false;
         disableElement('#btnPolygon',true);
         $('#btnHand').click();
+        $('a[href=#proiect]').click();
     };
 
     $scope.deleteTerrain=function(item){
@@ -109,13 +129,32 @@ app.controller(
             switch( $(control).data('control-type') )
             {
               case 'combobox' :
-                document.getElementById($(control).data('control-source')).selectedIndex = node[$(control).data('control-source')];
-                  //$(control).val($scope.currentTerrain[$(control).data('control-source')]).trigger('change');
+                //document.getElementById($(control).data('control-source')).selectedIndex = node[$(control).data('control-source')];
+                  if($scope.currentTerrain){
+                    if($(control).attr('multiple')){
+                      console.log($scope.currentTerrain[$(control).attr('id')]);
+                      var values = [];
+                      angular.forEach($scope.currentTerrain[$(control).attr('id')], function(obj, index){
+                        values.push(obj.id);
+                      })
+                      console.log(values);
+
+                      $(control).val(values).trigger('change');
+                    }else{
+                      $(control).val($scope.currentTerrain[$(control).data('control-source')]).trigger('change');
+                    }
+
+                  }
+
+                  else
+                    $(control).select2('val',1);//.trigger('change');
+                break;
+              case 'radiobox':
+
                 break;
             }
           });
         }
-        //document.getElementById("id_locatie").selectedIndex = node.id_locatie;
       }
 }]);
 

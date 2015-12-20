@@ -18,7 +18,12 @@
 				<ul class="nav navbar-nav navbar-right">
                     <li><a href="#" class="animate-link">Prezentare</a></li>
                     <li><a href="#">Povestea site-ului</a></li>
+					@role('Saller')
                     <li><a href="#">Abonamente</a></li>
+					@endauth
+					@role('Buyer')
+                    <li><a href="{!! route('buyer.search') !!}">Terenuri</a></li>
+					@endauth
 					@if (Auth::guest())
 						<li>{!! link_to('auth/login', trans('navs.login')) !!}</li>
 						<li>{!! link_to('auth/pre-register', trans('navs.register')) !!}</li>
