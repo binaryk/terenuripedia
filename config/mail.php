@@ -10,7 +10,7 @@ return [
 
 	'from' => ['address' => null, 'name' => null],
 
-	'encryption' => '',
+	'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
 	'username' => env('MAIL_USERNAME'),
 
