@@ -43,6 +43,10 @@ app.controller(
           
           if($scope.edit){
             TerrainService.put($scope.currentTerrain.id, data).then(function(data){
+              $('#inserted_terrain').val($scope.currentTerrain.id);
+              $timeout(function(){
+                uploadAsincImage();
+              });
               swal('Succes!', 'Datele au fost actualizate cu succes.', 'success');
               $('a[href=#lista]').click();
               $('#clear_shapes').click();
