@@ -5,7 +5,6 @@
     <script type="text/javascript" src ="{{asset( 'packages/inputmask/js/jquery.inputmask.numeric.extensions.js') }}"></script>
     <script type="text/javascript" src ="{{asset( 'custom/js/Numeric.js') }}"></script>
     <script type="text/javascript" src ="{{asset( 'components/numeral/min/numeral.min.js') }}"></script>
-    <script type="text/javascript" src ="{{asset( 'packages\fileinput\js\fileinput.min.js') }}"></script>
     <script type="text/javascript">
         (new Numeric).formatInputs();
         var goo     = {};
@@ -57,56 +56,11 @@
             $(elenentID).prop('disabled', value);
         }
 
-        var upload_document = $("#file-document").fileinput({
-            'previewClass'    : 'one-file',
-            'previewSettings' :
-            {
-                image:  {width: "auto", height: "160px"},
-                html:   {width: "auto", height: "160px"},
-                text:   {width: "auto", height: "160px"},
-                video:  {width: "auto", height: "160px"},
-                audio:  {width: "auto", height: "80px"},
-                flash:  {width: "auto", height: "160px"},
-                object: {width: "auto", height: "160px"},
-                other:  {width: "auto", height: "160px"}
-            },
-            'dropZoneEnabled' : false,
-            'browseLabel'     : 'Alege fişier',
-            'removeLabel'     : 'Şterge selecţia',
-            'uploadLabel'     : 'Încarcă fişierul',
-            'uploadAsync'     : false,
-            'uploadUrl'       : "{{ route('terrain.photo')}}",
-            uploadExtraData: function() {
-                return {
-                    terrain_id: $('#inserted_terrain').val(),
-                }
-            },
-            'fileActionSettings' :
-            {
-                'removeTitle' : 'Şterge selecţia',
-                'uploadTitle' : 'Încarcă fişierul',
-                'indicatorNewTitle' : 'Fişierul nu este încărcat'
-            }
-        });
 
-        upload_document.on('fileuploaded', function(event, data, previewId, index){
-            $("#file-document").fileinput('clear');
-            console.log(data)
-            document.modificari = true;
-            var file_name = data.files[0].name;
-            var extention = file_name.split('.')[1];
-            var file_name = file_name.split('.')[0];
-            $('#inserted_terrain').val(-1);
-            var MyDate = new Date();
-            var MyDateString;
-            console.log(MyDateString);
-            MyDateString =  MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2)   + '-' + ('0' + MyDate.getDate()).slice(-2) ;
-        });
 
     </script>
     <script type="text/javascript" src="{!! asset('custom/js/map/init.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/services/TerrainService.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/services/FormService.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/controllers/TerrainCtrl.js') !!}"></script>
-    <script type="text/javascript" src ="{{asset( 'packages/fileinput/js/fileinput.min.js') }}"></script>
 @stop

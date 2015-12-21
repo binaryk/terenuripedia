@@ -60,7 +60,7 @@ app.controller(
               $('a[href=#lista]').click();
               $('#clear_shapes').click();
               $timeout(function(){
-                $("#file-document").fileinput('upload');
+                uploadAsincImage();
               });
             });
           }
@@ -77,8 +77,7 @@ app.controller(
       $scope.currentTerrain=item;
         $scope.edit          = true;
         var coords = JSON.parse(item.geometry);
-        console.log(item);
-      
+        console.log(item.photo);
         initialize();
         IO.OUT(coords,map_in, _config["polygonColor"]);
         $timeout(function(){

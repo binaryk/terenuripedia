@@ -4,6 +4,7 @@ app.controller(
             var scope = $rootScope;
             var cautare = true;
             var f_title = '';
+
             $scope.infoWindow;
 
             $scope.price = {
@@ -35,6 +36,8 @@ app.controller(
 
             $scope.select = function(terrain){
                 $scope.currentTerrain=terrain;
+                
+
                 _config['current_terrain'] = terrain;
                 console.log(terrain);
                 clearShapes();

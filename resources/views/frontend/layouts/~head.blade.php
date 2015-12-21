@@ -21,7 +21,9 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
     <script>
-        var _config = {};
+        var _config = {
+            assetBaseUrl : "{{ asset('') }}"
+        };
     </script>
     @yield('custom-styles')
 </head>

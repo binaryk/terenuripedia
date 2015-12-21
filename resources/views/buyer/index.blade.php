@@ -20,7 +20,6 @@
 @section('custom-scripts')
 
     <script>
-        var _config = {};
         _config['r_get_all']    = "{!! route('terrain.all') !!}";
         _config["page"]="search";
         _config["polygonColor"]="#ff0000";

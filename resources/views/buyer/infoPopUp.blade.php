@@ -26,7 +26,7 @@
 
         <div id="poze" class="tab-pane fade">
                 <div id="pictures" class="col-md-6">
-                    <img id="terrainPicture" src="" height="50px" width="50px" alt="" class="img-thumbnail">
+                    <img id="terrainPicture" src="@{{config.assetBaseUrl+ '/' +currentTerrain.photo  }}" height="50px" width="50px" alt="" class="img-thumbnail">
                 </div>
             <div id="info" class="col-md-6">
                 <ul>

@@ -71,8 +71,15 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <input type="hidden" id="inserted_terrain" name="inserted_terrain">
-        {!! $controls['photo'] !!}
+        <div ng-if="currentTerrain && currentTerrain.photo && currentTerrain.photo != ''">
+            <img src="@{{ config.assetBaseUrl + '/' + currentTerrain.photo}}" alt="" width="100px" height="100px">
+            <button class="btn btn-default btn-sm" ng-click="currentTerrain.photo = ''">Modifica poza</button>
+        </div>
+        <div ng-show="currentTerrain && !currentTerrain.photo">
+            <input type="hidden" id="inserted_terrain" name="inserted_terrain">
+            {!! $controls['photo'] !!}
+        </div>
+
     </div>
 </div>
 

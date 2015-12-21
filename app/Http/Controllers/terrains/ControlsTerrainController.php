@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
+use stdClass;
 
 class ControlsTerrainController extends Controller
 {
@@ -21,6 +22,11 @@ class ControlsTerrainController extends Controller
         if(! $model){
             $model = $this->model;
         }
+        $extraData = [];
+        $extraData[0] = [
+            'key' => 'terrain_id',
+            'value' => "$('#inserted_terrain').val()",
+            'clean' => "$('#inserted_terrain').val('-1')"];
         return [
             'title' =>
                 \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
@@ -208,12 +214,20 @@ class ControlsTerrainController extends Controller
                     ->out(),
             'photo' =>
                 \Easy\Form\Editbox::make('~layouts.form.controls.fileboxes.imagebox')
-                    ->name('photo')
+                    ->name('file_document')
                     ->ng_model('currentTerrain.photo')
                     ->caption('Poze')
                     ->route('')
-//                    ->value($model ? $model->photo : '')
-                    ->placeholder('')
+                    ->value($model ? $model->photo : '')
+                    ->scripts([
+                        'packages/fileinput/js/fileinput.min.js'
+                    ])
+                    ->styles([
+                        'admin/css/fileinput/fileinput.css',
+                        'packages\fileinput\css\fileinput.min.css'
+                    ])
+                    ->route('terrain.photo')
+                    ->extraData($extraData)
                     ->controlsource('photo')
                     ->controltype('filebox')
                     ->class('form-control input-sm data-source')
