@@ -17,43 +17,20 @@
         _config["page"]                   ="terrain";
         _config["polygonColor"]           = "{!! _color() !!}";
         $(".multiple_class, #id_locatie, #id_tip_teren, #negociabil").select2();
-        function customizeGoogleMapsButtons() {
-            $(".gmnoprint").css("z-index","1000");
-            $(".gmnoprint").css("position","absolute");
-            $(".gmnoprint").each(function(){
-                var newObj = $(this).find("[title='Draw a circle']");
-                newObj.parent().addClass("remove");
-
-                // ID the toolbar
-                newObj.parent().parent().attr("id", "btnBar");
-
-                // Now remove the Circle button
-                $(".remove").remove();
-                // ID the Hand button
-                newObj = $(this).find("[title='Stop drawing']");
-                newObj.attr('id', 'btnStop');
-                newObj.addClass('gmapTools');
-
-                // ID the Marker button
-                newObj = $(this).find("[title='Add a marker']");
-                newObj.attr('id', 'btnMarker');
-                newObj.addClass('gmapTools');
-                // ID the line button
-                // ID the Polygon button
-                newObj = $(this).find("[title='Draw a shape']");
-                newObj.attr('id', 'btnShape');
-                newObj.addClass('gmapTools');
-            });
-            $(".gmnoprint").hide();
-        };
         $('#btnPolygon').click(function(){
-            $('#btnShape').click();
+            drawman.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
         });
         $('#btnHand').click(function(){
-            $('#btnStop').click();
+            drawman.setDrawingMode(google.maps.drawing.OverlayType.POINTER_MOUSE);
         });
         function disableElement(elenentID,value){
             $(elenentID).prop('disabled', value);
+            if(value){
+                $(elenentID).addClass('disabled')
+            }else{
+                $(elenentID).removeClass('disabled')
+            }
+
         }
 
 
