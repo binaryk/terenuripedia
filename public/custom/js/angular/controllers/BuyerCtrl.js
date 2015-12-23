@@ -85,8 +85,8 @@ app.controller(
                 console.log(bounds.getCenter().lng());
                 var lat = bounds.getCenter().lat(),
                     long = bounds.getCenter().lng();
-                //map.setCenter(bounds.getCenter());
-                map.center=bounds.getCenter();
+                map.setCenter(bounds.getCenter());
+                //map.center=bounds.getCenter();
                 //goo.event.trigger(map,'resize');
                 //initialize_search(false, bounds.getCenter());
                 //map_in.setCenter(new google.maps.LatLng(50, 44));
