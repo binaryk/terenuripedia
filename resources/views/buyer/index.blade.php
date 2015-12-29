@@ -15,6 +15,12 @@
     {!! HTML::script('//maps.google.com/maps/api/js?sensor=true&libraries=drawing,geometry&.js') !!}
     {!! HTML::script('//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js') !!}
     <link rel="stylesheet" href="{!! asset('custom/css/list.css') !!}">
+    <style>
+        #map_in{
+            width: 900px;
+            height: 600px;
+        }
+    </style>
 @stop
 
 @section('custom-scripts')

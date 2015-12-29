@@ -27,17 +27,15 @@ app.controller(
                 TerrainService.get().then(function(data){
                     console.log(data.data);
                     $scope.searchTerrains = data.data;
-                   $timeout(function(){
-                       $scope.getAllShapes();
-                   });
+                       $timeout(function(){
+                           $scope.getAllShapes();
+                       },500);
                     $compile($('.my_form').contents())($scope);
                 });
             //});
 
             $scope.select = function(terrain){
                 $scope.currentTerrain=terrain;
-                
-
                 _config['current_terrain'] = terrain;
                 console.log(terrain);
                 clearShapes();
@@ -51,36 +49,29 @@ app.controller(
                     fillOpacity: 0.35,
                     position:IO.mm_.apply(IO,coords[0]['geometry']),
                 });
-                tmp.addListener('click', $scope.showArrays);
+                google.maps.event.addListener(tmp, 'click', function (event) {
+                    $scope.showArrays(event, tmp);
+                });
                 tmp.setMap(map_in);
                 $scope.zoomToObject(tmp);
                 IO.OUT(coords,map_in, terrain.color_text);
-                $scope.infoWindow = new goo.InfoWindow;
                 //map_in.setCenter();
             }
 
             /** @this {google.maps.Polygon} */
-            $scope.showArrays = function(event) {
-                alert(3);
-                // Since this polygon has only one path, we can call getPath() to return the
-                // MVCArray of LatLngs.
-                var vertices = this.getPath();
-
+            $scope.showArrays = function(event, tmp) {
+                infoWindow = new goo.InfoWindow;
+                var vertices = tmp.getPath();
                 var contentString = '<b>Bermuda Triangle polygon</b><br>' +
                     'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
                     '<br>';
-
-                // Iterate over the vertices.
                 for (var i =0; i < vertices.getLength(); i++) {
                     var xy = vertices.getAt(i);
                     contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
                         xy.lng();
                 }
-
-                // Replace the info window's content and position.
                 infoWindow.setContent(contentString);
                 infoWindow.setPosition(event.latLng);
-
                 infoWindow.open(map);
             }
 
@@ -95,6 +86,7 @@ app.controller(
                 var lat = bounds.getCenter().lat(),
                     long = bounds.getCenter().lng();
                 map.setCenter(bounds.getCenter());
+                //map.center=bounds.getCenter();
                 //goo.event.trigger(map,'resize');
                 //initialize_search(false, bounds.getCenter());
                 //map_in.setCenter(new google.maps.LatLng(50, 44));
@@ -109,9 +101,9 @@ app.controller(
                 angular.forEach($scope.searchTerrains, function(value, key) {
                     this.push(JSON.parse(value.geometry)[0]);
                     var coords = JSON.parse(value.geometry);
-                    //IO.OUT(coords,map_in, value.color_text);
+                    IO.OUT(coords,map_in, value.color_text);
                 }, $scope.shapes);
-                IO.OUT($scope.shapes,map_in);
+                //IO.OUT($scope.shapes,map_in);
             };
 
             $scope.byRange = function (fieldName, minValue, maxValue) {

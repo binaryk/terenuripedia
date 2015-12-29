@@ -8,5 +8,9 @@
     .kv-fileinput-upload.fileinput-upload-button {
         display: none;
     }
+    
+    .disabled{
+        background: #ccc;
+    }
 </style>
 @stop

@@ -9,7 +9,11 @@ app.controller(
 
     $scope.terrains = [];
     $scope.currentTerrain;
-    console.log('TerrainCtrl.js');    
+    console.log('TerrainCtrl.js');
+
+    $scope.draw = function(){
+      var obj = new google.maps.drawing.DrawingManager();
+    }
 
     scope.$watch('config', function(n, o){
         TerrainService.getUserTerrains().then(function(data){
@@ -38,7 +42,7 @@ app.controller(
         if(IO.IN(shapes, true).length == 0){
           toastr.error("Vă rugăm să desenați terenul.")
         }else{
-          data['geometry'] = geometry;
+          data['geometry']      = geometry;
           data['geometry_text'] = geometry_text;
           
           if($scope.edit){

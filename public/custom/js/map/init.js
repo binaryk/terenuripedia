@@ -1,5 +1,6 @@
  var infowindow;
  var map;
+ var buyer_shapes = [];
  function initialize_search(){
    goo = google.maps;
 
@@ -10,87 +11,81 @@
 
        drawman = new goo.drawing.DrawingManager({
           map: map_in,
+          drawingControl: false
       }),
       shapes = [],
       selected_shape = null,
-      hideDrawingManager=function(){
-              drawman.setMap(null);
-      };
-      clearShapes = function() {
-          for (var i = 0; i < shapes.length; ++i) {
-              shapes[i].setMap(null);
-          }
-          shapes = [];
-      };
-      map = new google.maps.Map(document.getElementById('map_in'),map_in);
-      goo.event.addDomListener(map, 'tilesloaded', function() {
-         hideDrawingManager();
-      });
-  };
-   function initialize() {
- goo = google.maps,
- map_in=new goo.Map(document.getElementById('map_in'), {
-         zoom: 12,
-      center: new goo.LatLng(44.42684, 26.1025)
-  });
- shapes = [],
- selected_shape = null,
- drawman = new goo.drawing.DrawingManager({
-     map: map_in,
-     polygonOptions: {editable:true,fillColor: _config["polygonColor"],strokeColor: _config["polygonColor"],strokeWeight:2}
- }),
- byId = function(s) {
-     return document.getElementById(s);
- },
- clearSelection = function() {
-     if (selected_shape) {
-         selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', false);
-         selected_shape = null;
-     }
- },
- setSelection = function(shape) {
-     clearSelection();
-     selected_shape = shape;
-     selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', true);
- },
- clearShapes = function() {
-     for (var i = 0; i < shapes.length; ++i) {
+     clearShapes = function() {
+       for (var i = 0; i < shapes.length; ++i) {
          shapes[i].setMap(null);
+       }
+       for (var i = 0; i < buyer_shapes.length; ++i) {
+         buyer_shapes[i].setMap(null);
+       }
+       shapes = [];
+       buyer_shapes = [];
+     };
+      map = new google.maps.Map(document.getElementById('map_in'),map_in);
+  };
+ function initialize() {
+   goo = google.maps;
+   var mapOptions = {
+     zoom: 12,
+     center: {lat: 44.42684, lng: 26.1025},
+     disableDefaultUI: true
+   }
+   map_in=new goo.Map(document.getElementById('map_in'), {
+        zoom: 12,
+        center: new goo.LatLng(44.42684, 26.1025),
+        disableDefaultUI: false
+    });
+   shapes = [],
+   selected_shape = null,
+   drawman = new goo.drawing.DrawingManager({
+       map: map_in,
+       polygonOptions: {editable:true,fillColor: _config["polygonColor"],strokeColor: _config["polygonColor"],strokeWeight:2},
+       drawingControl: false
+   }),
+   byId = function(s) {
+       return document.getElementById(s);
+   },
+   clearSelection = function() {
+       if (selected_shape) {
+           selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', false);
+           selected_shape = null;
+       }
+   },
+   setSelection = function(shape) {
+       clearSelection();
+       selected_shape = shape;
+       selected_shape.set((selected_shape.type === google.maps.drawing.OverlayType.MARKER) ? 'draggable' : 'editable', true);
+   },
+   clearShapes = function() {
+     for (var i = 0; i < shapes.length; ++i) {
+       shapes[i].setMap(null);
      }
      shapes = [];
-     disableElement('#btnPolygon',false);
-     drawman.drawingControl=true;
- };
- hideDrawingManager=function(){
-     drawman.setMap(null);
- };
- disableDrawingControl=function(){
-     drawman.drawingControl=false;
-     disableElement('#btnPolygon',true);
-     $('#btnHand').click();
- };
-        var map = new google.maps.Map(document.getElementById('map_in'),
-           map_in);
-         goo.event.addListenerOnce(map, 'tilesloaded', function() {
-                 customizeGoogleMapsButtons();
-         });
+   },
+   hideDrawingManager=function(){
+       drawman.setMap(null);
+   };
+   disableDrawingControl=function(){
+         drawman.drawingControl=false;
+       disableElement('#btnPolygon',true);
+       $('#btnHand').click();
+  };
+        var map = new google.maps.Map(document.getElementById('map_in'),map_in);
          goo.event.addDomListener(drawman, 'overlaycomplete', function(e) {
              var shape = e.overlay;
-           console.log(e.overlay);
-           
              shape.type = e.type;
              goo.event.addListener(shape, 'click', function() {
                  setSelection(this);
              });
              setSelection(shape);
              shapes.push(shape);
-           console.log(shape);
-           
-           console.log(shapes);
-           
          });
 
-      /*   google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
+        /* google.maps.event.addListener(drawingManager, "overlaycomplete", function(event){
            vanPolygon = true;
            overlayClickListener(event.overlay);
            $('#polydata').val(event.overlay.getPath().getArray());
@@ -103,6 +98,7 @@
          goo.event.addDomListener(byId('clear_shapes'), 'click', clearShapes);
          goo.event.addDomListener(drawman,'polygoncomplete',disableDrawingControl);
      }
+
      var IO = {
          //returns array with storable google.maps.Overlay-definitions
          IN: function(arr, //array with google.maps.Overlays
@@ -171,11 +167,11 @@
                          };
 
                          if(_config["page"]=="search") {
-                             google.maps.event.addListener(tmp, 'click', function (event) {
-                                 infowindow=handleInfoWindow(infowindow,map,event);
-                                 map.center=tmp.getPosition();
-                                 map.zoom=12;
-                             });
+                             //google.maps.event.addListener(tmp, 'click', function (event) {
+                             //    infowindow=handleInfoWindow(infowindow,map,event);
+                             //    map.center=tmp.getPosition();
+                             //    map.zoom=12;
+                             //});
                              google.maps.event.addListener(map, 'click', function (event) {
                                  infowindow.close();
                              });
@@ -188,11 +184,12 @@
                          }
                          break;
                  }
-                 tmp.setValues({
+                 /*tmp.setValues({
                      map: map,
                      id: shape.id
-                 })
+                 })*/
                  shapes.push(tmp);
+                 buyer_shapes.push(tmp);
              }
              //var clusterer = new MarkerClusterer(map, shapes);
              return shapes;
