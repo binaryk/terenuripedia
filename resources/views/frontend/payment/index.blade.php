@@ -1,26 +1,28 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="user-dash">
+        <div class="log-fundal">
 
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('labels.make_pay') }}</div>
+        <div class="log">
+
+            <div class="panel panel-default">
+                <div class="log-heading">{!! HTML::image('/img/payment-blue.png', 'a picture') !!} </br> <div class="log-title">{{ trans('labels.make_pay') }}</div></div>
 
             <div class="panel-body user-edit">
                 <div class="last-data">
 
                     <div class="title-box">
-                        <span class="legend"><i class="icon-list"></i><p>Informații plată: EuPlatesc.ro tranzacție</p></span><div class="middle-border"></div>
+                        <span class="legend"><i class="icon-list"></i><center>Informații plată: EuPlatesc.ro securizata</center></span><div class="middle-border"></div>
                     </div>
 
-                    <div align="center">
+                    <div  style="padding:25px" align="center">
                         <form ACTION="https://secure.euplatesc.ro/tdsprocess/tranzactd.php" METHOD="POST" name="gateway" target="_self">
                             <div class="col-md-12">
                                 <p><img src="https://www.euplatesc.ro/plati-online/tdsprocess/images/progress.gif" alt="" title=""></p>
                             </div>
                             <!-- begin billing details -->
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="pay-input">
                                     <label for="" class="control-label"> Nume </label>
                                     <input class="form-control" name="fname" type="text" value="<?php echo $dataBill['fname'];?>" />
                                 </div>
@@ -31,11 +33,11 @@
                             <input class="form-control" name="city" type="hidden" value="<?php echo $dataBill['city'];?>" />
                             <input class="form-control" name="add" type="hidden" value="<?php echo $dataBill['add'];?>" />
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="pay-input">
                                     <label for="" class="control-label">Email</label>
                                     <input class="form-control" name="email" readonly="readonly" type="text" value="<?php echo $dataBill['email'];?>" />
                                 </div>
-                                <div class="col-md-4">
+                                <div class="pay-input">
                                     <div class="form-group">
                                         <label for="suma" class="control-label">Suma</label>
                                         <div class="input-group">
@@ -72,7 +74,7 @@
                             <input class="form-control" TYPE="hidden" NAME="timestamp" SIZE="15" VALUE="<?php echo  $dataAll['timestamp'] ?>" />
                             <input class="form-control" TYPE="hidden" NAME="nonce" SIZE="35" VALUE="<?php echo  $dataAll['nonce'] ?>" />
                             <input class="form-control" TYPE="hidden" NAME="fp_hash" SIZE="40" VALUE="<?php echo  $dataAll['fp_hash'] ?>" />
-                            <p><a class="btn btn-success pull-left" href="javascript:gateway.submit();" class="txtCheckout">Plătește acum</a></p>
+                            <p><a class="btn btn-confirm pull-right row" href="javascript:gateway.submit();" class="txtCheckout">Plătește acum</a></p>
                         </form>
                     </div>
 

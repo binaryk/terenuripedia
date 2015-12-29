@@ -1,11 +1,11 @@
+<div class="lista">
 <div class="col-md-12 pre-grid">
-	<div class="col-md-6">
-		<label class="control-label">Titlu teren</label>
-		<input type="text" class="form-control" ng-model="f_title">
-	</div>
-	<div class="col-md-6">
-		<a ng-click="add()" class="btn btn-sm btn-default" href=""><i class="tab-i fa fa-file"></i>Adauga teren</a></li>
-	</div>
+
+		<label class="lista-label">Titlu teren</label>
+		<input type="text" class="form-lista" ng-model="f_title">
+        <a ng-click="add()" class="btn btn-add pull-right" href=""><i class="fa fa-plus"></i> Adauga teren</a>
+
+
 </div>
 <div class="col-md-12 grid-terrains" style="margin-top: 30px;">
 	<table class="table table-bordered" ng-if="terrains.length > 0" style="background: white;">
@@ -34,4 +34,5 @@
 		    Încă nu sunt terenuri salvate!
 		</h6>
 	</div>
+</div>
 </div>

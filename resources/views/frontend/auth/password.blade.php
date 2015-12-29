@@ -1,13 +1,12 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-	<div class="row">
+    <div class="log-fundal">
 
-		<div class="col-md-8 col-md-offset-2">
+        <div class="log">
 
-			<div class="panel panel-default">
-
-				<div class="panel-heading">{{ trans('labels.reset_password_box_title') }}</div>
+            <div class="panel panel-default">
+                <div class="log-heading">{!! HTML::image('/img/lock-blue.png', 'a picture') !!} </br> <div class="log-title">{{ trans('labels.reset_password_box_title') }}</div></div>
 
 				<div class="panel-body">
 					@if (session('status'))

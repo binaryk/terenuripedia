@@ -3,14 +3,52 @@
     ng-controller = "PayCtrl"
 @stop
 @section('content')
-    <div class="row">
+    <div class="log-fundal">
 
-        <div class="col-md-10 col-md-offset-1">
+        <div class="log">
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.current_balance') }}</div>
+                <div class="log-heading">{!! HTML::image('/img/payment-blue.png', 'a picture') !!} </br> <div class="log-title">{{ trans('labels.current_balance') }}</div></div>
+
 
                 <div class="panel-body">
+                    <table id="balanta" width="100%">
+                    <tbody>
+                    <tr>
+                        <th class="c2"><b>Data</b></th>    
+                        <th class="c2"><b>Debit</b></th>    
+                        <th class="c2"><b>Credit</b></th>    
+                        <th class="c2"><b>Balanta</b></th>    
+                    </tr>    
+                    <tr>
+                        <th>12.12.2015</th>    
+                        <th>10</th>    
+                        <th></th>    
+                        <th>57.89</th>    
+                    </tr>   
+                    <tr>
+                        <th>12.12.2015</th>    
+                        <th>15</th>    
+                        <th></th>    
+                        <th>77.89</th>    
+                    </tr> 
+                    <tr>
+                        <th>12.12.2015</th>    
+                        <th>15</th>    
+                        <th></th>    
+                        <th>67.89</th>    
+                    </tr> 
+                    <tr>
+                        <th>12.12.2015</th>    
+                        <th></th>    
+                        <th>100</th>    
+                        <th>167.89</th>    
+                    </tr>    
+
+                        
+
+                    </tbody>    
+                    </table>
                         @role(config('access.roles.saller'))
                             <h5> Stimate vanzator, mai aveti 0 RON </h5>
                             <h4>Contul este INACTIV, puteti cumpara unul dintre urmatoarele abonamente</h4>

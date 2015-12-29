@@ -7,14 +7,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="">{{ app_name() }}</a>
+				<div class="navbar-logo">{!! HTML::image('/img/logo.png', 'a picture') !!}</div>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li>{!! link_to('/', trans('navs.home')) !!}</li>
-				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
                     <li><a href="#" class="animate-link">Prezentare</a></li>
                     <li><a href="#">Povestea site-ului</a></li>

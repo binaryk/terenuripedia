@@ -1,3 +1,4 @@
+<div class="lista">
 <div class="row">
    <div class="col-md-6">
        {!! $controls['title'] !!}
@@ -82,5 +83,5 @@
 
     </div>
 </div>
-
+</div>
 
