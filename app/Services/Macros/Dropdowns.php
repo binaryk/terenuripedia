@@ -33,6 +33,12 @@ trait Dropdowns
         return $this->select($name, $list, $selected, $options);
     }
 
+    public function fizJur($name, $selected = null, $options = array())
+    {
+        $list = User::fizjur();
+        return $this->select($name, $list, $selected, $options);
+    }
+
     /**
      * @param  $name
      * @param  null     $selected

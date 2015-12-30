@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -13,9 +13,8 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
                     <li><a href="#" class="animate-link">Prezentare</a></li>
-                    <li><a href="#">Povestea site-ului</a></li>
 					@role('Saller')
-                    <li><a href="#">Abonamente</a></li>
+                    <li><a href="{!! route('frontend.abonamente') !!}">Abonamente</a></li>
 					@endauth
 					@role('Buyer')
                     <li><a href="{!! route('buyer.search') !!}">Terenuri</a></li>

@@ -20,11 +20,28 @@ $router->group(['namespace' => 'Frontend'], function () use ($router) {
 
 
 $router->group(['namespace' => 'Buyer'], function () use ($router) {
-    require (__DIR__ . '/Routes/Terrain/Buyer.php');
+
+    $router->group([
+        'middleware' => 'access.routeNeedsRole:Buyer',
+        'with'       => ['flash_danger', 'Nu aveti acces la aceasta cale.']
+    ], function () use ($router)
+    {
+        require (__DIR__ . '/Routes/Terrain/Buyer.php');
+    });
+
 });
 
 $router->group(['namespace' => 'Terrains'], function () use ($router) {
-    require (__DIR__ . '/Routes/Terrain/Terrain.php');
+    get('get-terrain-lists', 'PreTerrainController@all')->name('terrain.all');
+    $router->group([
+        'middleware' => 'access.routeNeedsRole:Saller',
+        'with'       => ['flash_danger', 'Nu aveti acces la aceasta cale.']
+    ], function () use ($router)
+    {
+        require (__DIR__ . '/Routes/Terrain/Terrain.php');
+    });
+
+
 });
 
 /**

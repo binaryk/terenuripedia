@@ -13,15 +13,15 @@ return [
     |
     */
 
-    'my_information' => 'My Information',
-    'change_password' => 'Change Password',
-    'administration' => 'Administration',
+    'my_information' => 'Informatii',
+    'change_password' => 'Schimba parola',
+    'administration' => 'Administrare',
     'dashboard' => 'Administrare cont',
-    'home' => 'Home',
-    'login' => 'Login',
-    'logout' => 'Logout',
-    'macros' => 'Macros',
-    'register' => 'Register',
+    'home' => 'Acasa',
+    'login' => 'Autentificare',
+    'logout' => 'Iesi',
+    'macros' => 'Macrouri',
+    'register' => 'Inregistrare',
     'button' => 'Button',
     'terrain_add' => 'Adauga terenuri',
 

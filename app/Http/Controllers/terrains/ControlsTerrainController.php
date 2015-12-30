@@ -54,7 +54,7 @@ class ControlsTerrainController extends Controller
                 \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
                     ->name('suprafata')
                     ->ng_model('currentTerrain.suprafata')
-                    ->caption('Suprafața teren')
+                    ->caption('Suprafața teren (mp)')
                     ->class('form-control data-source decimal')
                     ->controlsource('suprafata')
                     ->controltype('textbox')

@@ -6,7 +6,23 @@
 
       map_in=new goo.Map(document.getElementById('map_in'), {
           zoom: 11,
-          center: new goo.LatLng(44.42684, 26.1025)
+          center: new goo.LatLng(44.42684, 26.1025),
+        disableDefaultUI: false,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+          position: google.maps.ControlPosition.TOP_CENTER
+        },
+        zoomControl: true,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_CENTER,
+          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+        },
+        scaleControl: true,
+        streetViewControl: false,
+        streetViewControlOptions: {
+          position: google.maps.ControlPosition.TOP_CENTER
+        }
       });
 
        drawman = new goo.drawing.DrawingManager({
@@ -32,12 +48,27 @@
    var mapOptions = {
      zoom: 12,
      center: {lat: 44.42684, lng: 26.1025},
-     disableDefaultUI: true
+     disableDefaultUI: true,
+
    }
    map_in=new goo.Map(document.getElementById('map_in'), {
         zoom: 12,
         center: new goo.LatLng(44.42684, 26.1025),
-        disableDefaultUI: false
+        disableDefaultUI: false,
+       mapTypeControl: true,
+       mapTypeControlOptions: {
+         style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+         position: google.maps.ControlPosition.TOP_CENTER
+       },
+       zoomControl: true,
+       zoomControlOptions: {
+         position: google.maps.ControlPosition.TOP_CENTER
+       },
+       scaleControl: true,
+       streetViewControl: false,
+       streetViewControlOptions: {
+         position: google.maps.ControlPosition.TOP_CENTER
+       }
     });
    shapes = [],
    selected_shape = null,

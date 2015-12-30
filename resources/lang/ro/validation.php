@@ -111,6 +111,7 @@ return [
         'email' => 'E-mail',
         'phone' => 'Telefon',
         'type'     => 'Tip',
+        'fiz_jur'  => 'Categorie',
         'password' => 'Parola',
         'password_confirmation' => 'Parola Confirmare',
         'old_password' => 'Parola veche',
