@@ -7,12 +7,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<div class="navbar-logo">{!! HTML::image('/img/logo.png', 'a picture') !!}</div>
+				<div class="navbar-logo"><a href="{!! url('/') !!}">{!! HTML::image('/img/logo.png', 'a picture') !!}</a></div>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" class="animate-link">Prezentare</a></li>
+                    <li><a href="{!! url('/') !!}" class="animate-link">Prezentare</a></li>
 					@role('Saller')
                     <li><a href="{!! route('frontend.abonamente') !!}">Abonamente</a></li>
 					@endauth
@@ -30,7 +30,6 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 							    <li>{!! link_to('dashboard', trans('navs.dashboard')) !!}</li>
-                                <li><a href="{!!route('frontend.profile.fonds.index')!!}">{{ trans('labels.fonds') }}</a></li>
 
 							    @permission('view-backend')
 							        <li>{!! link_to_route('admin.dashboard', trans('navs.administration')) !!}</li>

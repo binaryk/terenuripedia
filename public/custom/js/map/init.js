@@ -96,6 +96,7 @@
        shapes[i].setMap(null);
      }
      shapes = [];
+     disableElement('#btnPolygon',false);
    },
    hideDrawingManager=function(){
        drawman.setMap(null);

@@ -109,7 +109,9 @@ app.controller(
                     var coords = JSON.parse(value.geometry);
                     IO.OUT(coords,map_in, value.color_text);
                 }, $scope.shapes);
-                //IO.OUT($scope.shapes,map_in);
+                $timeout(function(){
+                  IO.OUT($scope.shapes,map_in);
+                });
             };
 
             $scope.byRange = function (fieldName, minValue, maxValue) {
