@@ -4,7 +4,6 @@
  * Global helpers file with misc functions
  *
  */
-
 if (!function_exists('app_name')) {
     /**
      * Helper to grab the application name
