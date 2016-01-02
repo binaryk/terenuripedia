@@ -22,7 +22,7 @@
                 @endauth
             </div>
         </div>
-        <a href="" ng-click="show()" ng-if="selected_subscription">Informatii</a>
+        <!-- <a href="" ng-click="show()" ng-if="selected_subscription">Informatii</a> -->
         <div ng-show="view_info">
             <div class="info_zone" ng-bind-html="description" >
                 Nu sunt informatii deocamdata

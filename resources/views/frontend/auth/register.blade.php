@@ -36,6 +36,13 @@
 								{!! Form::selectType('type_id', '1', ['class' => 'log-control']) !!}
 							</div>
 						</div>
+						<div class="form-group fiz_jur">
+							{!! Form::label('fiz_jur', trans('validation.attributes.fiz_jur'), ['class' => 'log-label']) !!}
+							<div class="md-6">
+								{!! Form::fizJur('fiz_jur', '1', ['class' => 'log-control']) !!}
+							</div>
+						</div>
+
 					@endif
 						<div class="form-group">
 							{!! Form::label('password', trans('validation.attributes.password'), ['class' => 'log-label']) !!}

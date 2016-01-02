@@ -4,17 +4,22 @@ app.controller(
             var scope = $rootScope;
             var cautare = true;
             var f_title = '';
+            $scope.P_MIN   = 0;
+            $scope.P_MAX   = 500;
+            $scope.S_MIN   = 0;
+            $scope.S_MAX   = 500;
+            $scope.length_result = 0;
 
             $scope.infoWindow;
 
             $scope.price = {
-                min: 0,
-                max: 80
+                min: $scope.P_MIN,
+                max: $scope.P_MAX
             };
 
             $scope.suprafata = {
-                min: 0,
-                max: 80
+                min: $scope.S_MIN,
+                max: $scope.S_MAX
             };
 
             $scope.searchTerrains = [];
@@ -27,6 +32,7 @@ app.controller(
                 TerrainService.get().then(function(data){
                     console.log(data.data);
                     $scope.searchTerrains = data.data;
+                    $scope.length_result  = data.data.length;
                        $timeout(function(){
                            $scope.getAllShapes();
                        },500);
@@ -103,7 +109,9 @@ app.controller(
                     var coords = JSON.parse(value.geometry);
                     IO.OUT(coords,map_in, value.color_text);
                 }, $scope.shapes);
-                //IO.OUT($scope.shapes,map_in);
+                $timeout(function(){
+                  IO.OUT($scope.shapes,map_in);
+                });
             };
 
             $scope.byRange = function (fieldName, minValue, maxValue) {
@@ -116,7 +124,18 @@ app.controller(
                 };
             };
 
-        }]);
+            $scope.clear = function(){
+                $scope.price.min = $scope.P_MIN;
+                $scope.price.max = $scope.P_MAX;
+                $scope.suprafata.min = $scope.S_MIN;
+                $scope.suprafata.max = $scope.S_MAX;
+              $timeout(function(){
+                $('select').val('').trigger('change')
+              });
+
+            }
+
+}]);
 
 
 app.filter('byOwner', function() {

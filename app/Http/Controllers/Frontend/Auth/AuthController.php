@@ -90,6 +90,17 @@ class AuthController extends Controller
                 $this->clearLoginAttempts($request);
             }
 
+
+            if(access()->hasRole('Saller')){
+                return redirect()->intended('/terrain');
+            }
+
+            if(access()->hasRole('Buyer')){
+                return redirect()->intended('/terrain-buyer');
+            }
+
+
+
             return redirect()->intended('/dashboard');
         } catch (GeneralException $e) {
             // If the login attempt was unsuccessful we will increment the number of attempts

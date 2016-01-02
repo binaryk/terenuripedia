@@ -1,5 +1,5 @@
-<div class="col-md-3">
-    <div class="col-md-12" style="margin-top: 30px;">
+<div class="col-md-3" ng-cloak>
+    <div class="col-md-12" style="margin-top: 30px; height: 70vh; overflow-y: scroll;" ng-cloak>
         <ul class="nav nav-stacked" id="accordion1" ng-if="searchTerrains.length > 0" >
             <li class="panel" ng-repeat="terrain in searchTerrains
                               |filter: { id_locatie: f_locatie }
@@ -12,7 +12,17 @@
                     >
                 <div ng-if="$index == 1">
                     <!-- Catalin aici poti sa faci acest div cu position absolute, ca sa ramana pe aceeasi pozitie la scroll. -->
-                    <h5>Numarul de rezultate este: <span> @{{ searchTerrains.length }}</span></h5>
+                    <h5>Numarul de rezultate este:
+                        <span ng-cloak>
+                        @{{
+                              (searchTerrains
+                              |filter: { id_locatie: f_locatie }
+                              |filter: { id_tip_teren: id_tip_teren }
+                              |filter:byRange('pret', price.min, price.max)
+                              |filter:byRange('suprafata', suprafata.min, suprafata.max)
+                              |byOwner:type_id).length
+                         }}
+                    </span></h5>
                 </div>
                 <a data-toggle="collapse" data-parent="#accordion1" href="#@{{terrain.id}}">
                     @{{terrain.title}}</a>

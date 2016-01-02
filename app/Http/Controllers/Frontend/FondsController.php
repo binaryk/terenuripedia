@@ -32,6 +32,14 @@ class FondsController extends Controller
             ->with(compact('user','controls'));
     }
 
+    public function abonamente()
+    {
+        $user     = auth()->user();
+        $controls = $this->controls();
+        return view('frontend.payment.abonamente')
+            ->with(compact('user','controls'));
+    }
+
     public function subscriptions()
     {
         return Subscription::all();

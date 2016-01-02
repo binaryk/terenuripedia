@@ -9,7 +9,7 @@ if( auth()->user())
 
 }
 get('/', 'FrontendController@index')->name('home');
-
+get('abonamente', 'FondsController@abonamente')->name('frontend.abonamente');
 /**
  * These frontend controllers require the user to be logged in
  */

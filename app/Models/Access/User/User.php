@@ -104,6 +104,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         ];
     }
 
+    public static function fizjur()
+    {
+        return [
+            '1' => 'Persoana fizica',
+            '2' => 'Persoana juridica',
+        ];
+    }
+
     public static function color()
     {
         switch(auth()->user()->type_id){

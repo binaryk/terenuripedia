@@ -1,7 +1,7 @@
 <div id="search_div" class="col-md-3">
     <div class="col-md-12">
         <label class="control-label">Preț</label>
-        <div range-slider min="0" max="200" model-min="price.min" model-max="price.max" filter="currency:'RON'" step="2"></div>
+        <div range-slider min="0" max="1000" model-min="price.min" model-max="price.max" filter="currency:'RON'" step="10"></div>
         <label for="">@{{ price.min  }}</label>
         <label for="" class="pull-right">@{{ price.max  }}</label>
     </div>
@@ -46,8 +46,14 @@
     </div>
     <div class="col-md-12">
         <label class="control-label">Suprafata</label>
-        <div range-slider min="0" max="200" model-min="suprafata.min" model-max="suprafata.max" filter="currency:'RON'" step="2"></div>
+        <div range-slider min="0" max="1000" model-min="suprafata.min" model-max="suprafata.max" filter="currency:'RON'" step="10"></div>
         <label for="">@{{ suprafata.min  }}</label>
         <label for="" class="pull-right">@{{ suprafata.max  }}</label>
+    </div>
+
+    <div class="col-md-12">
+        <button class="btn btn-default" ng-click="clear()">
+            Sterge criterii
+        </button>
     </div>
 </div>
