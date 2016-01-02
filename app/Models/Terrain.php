@@ -36,7 +36,7 @@ class Terrain extends Model
 
 	public static function tip(){
     	return [
-    		'' => '-- Alege --',
+    		'' => 'Alege tipul de teren ',
     		'1' =>	'Terenurile cu destinatie agricola',
     		'2' =>	'Terenurile cu destinatie forestiera',
     		'3' =>	'Terenurile aflate permanent sub ape',
@@ -48,7 +48,7 @@ class Terrain extends Model
     public static function locatie(){
     	return 
     	[
-    	'' => '-- Alege --',
+    	'' => 'Alege localitatea',
     	'1' => 'Bucuresti sectorul 1',
     	'2' => 'Bucuresti sectorul 2',
     	'3' => 'Bucuresti sectorul 3',

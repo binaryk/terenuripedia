@@ -1,8 +1,8 @@
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#lista"><i class="tab-i fa fa-list-ol"></i> Lista</a></li>
-    <li><a data-toggle="tab" href="#data"><i class="tab-i fa fa-database"></i> Trasare</a></li>
-    <li><a data-toggle="tab" href="#proiect"><i class="tab-i fa fa-cogs"></i> Anunt</a></li>
-    <li class="salvare"><a ng-click="saveTerrain();$event.stopPropagation();" href=""><i class="tab-i fa fa-upload"></i>Salveaza</a></li>
+  <ul class="content-add">
+    <li class="active"><a data-toggle="tab" href="#lista"><div class="icon-lista"></div> Anunturi</a></li>
+    <li><a data-toggle="tab" href="#data"><div class="icon-terenuri"></div> Teren</a></li>
+    <li><a data-toggle="tab" href="#proiect"><div class="icon-anunt"></div> Detalii</a></li>
+    <li class="salvare"><a ng-click="saveTerrain();$event.stopPropagation();" href=""><div class="icon-save"></div> Salveaza</a></li>
   </ul>
   <div class="tab-content">
     <div id="lista" class="tab-pane fade in active">

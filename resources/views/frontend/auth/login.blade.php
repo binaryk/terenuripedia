@@ -41,7 +41,7 @@
                             <div class="md-6">
                                 {!! Form::submit(trans('labels.login_button'), ['class' => 'btn btn-confirm', 'style' => 'margin-right:15px']) !!}
 
-                               <span class="log-forgot"> {!! link_to('password/email', trans('labels.forgot_password')) !!}</span>
+                               <span class="log-forgot"> {!! link_to('password/email', trans('labels.forgot_password')) !!}
                             </div>
                         </div>
 

@@ -8,13 +8,7 @@
 .map-build, #map_in{
   height: 600vh;
 }
-span.select2{
-  width: 100% !important;
-}
 
-label{
-  color: #000011;
-}
 
  .preregister .demo-list li{
    width: 50%;

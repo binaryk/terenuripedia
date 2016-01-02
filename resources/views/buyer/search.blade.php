@@ -27,7 +27,7 @@
                         ->class('form-control data-source input-group form-select')
                         ->controlsource('type_id')
                         ->controltype('combobox')
-                        ->options(['' => '-- Alege --'] + \App\Models\Access\User\User::type())
+                        ->options(['' => 'Alege'] + \App\Models\Access\User\User::type())
                         ->out()
             !!}
     </div>

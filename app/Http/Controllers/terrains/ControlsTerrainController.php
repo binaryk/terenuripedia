@@ -98,7 +98,7 @@ class ControlsTerrainController extends Controller
                     ->name('pret')
                     ->ng_model('currentTerrain.Pret')
                     ->caption('Pret')
-                    ->class('form-control data-source decimal')
+                    ->class('form-control data-source decimal pret')
                     ->controlsource('pret')
                     ->controltype('textbox')
                     ->maxlength(255)

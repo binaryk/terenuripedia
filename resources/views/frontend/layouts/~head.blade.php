@@ -14,7 +14,7 @@
     {!! HTML::style('css/auth/style.css') !!}
     {!! HTML::style('custom/css/main.css') !!}
     {!! HTML::style('components/angular-rangeslider/angular.rangeSlider.css') !!}
-   <!-- {!! HTML::style('components\bootstrap\dist\css\bootstrap.min.css') !!}-->
+    {!! HTML::style('components\bootstrap\dist\css\bootstrap.min.css') !!}
 
     @yield('after-styles-end')
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
