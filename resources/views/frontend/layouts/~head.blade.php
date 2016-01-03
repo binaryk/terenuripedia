@@ -17,6 +17,12 @@
     {!! HTML::style('components\bootstrap\dist\css\bootstrap.min.css') !!}
 
     @yield('after-styles-end')
+    <style>
+        div[load]{
+            display: none;
+        }
+    </style>
+
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}

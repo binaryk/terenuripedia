@@ -26,7 +26,7 @@ class CreateTableTerrains extends Migration
             $t->text('suprafata');
             $t->integer('id_tip_teren');
             $t->text('deschidere');
-            $t->integer('id_tip_caracteristici');
+            $t->integer('id_tip_caracteristici')->nullable();
             $t->text('photo');
             $t->text('pret',20);
             $t->text('telefon', 20);

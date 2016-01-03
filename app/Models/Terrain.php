@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Binaryk\Model\BModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Terrain extends Model
+class Terrain extends BModel
 {
+
+
     protected $guarded = ['_token','id_tip_caracteristici'];
 
     public static function createRecord($data)

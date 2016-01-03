@@ -1,26 +1,15 @@
 <?php
 
-/**
- * Switch between the included languages
- */
-$router->group(['namespace' => 'Language'], function () use ($router) {
-    require (__DIR__ . '/Routes/Language/Lang.php');
-});
+get('/', 'Frontend\FrontendController@index')->name('home');
+get('abonamente', 'FondsController@abonamente')->name('frontend.abonamente');
 
-/**
- * Frontend Routes
- * Namespaces indicate folder structure
- */
 $router->group(['namespace' => 'Frontend'], function () use ($router) {
     require (__DIR__ . '/Routes/Frontend/Frontend.php');
     require (__DIR__ . '/Routes/Frontend/Access.php');
-    require (__DIR__ . '/Routes/Frontend/Terrain.php');
     require (__DIR__ . '/Routes/Frontend/Payment.php');
 });
 
-
 $router->group(['namespace' => 'Buyer'], function () use ($router) {
-
     $router->group([
         'middleware' => 'access.routeNeedsRole:Buyer',
         'with'       => ['flash_danger', 'Nu aveti acces la aceasta cale.']
@@ -28,7 +17,6 @@ $router->group(['namespace' => 'Buyer'], function () use ($router) {
     {
         require (__DIR__ . '/Routes/Terrain/Buyer.php');
     });
-
 });
 
 $router->group(['namespace' => 'Terrains'], function () use ($router) {
@@ -40,22 +28,11 @@ $router->group(['namespace' => 'Terrains'], function () use ($router) {
     {
         require (__DIR__ . '/Routes/Terrain/Terrain.php');
     });
-
-
 });
 
-/**
- * Backend Routes
- * Namespaces indicate folder structure
- */
 $router->group(['namespace' => 'Backend'], function () use ($router) {
     $router->group(['prefix' => 'admin', 'middleware' => 'auth'], function () use ($router) {
-        /**
-         * These routes need view-backend permission (good if you want to allow more than one group in the backend, then limit the backend features by different roles or permissions)
-         *
-         * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
-         */
-        $router->group(['middleware' => 'access.routeNeedsPermission:view-backend'], function () use ($router) {
+         $router->group(['middleware' => 'access.routeNeedsPermission:view-backend'], function () use ($router) {
             require (__DIR__ . '/Routes/Backend/Dashboard.php');
             require (__DIR__ . '/Routes/Backend/Access.php');
             require (__DIR__ . '/Routes/Backend/LogViewer.php');

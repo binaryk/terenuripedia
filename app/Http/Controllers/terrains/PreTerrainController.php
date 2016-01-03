@@ -48,33 +48,6 @@ class PreTerrainController extends ControlsTerrainController
 		return Response::json(['data' => $data]);
 	}
 
-	public function save(){
-		//De facut verificare cu db daca aprobarea era null si s-a modificat sa se trimita mail cu confirmare
-		$data = Input::get('data');
-		$data['color_text'] = User::color();
-		$out  = Terrain::create($data+['user_id'=>Auth::user()->id]);
-		$out->characteristics()->attach($data['id_tip_caracteristici']);
 
-		return Response::json(['out' => $out]);
-	}
-
-	public function edit()
-	{
-		$id   = Input::get('id');
-		$data = Input::get('data');
-		$this->model = Terrain::with('characteristics')->where('id',$id)->first();
-		$this->model->update($data);
-		$this->model->characteristics()->detach();
-		$this->model->characteristics()->attach(@$data['id_tip_caracteristici']);
-		return Response::json(['success' => true, 'node' => $this->model]);
-	}
-
-	public function delete()
-	{
-		$id   = Input::get('id');
-		$this->model = Terrain::find($id);
-		$this->model->delete();
-		return Response::json(['success' => true]);
-	}
 
 }

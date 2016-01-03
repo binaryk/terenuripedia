@@ -65,14 +65,13 @@ class EloquentAuthenticationRepository implements AuthenticationContract
             if ($this->auth->user()->confirmed == 0) {
                 $user_id = $this->auth->user()->id;
                 $this->auth->logout();
-                throw new GeneralException('Your account is not confirmed. Please click the confirmation link in your e-mail, or ' . '<a href="' . route('account.confirm.resend', $user_id) . '">click here</a>' . ' to resend the confirmation e-mail.');
+                throw new GeneralException('Contul nu a fost confirmat. Va rugam sa verificati casuta postala, sau ' . '<a href="' . route('account.confirm.resend', $user_id) . '">dati click aici</a>' . ' pentru a trimite un email de activare cont.');
             }
-
             event(new UserLoggedIn($this->auth->user()));
             return true;
         }
 
-        throw new GeneralException('These credentials do not match our records.');
+        throw new GeneralException( trans('alerts.login.fail') );
     }
 
     /**

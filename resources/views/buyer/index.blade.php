@@ -35,6 +35,7 @@
     </script>
     <script type="text/javascript" src="{!! asset('custom/js/map/cluster.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('custom/js/map/init.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('custom/js/map/SearchInit.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/services/TerrainService.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/controllers/BuyerCtrl.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/controllers/terrain_coords.js') !!}"></script>

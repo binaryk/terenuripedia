@@ -8,5 +8,28 @@
     "bootstrap-sass": "^3.3.6",
     "font-awesome": "^4.5.0",
     "laravel-elixir": "^4.0.0"
-  }
+  },
+  "name": "terenuripedia",
+  "description": "",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binaryk/terenuripedia.git"
+  },
+  "keywords": [
+    "terenruipedia"
+  ],
+  "author": "binaryk.net",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binaryk/terenuripedia/issues"
+  },
+  "homepage": "https://github.com/binaryk/terenuripedia#readme"
 }

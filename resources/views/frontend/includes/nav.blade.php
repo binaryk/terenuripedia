@@ -24,7 +24,7 @@
 						<li>{!! link_to('auth/pre-register', trans('navs.register')) !!}</li>
 					@else
                         @role('Saller')
-                        <li>{!! link_to('terrain', trans('navs.terrain_add')) !!}</li>
+                        <li>{!! link_to('terenuri', trans('navs.terrain_add')) !!}</li>
                         @endauth
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>

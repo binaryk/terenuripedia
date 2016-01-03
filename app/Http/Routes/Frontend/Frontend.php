@@ -1,7 +1,4 @@
 <?php
-get('macros', 'FrontendController@macros');
-get('/', 'FrontendController@index')->name('home');
-get('abonamente', 'FondsController@abonamente')->name('frontend.abonamente');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     get('dashboard', 'DashboardController@index')->name('frontend.dashboard');
