@@ -6,7 +6,7 @@ class Mailer
 {
 	public function sendTo($email, $subject, $view, $data = array(), $attachments = '')
 	{
-		Mail::queue($view, $data, function($message) use ($email, $subject, $attachments)
+		\Mail::queue($view, $data, function($message) use ($email, $subject, $attachments)
 		{
 			$message->to($email)->subject($subject);
 			if($attachments)

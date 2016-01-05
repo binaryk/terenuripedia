@@ -11,7 +11,7 @@
             <table>
                 <tr>
                     <td style="text-align:left; padding-right:4px">Pentru confirmare faceti click aici : <td>
-                    <td style="text-align:left; padding-left:4px">{!! url('account/confirm/' . $token) !!}<td>
+                    <td style="text-align:left; padding-left:4px"><a href="{!! url('account/confirm/' . $token) !!}">link</a><td>
                 <tr>
             </table>
         </td>

@@ -74,7 +74,7 @@ class AuthController extends Controller
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
 
-        return redirect()->to('auth/login')->withFlashSuccess('Your account has been successfully confirmed!');
+        return redirect()->to('auth/login')->withFlashSuccess('Contul dvs a fost confirmat cu succes.');
     }
 
     public function resendConfirmationEmail($user_id)
@@ -82,7 +82,7 @@ class AuthController extends Controller
         //Don't know why the exception handler is not catching this
         try {
             $this->auth->resendConfirmationEmail($user_id);
-            return redirect()->route('home')->withFlashSuccess('A new confirmation e-mail has been sent to the address on file.');
+            return redirect()->route('home')->withFlashSuccess('Un nou mail de confirmare a fost trimis pe adresa de mail.');
         } catch (GeneralException $e) {
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
