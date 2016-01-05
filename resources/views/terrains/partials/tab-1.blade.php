@@ -8,10 +8,11 @@
 </div>
 <div class="col-md-12 grid-terrains" style="margin-top: 30px;">
 	<div ng-if="terrains.length > 0" style="background: white;">
-			<div class="terrain" ng-repeat="terrain in terrains | filter: { title: f_title}">
+			<div class="terrain" ng-repeat="terrain in terrains | filter: { title: f_title} track by $index ">
               <div class="item-teren">    
                   <div class="small-box-c1" style="cursor: pointer;"
-					   ng-click="edit(terrain)"><a href="" class=""><div class="icon-edit"></div><span class="sup">@{{ terrain.title }}</span></a> </div>
+					   ng-click="edit(terrain)"><a href="" class=""><div class="icon-edit"></div><span class="sup">
+							 @{{ $index + 1  }}. @{{ terrain.title }}</span></a> </div>
                 <div class="sup-lista small-box-zona">@{{ terrain.localitate }} Constanta</div>  
 				<div class="sup-lista small-box-pret">@{{ terrain.pret }} EURO</div>
 				<div class="sup-lista small-box-mp">@{{ terrain.suprafata}}mp</div>

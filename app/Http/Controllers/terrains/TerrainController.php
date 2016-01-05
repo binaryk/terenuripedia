@@ -22,7 +22,7 @@ class TerrainController extends PreTerrainController
     }
 
     public function index()
-    { 
+    {  
         $terrain    = Terrain::with('characteristics')->get();
         $controls   = $this->controls();
         return view('terrains.index',compact('terrain', 'controls'));
@@ -51,7 +51,7 @@ class TerrainController extends PreTerrainController
                     $out->characteristics()->attach($data['id_tip_caracteristici']);
                 }
                 $out = Terrain::with('characteristics')->where('id',$out->id)->first();
-                $result = ['success' => true, 'message' => 'Salvare cu succes!','out' => $out];
+                $result = ['success' => true, 'message' => 'Datele au fost salvate cu succes!','out' => $out, 'has_abonament' => User::hasAbonament()];
             }
             catch(Exception $e)
             {

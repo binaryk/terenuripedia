@@ -7,7 +7,8 @@
         <meta name="_token" content="{{ csrf_token() }}" />
         <title>@yield('title', app_name())</title>
         <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('author', 'Anthony Rappa')">
+        <meta name="author" content="@yield('author', 'binaryk.net')">
+        <link href="{!! asset('img/favicon.ico') !!}" rel="icon" type="image/x-icon" />
         @yield('meta')
 
         @yield('before-styles-end')

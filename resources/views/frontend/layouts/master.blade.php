@@ -10,6 +10,8 @@
             @yield('content')
 
         </div><!-- container -->
+
+        @include('frontend.includes.footer')
         @include('frontend.layouts.~include-js')
     </body>
 </html>

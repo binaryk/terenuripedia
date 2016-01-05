@@ -78,7 +78,13 @@ app.controller(
           gmap.activateTab(3);
         }else{
           FormService.removeFieldsErrors();
-          toastr.success('Datele au fost salvate cu succes!');
+          toastr.success(data.message);
+          if(! data.has_abonament){
+            bootbox.dialog({
+              title: "Atentie",
+              message: 'ATENTIE ACESTA ESTE UN CONT NEPLATIT (CUMPARA ABONAMENT).'
+            });
+          }
           $scope.terrains.push(data.out);
           /*
             salvez id-ul, pentru a-l prelua la fileinput

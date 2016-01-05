@@ -24,6 +24,6 @@ return [
 	 * parola cateliudan100@
 	 * ssl/tsl => 465
 	 * no-ssl  => 26
-	 * mail.terenuripedia.ro 
+	 * mail.terenuripedia.ro
 	*/
 ];

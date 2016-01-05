@@ -19,7 +19,7 @@ return [
     'dashboard' => 'Administrare cont',
     'home' => 'Acasa',
     'login' => 'Autentificare',
-    'logout' => 'Iesi',
+    'logout' => 'Iesire',
     'macros' => 'Macrouri',
     'register' => 'Inregistrare',
     'button' => 'Button',

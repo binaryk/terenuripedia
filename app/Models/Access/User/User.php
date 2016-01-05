@@ -127,4 +127,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
         return '#000';
     }
+
+    public function abonamente()
+    {
+        return $this->hasMany('\App\Models\Abonament','user_id');
+    }
+
+    public static function hasAbonament()
+    {
+        $user = User::where('id',auth()->user()->id)->with('abonamente')->first();
+        $abonamente = $user->abonamente;
+        return count($abonamente) > 0;
+
+    }
 }
