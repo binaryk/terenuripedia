@@ -6,12 +6,15 @@ var GMap = (function () {
         this.poly_btn = poly_btn;
         this.hand_btn = hand_btn;
         this.trash_btn = trash_btn;
-        this.clearShapes = function () {
+        this.clearShapes = function (tab) {
             for (var i = 0; i < shapes.length; ++i) {
                 shapes[i].setMap(null);
             }
             shapes = [];
             disableElement('#btnPolygon', false);
+            if (tab) {
+                _this.activateTab(tab);
+            }
         };
         this.disableDrawingControl = function () {
             drawman.drawingControl = false;
@@ -20,7 +23,6 @@ var GMap = (function () {
         };
         this.hanlders = function () {
             $('#' + _this.poly_btn).click(function () {
-                console.log('asdasd');
                 drawman.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
             });
             $('#' + _this.hand_btn).click(function () {
@@ -44,6 +46,44 @@ var GMap = (function () {
                 drawingControl: false
             });
         };
+        this.activateTab = function (nr) {
+            $('a[data-toggle=tab]:eq(' + (nr - 1) + ')').tab('show');
+        };
+        this.getGeometry = function (hash) {
+            /*if hash == true ==> return hash result, not plain text*/
+            return JSON.stringify(IO.IN(shapes, hash));
+        };
+        this.hasPolygon = function () {
+            return !(IO.IN(shapes, true).length == 0);
+        };
+        this.getMap = function () {
+            return _this.map;
+        };
+        this.drawPolygon = function (coords, color) {
+            var tmp = new google.maps.Polygon({
+                paths: IO.mm_(coords[0]['geometry']),
+                strokeColor: color,
+                strokeOpacity: 1.0,
+                fillOpacity: 0.35,
+                position: IO.mm_.apply(IO, coords[0]['geometry']),
+                editable: true
+            });
+            shapes.push(tmp);
+            tmp.setMap(_this.map);
+            return tmp;
+        };
+        this.getPolygonCenter = function (polygon) {
+            var bounds = new google.maps.LatLngBounds();
+            var points = polygon.getPath().getArray();
+            for (var n = 0; n < points.length; n++) {
+                bounds.extend(points[n]);
+            }
+            var lat = bounds.getCenter().lat(), long = bounds.getCenter().lng();
+            return bounds.getCenter();
+        };
+        this.setMapCenter = function (center) {
+            _this.map.setCenter(center);
+        };
         this.params = {
             zoom: 12,
             center: new google.maps.LatLng(44.42684, 26.1025),
@@ -53,14 +93,19 @@ var GMap = (function () {
                 style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
                 position: google.maps.ControlPosition.TOP_CENTER
             },
-            zoomControl: true,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.TOP_CENTER
-            },
             scaleControl: true,
             streetViewControl: false,
             streetViewControlOptions: {
                 position: google.maps.ControlPosition.TOP_CENTER
+            },
+            panControl: true,
+            panControlOptions: {
+                position: google.maps.ControlPosition.TOP_RIGHT
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.LARGE,
+                position: google.maps.ControlPosition.RIGHT_TOP
             }
         };
         _that = this;

@@ -1,5 +1,6 @@
 module Formatters{
     declare var $;
+    declare var jQuery;
 
     export class Inputs{
         selectors: string[];
@@ -26,7 +27,13 @@ module Formatters{
 
         format():void{
             this.selectors.forEach(function(el){
-                $(el).select2();
+
+                if( $.isFunction(jQuery().select2) ){
+                    $(el).select2();
+                }else{
+                    throw Error('Select 2 function is not defined.');
+                }
+
             });
         }
     }

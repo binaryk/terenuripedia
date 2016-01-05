@@ -22,7 +22,7 @@ class PreTerrainController extends ControlsTerrainController
 	}
 
 	public function all(){
-		$data = Terrain::with('characteristics','owner')->orderBy('id','DESC')->get()->toArray();
+		$data = Terrain::with('characteristics','owner')->where('aprobat',1)->orderBy('id','DESC')->get()->toArray();
 		$out = [];
 		foreach($data as $k => $in){
 			$in['locatie_string'] = Terrain::locatie()[$in['id_locatie']];

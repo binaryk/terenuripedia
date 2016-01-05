@@ -57,7 +57,8 @@ app.factory('FormService', ['$rootScope','$http','$timeout', function($rootScope
 
     mixin.emptyControls = function()
     {
-        var controls   = $(this.classSourceControls);
+        var controls   = $(mixin.classSourceControls);
+
         controls.each(function(i){
             if( ! $(this).hasClass('no-empty') )
             {
@@ -69,14 +70,13 @@ app.factory('FormService', ['$rootScope','$http','$timeout', function($rootScope
                         $(this).val('');
                         break;
                     case 'combobox' :
-                        /**
-                        Am scos ca sa nu se puna automat pe 0.
-                        Gestionez combobox-urile din "custom js"
-                        **/
-                        // $(this).val(0).trigger('change');
+                        if( $.isFunction(jQuery().select2) ){
+                          $(this).select2('val','');
+                        }
+                         $(this).val('');//.trigger('change');
                         break;
                     case 'select2' :
-                        $(this).val([]).trigger('change');
+                        $(this).val('').trigger('change');
                 }
                 formgroup.removeClass('has-error');
                 formgroup.find('.error-sign').remove();
@@ -89,8 +89,6 @@ app.factory('FormService', ['$rootScope','$http','$timeout', function($rootScope
         console.log('3.2. -----> Custom after Empty controls');
     };
 
-
-
     mixin.tofloat = function(value)
     {
         return numeral().unformat(value);
@@ -98,6 +96,53 @@ app.factory('FormService', ['$rootScope','$http','$timeout', function($rootScope
        /* value = value.replace('.','');
         return value.replace(',','.');*/
     }
+
+    mixin.showFieldsErrors = function(fieldserrors)
+    {
+        for(field in fieldserrors)
+        {
+            var control   = $(mixin.classSourceControls + '[data-control-source="' + field + '"]');
+            switch( control.data('control-type') )
+            {
+                case 'textbox'   :
+                case 'combobox'  :
+                case 'editbox'   :
+                case 'select2'   :
+                    var formgroup = control.closest('.form-group');
+                    if(formgroup.length > 0)
+                    {
+                        formgroup.find('.error-sign').remove();
+                        formgroup.find('.help-block').remove();
+                        formgroup.addClass('has-error')
+                            //.prepend('<label class="control-label error-sign" for="'+ field + '"><i class="fa fa-times-circle-o"></i></label>')
+                            .append('<p class="help-block has-error">' + fieldserrors[field] + '</p>');
+                    }
+                    var formgroup = control.closest('.input-group').parent();
+                    if(formgroup.length > 0)
+                    {
+                        formgroup.find('.error-sign').remove();
+                        formgroup.find('.help-block').remove();
+                        formgroup.addClass('has-error')
+                            //.prepend('<label class="control-label error-sign" for="'+ field + '"><i class="fa fa-times-circle-o"></i></label>')
+                            .append('<p class="help-block has-error">' + fieldserrors[field] + '</p>');
+                    }
+                    break;
+            }
+        }
+    };
+
+    mixin.removeFieldsErrors = function(){
+        var control   = $(mixin.classSourceControls);
+        var formgroup = control.closest('.form-group');
+        formgroup.find('.help-block').remove();
+        formgroup.removeClass('has-error')
+    }
+
+  mixin.safe = function(cb){
+    $timeout(function(){
+      cb();
+    },450);
+  }
 
 	return mixin;
 

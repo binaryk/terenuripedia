@@ -53,5 +53,7 @@
         @yield('before-scripts-end')
         {!! HTML::script(elixir('js/backend.js')) !!}
         @yield('after-scripts-end')
+        @yield('custom-scripts')
+
     </body>
 </html>

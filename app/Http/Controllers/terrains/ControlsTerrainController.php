@@ -96,7 +96,7 @@ class ControlsTerrainController extends Controller
             'pret' =>
                 \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
                     ->name('pret')
-                    ->ng_model('currentTerrain.Pret')
+                    ->ng_model('currentTerrain.pret')
                     ->caption('Pret')
                     ->class('form-control data-source decimal pret')
                     ->controlsource('pret')

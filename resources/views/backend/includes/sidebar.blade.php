@@ -36,6 +36,7 @@
                 @permission('view-access-management')
                   <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.access_management') }}</span></a></li>
                 @endauth
+                <li class="{{ Active::pattern('admin/terrains/*') }}"><a href="{!! route('admin.terrains.index') !!}"><span>{{ trans('menus.terrains') }}</span></a></li>
 
                  <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
                   <a href="#">

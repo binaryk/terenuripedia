@@ -30,6 +30,7 @@ function initialize() {
        }
     });
    shapes = [],
+   buyer_shapes = [],
    selected_shape = null,
    drawman = new goo.drawing.DrawingManager({
        map: map_in,
@@ -96,6 +97,7 @@ function initialize() {
              encoded //boolean indicating whether pathes should be stored encoded
          ) {
              var shapes = [],
+                 buyer_shapes = [],
                  goo = google.maps,
                  shape, tmp;
              for (var i = 0; i < arr.length; i++) {
@@ -123,6 +125,8 @@ function initialize() {
              shapeColor
          ) {
              shapes=[];
+             buyer_shapes=[];
+
              var goo = google.maps,
                  map = map || null,
                  shape, tmp;

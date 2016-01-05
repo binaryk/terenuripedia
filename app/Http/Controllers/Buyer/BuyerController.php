@@ -19,7 +19,7 @@ class BuyerController extends Controller
 
     public function index()
     {
-        $terrain    = Terrain::all();
+        $terrain    = Terrain::where('aprobat',1)->get();
         return view('buyer.index');
     }
 

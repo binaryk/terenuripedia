@@ -32,7 +32,12 @@ var Formatters;
         }
         Combobox.prototype.format = function () {
             this.selectors.forEach(function (el) {
-                $(el).select2();
+                if ($.isFunction(jQuery().select2)) {
+                    $(el).select2();
+                }
+                else {
+                    throw Error('Select 2 function is not defined.');
+                }
             });
         };
         return Combobox;

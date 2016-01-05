@@ -26,14 +26,19 @@ class GMap{
                 style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
                 position: google.maps.ControlPosition.TOP_CENTER
             },
-            zoomControl: true,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.TOP_CENTER
-            },
             scaleControl: true,
             streetViewControl: false,
             streetViewControlOptions: {
                 position: google.maps.ControlPosition.TOP_CENTER
+            },
+            panControl: true,
+            panControlOptions: {
+                position: google.maps.ControlPosition.TOP_RIGHT
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.LARGE,
+                position: google.maps.ControlPosition.RIGHT_TOP
             }
         }
         _that  = this;
@@ -42,12 +47,16 @@ class GMap{
     }
 
 
-    clearShapes = ():void => {
+    clearShapes = (tab?:number):void => {
         for (var i = 0; i < shapes.length; ++i) {
             shapes[i].setMap(null);
         }
         shapes = [];
         disableElement('#btnPolygon',false);
+
+        if(tab){
+            this.activateTab(tab);
+        }
     }
 
     disableDrawingControl = ():void => {
@@ -58,8 +67,6 @@ class GMap{
 
     hanlders = ():void => {
         $('#'+this.poly_btn).click(function(){
-            console.log('asdasd');
-            
             drawman.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
         });
         $('#'+this.hand_btn).click(function(){
@@ -84,6 +91,55 @@ class GMap{
             drawingControl: false
         });
     }
+
+    activateTab = (nr?:number):void => {
+        $('a[data-toggle=tab]:eq('+( nr - 1 )+')').tab('show')
+    }
+
+    getGeometry = (hash : boolean):string => {
+        /*if hash == true ==> return hash result, not plain text*/
+        return JSON.stringify(IO.IN(shapes, hash))
+    }
+
+    hasPolygon = ():boolean => {
+        return !(IO.IN(shapes, true).length == 0);
+    }
+
+    getMap = ():any => {
+        return this.map;
+    }
+
+    drawPolygon = (coords:string, color?: string):any => {
+        var tmp = new google.maps.Polygon({
+            paths: IO.mm_(coords[0]['geometry']),
+            strokeColor: color,
+            strokeOpacity: 1.0,
+            fillOpacity: 0.35,
+            position:IO.mm_.apply(IO,coords[0]['geometry']),
+            editable: true
+        });
+        shapes.push(tmp);
+        tmp.setMap(this.map);
+        return tmp;
+    }
+
+    getPolygonCenter = (polygon:any):any => {
+        var bounds = new google.maps.LatLngBounds();
+        var points = polygon.getPath().getArray();
+
+        for (var n = 0; n < points.length ; n++){
+            bounds.extend(points[n]);
+        }
+        var lat = bounds.getCenter().lat(),
+            long = bounds.getCenter().lng();
+        return bounds.getCenter();
+    }
+
+    setMapCenter = (center: any):void => {
+        this.map.setCenter(center);
+    }
+
+
 }
 
 var gmap = new GMap('btnPolygon','btnHand','clear_shapes');
