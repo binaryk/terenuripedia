@@ -26,7 +26,7 @@ return [
     ],
     'be_right_back' => 'Be Right Back.',
     'cancel_button' => 'Cancel',
-    'click_here_to_confirm_account' => 'Click here to confirm your account:',
+    'click_here_to_confirm_account' => 'Da click aici pentru a activa contul:',
     'click_here_to_reset' => 'Click here to reset your password:',
     'edit' => 'Edit',
     'full_name' => 'Full Name',

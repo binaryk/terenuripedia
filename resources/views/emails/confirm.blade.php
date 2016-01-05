@@ -1,1 +1,19 @@
-{{ trans('strings.click_here_to_confirm_account') . ' ' . url('account/confirm/' . $token) }}
+<table>
+    <tr>
+        <td style="padding:10px">
+            <p>
+                <b>Va rugam sa confirmati contul pe platforma</b>,<br/>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:10px">
+            <table>
+                <tr>
+                    <td style="text-align:left; padding-right:4px">Pentru confirmare faceti click aici : <td>
+                    <td style="text-align:left; padding-left:4px">{!! url('account/confirm/' . $token) !!}<td>
+                <tr>
+            </table>
+        </td>
+    </tr>
+</table>

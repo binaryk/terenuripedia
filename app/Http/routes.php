@@ -1,7 +1,7 @@
 <?php
 
 get('/', 'Frontend\FrontendController@index')->name('home');
-get('abonamente', 'FondsController@abonamente')->name('frontend.abonamente');
+get('abonamente', 'Frontend\FondsController@abonamente')->name('frontend.abonamente');
 
 $router->group(['namespace' => 'Frontend'], function () use ($router) {
     require (__DIR__ . '/Routes/Frontend/Frontend.php');

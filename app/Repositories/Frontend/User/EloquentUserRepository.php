@@ -304,9 +304,16 @@ class EloquentUserRepository implements UserContract
         if (!$user instanceof User) {
             $user = User::findOrFail($user);
         }
+        $mailler    = new \Mailers\Mailer();
+        $mailler->sendTo(
+            $user->email,
+            'Confirmare cont terenuripedia.ro',
+            'emails.confirmindex',
+            ['body' => \View::make('emails.confirm')->with(['token' => $user->confirmation_code])
+                ->render(),]);
 
-        return Mail::send('emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
-            $message->to($user->email, $user->name)->subject(app_name() . ': Confirm your account!');
-        });
+//        return Mail::send('emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
+//            $message->to($user->email, $user->name)->subject(app_name() . ': Confirmare cont!');
+//        });
     }
 }
