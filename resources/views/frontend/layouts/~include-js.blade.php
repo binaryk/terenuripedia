@@ -7,6 +7,7 @@
 {!! HTML::script('components/toastr/toastr.min.js') !!}
 {!! HTML::script('custom/js/general.js') !!}
 {!! HTML::script('components/angular-rangeslider/angular.rangeSlider.js') !!}
+{!! HTML::script('custom/js/general/ctmodal.js') !!}
 
 <script>
 </script>

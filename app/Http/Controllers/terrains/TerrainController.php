@@ -121,4 +121,10 @@ class TerrainController extends PreTerrainController
         return \Database\Actions::make()->model('\App\Models\Terrain')->data(['terrain_id' => $input['terrain_id']])
             ->upload($input['file_data'], Config::get('uploads.terrain'));
     }
+
+    public function info()
+    {
+        $id = Input::get('id');
+        return view('static-pages.terrain.info')->with(['terrain' => Terrain::find($id)]);
+    }
 }

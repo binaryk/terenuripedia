@@ -21,6 +21,8 @@ $router->group(['namespace' => 'Buyer'], function () use ($router) {
 
 $router->group(['namespace' => 'Terrains'], function () use ($router) {
     get('get-terrain-lists', 'PreTerrainController@all')->name('terrain.all');
+    post('post-info-terrain', 'TerrainController@info')->name('terrain.info');
+
     $router->group([
         'middleware' => 'access.routeNeedsRole:Saller',
         'with'       => ['flash_danger', 'Nu aveti acces la aceasta cale.']

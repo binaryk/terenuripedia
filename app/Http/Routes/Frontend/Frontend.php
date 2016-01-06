@@ -1,4 +1,9 @@
 <?php
+get('despre', 'DashboardController@about')->name('about');
+get('cum-functioneaza', 'DashboardController@howWork')->name('howWork');
+get('cum-functioneaza/cumpar', 'DashboardController@cumCumpar')->name('howWork.cumpar');
+get('cum-functioneaza/vand', 'DashboardController@cumVand')->name('howWork.vand');
+
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     get('dashboard', 'DashboardController@index')->name('frontend.dashboard');

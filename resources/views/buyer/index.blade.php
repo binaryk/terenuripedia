@@ -27,6 +27,7 @@
 
     <script>
         _config['r_get_all']    = "{!! route('terrain.all') !!}";
+        _config["r_post_info"]  = "{!! route('terrain.info') !!}";
         _config["page"]="search";
         _config["polygonColor"]="#ff0000";
         function getInfo(){
