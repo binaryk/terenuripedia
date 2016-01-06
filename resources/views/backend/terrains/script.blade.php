@@ -13,6 +13,7 @@
             }).done(function(res){
               console.log(res);
               dt.draw();
+              location.reload();
             })
         })
     });
