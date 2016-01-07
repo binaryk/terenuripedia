@@ -9,20 +9,20 @@ function initialize_search(){
     zoom: 11,
     center: new goo.LatLng(44.42684, 26.1025),
     disableDefaultUI: false,
-    mapTypeControl: true,
-    mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-      position: google.maps.ControlPosition.TOP_CENTER
-    },
     zoomControl: true,
+    mapTypeControl: false,
+    mapTypeControl: {
+      position: google.maps.ControlPosition.RIGHT_TOP,
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+    },
     zoomControlOptions: {
-      position: google.maps.ControlPosition.LEFT_CENTER,
+      position: google.maps.ControlPosition.RIGHT_TOP,
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
     },
     scaleControl: true,
     streetViewControl: false,
     streetViewControlOptions: {
-      position: google.maps.ControlPosition.TOP_CENTER
+      position: google.maps.ControlPosition.RIGHT_TOP
     }
   });
 
