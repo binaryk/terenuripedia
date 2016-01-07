@@ -2,7 +2,7 @@
 
 return [
 
-	'driver' => env('MAIL_DRIVER', 'smtp'),
+	'driver' => env('MAIL_DRIVER', 'mail'),
 
 	'host' => env('MAIL_HOST', 'localhost'),
 
