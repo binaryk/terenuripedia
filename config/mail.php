@@ -4,17 +4,17 @@ return [
 
 	'driver' => env('MAIL_DRIVER', 'smtp'),
 
-	'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+	'host' => env('MAIL_HOST', 'localhost'),
 
-	'port' => env('MAIL_PORT', 587),
+	'port' => env('MAIL_PORT', 26),
 
-	'from' => ['address' => 'lupacescueduard@gmail.com', 'name' => 'lupacescueduard@gmail.com'],
+	'from' => ['address' => 'office@terenuripedia.ro', 'name' => 'office@terenuripedia.ro'],
 
-	'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+	'encryption' => env('MAIL_ENCRYPTION', ''),
 
-	'username' => env('MAIL_USERNAME','lupacescueduard@gmail.com'),
+	'username' => env('MAIL_USERNAME','	office@terenuripedia.ro'),
 
-	'password' => env('MAIL_PASSWORD'),
+	'password' => env('MAIL_PASSWORD','cateliudan100@'),
 
 	'sendmail' => '/usr/sbin/sendmail -bs',
 
