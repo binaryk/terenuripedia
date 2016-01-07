@@ -6,15 +6,15 @@ return [
 
 	'host' => env('MAIL_HOST', 'localhost'),
 
-	'port' => env('MAIL_PORT', 26),
+	'port' => env('MAIL_PORT', 465),
 
 	'from' => ['address' => 'office@terenuripedia.ro', 'name' => 'office@terenuripedia.ro'],
 
-	'encryption' => env('MAIL_ENCRYPTION', ''),
+	'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
 	'username' => env('MAIL_USERNAME','	office@terenuripedia.ro'),
 
-	'password' => env('MAIL_PASSWORD','cateliudan100@'),
+	'password' => env('MAIL_PASSWORD','nb2UzyZ6X6h'),
 
 	'sendmail' => '/usr/sbin/sendmail -bs',
 
@@ -22,6 +22,7 @@ return [
 	/*
 	 * office@terenuripedia.ro
 	 * parola cateliudan100@
+	 * 			nb2UzyZ6X6h
 	 * ssl/tsl => 465
 	 * no-ssl  => 26
 	 * mail.terenuripedia.ro
