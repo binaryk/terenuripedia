@@ -74,7 +74,7 @@ app.controller(
         {
           FormService.removeFieldsErrors();
           FormService.showFieldsErrors(data.messages);
-          toastr.error(data.alert.message)
+          toastr.error(MESSAGES.INSERT)
           gmap.activateTab(3);
         }else{
           FormService.removeFieldsErrors();
