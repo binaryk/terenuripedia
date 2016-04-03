@@ -7,7 +7,7 @@
         <div class="log">
 
             <div class="panel panel-default">
-                <div class="log-heading">{!! HTML::image('/img/lock-blue.png', 'a picture') !!} </br> <div class="log-title">{{trans('labels.login_box_title')}}</div></div>
+                <div class="log-heading">{!! HTML::image('/img/lock-blue.png', 'autentificare') !!} </br> <div class="log-title">{{trans('labels.login_box_title')}}</div></div>
 
                 <div class="log-body">
 
@@ -57,5 +57,9 @@
         </div><!-- col-md-8 -->
 
     </div><!-- row -->
+
+    <div class="log-fundal-image">
+        
+    </div>
 
 @endsection

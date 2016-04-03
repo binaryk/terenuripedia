@@ -6,7 +6,7 @@
     @include('buyer.infoPopUp')
     @include('buyer.search')
     @include('buyer.list')
-    <div class="col-md-6">
+    <div class="guest_map">
         <div class="map" id="map_in"></div>
     </div>
 
@@ -15,12 +15,7 @@
     {!! HTML::script('//maps.google.com/maps/api/js?sensor=true&libraries=drawing,geometry&.js') !!}
     {!! HTML::script('//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js') !!}
     <link rel="stylesheet" href="{!! asset('custom/css/list.css') !!}">
-    <style>
-        #map_in{
-            width: 900px;
-            height: 600px;
-        }
-    </style>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 @stop
 
 @section('custom-scripts')

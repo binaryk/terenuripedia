@@ -34,11 +34,11 @@
                                 @endauth
                                 <tr>
                                     <th>{{ trans('validation.attributes.created_at') }}</th>
-                                    <td>{!! $user->created_at !!} ({!! $user->created_at->diffForHumans() !!})</td>
+                                    <td>{!! $user->created_at !!}</td>
                                 </tr>
                                 <tr>
                                     <th>{{ trans('validation.attributes.last_updated') }}</th>
-                                    <td>{!! $user->updated_at !!} ({!! $user->updated_at->diffForHumans() !!})</td>
+                                    <td>{!! $user->updated_at !!}</td>
                                 </tr>
                             </table>
                         </div><!--tab panel profile-->
@@ -60,4 +60,7 @@
 		</div><!-- col-md-10 -->
 
 	</div><!-- row -->
+   <div class="log-fundal-image">
+        
+    </div>
 @endsection

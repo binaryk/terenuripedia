@@ -52,8 +52,6 @@
                             <input class="form-control" name="phone" type="hidden" value="<?php echo $dataBill['phone'];?>" />
                             <input class="form-control" name="fax" type="hidden" value="<?php echo $dataBill['fax'];?>" />
                             <!-- snd billing details -->
-
-                            <!-- daca detaliile de shipping difera -->
                             <!-- begin shipping details -->
                             <input class="form-control" name="sfname" type="hidden" value="<?php echo $dataShip['sfname'];?>" />
                             <input class="form-control" name="slname" type="hidden" value="<?php echo $dataShip['slname'];?>" />

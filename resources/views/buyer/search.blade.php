@@ -1,4 +1,4 @@
-<div id="search_div" class="col-md-3">
+<div id="search_div">
     <div class="col-md-12">
         <label class="control-label">Preț</label>
         <div range-slider min="0" max="1000" model-min="price.min" model-max="price.max" filter="currency:'RON'" step="10"></div>

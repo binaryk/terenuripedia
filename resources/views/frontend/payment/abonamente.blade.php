@@ -10,7 +10,7 @@
     <div class="section pricing" id="pricing">
         <div class="section--top">
             <div class="inner">
-                <h2>OFERTĂ</h2>
+                <h2>OFERTĂ ABONAMENTE</h2>
                 <div class="product-header">
                     <h3>Free</h3>
                 </div>
@@ -20,6 +20,9 @@
                 <div class="product-header highlighted">
                     <h3>Avansat</h3>
                     <span class="popular">Popular</span>
+                </div>
+                <div class="product-header">
+                    <h3>Agentie</h3>
                 </div>
             </div>
         </div>
@@ -105,10 +108,11 @@
                         <span class="price">432/36 RON</span>
                     </div>
                 </div>
+                
                 <div class="product highlighted">
                     <div class="product-header highlighted mobile-only">
-                        <h3>Avansat</h3>
-                        <span class="popular">Popular</span>
+                        <h3>Enterprise</h3>
+                        <span class="popular"></span>
                     </div>
                     <div class="panel--price">
                         <span class="price">36<span class="small">
@@ -145,6 +149,44 @@
                         <span class="price">2000 RON</span>
                     </div>
                 </div>
+                
+                 <div class="product">
+                    <div class="product-header highlighted mobile-only">
+                        <h3>Avansat</h3>
+                        <span class="popular">Popular</span>
+                    </div>
+                    <div class="panel--price">
+                        <span class="price">LUNA<span class="small"></span><span class="info">/AN</span></span>
+                        <a id="frm_detalii_abonament_avansat_open" href="#">Detalii</a>
+                    </div>
+                    <div class="features--title"> </div>
+                    <div class="panel--feature users">
+                            <span class="name">Inregistrare teren
+                            </span>
+                        <span class="limitations">Da</span>
+                    </div>
+                    <div class="panel--feature emails">
+                        <span class="name">Anunturi</span>
+                        <span class="limitations">Nelimitate</span>
+                    </div>
+                    <div class="panel--feature last">
+                            <span class="name">Date contact
+                            </span>
+                        <span class="limitations">Nelimitate</span>
+                    </div>
+                    <div class="panel--feature last">
+                            <span class="name">Alege tip plata
+                            </span>
+                        <span class="limitations">
+                                Contact
+                        </span>
+                    </div>
+                    <div class="yearly--price">
+                        <span class="title"><strong>Tel:</strong></span>
+                        <span class="price">0721218738</span>
+                    </div>
+                </div>
+                
                 <div class="text-center">
                         @role(config('access.roles.saller'))
                         @include('frontend.payment.form_subscription')

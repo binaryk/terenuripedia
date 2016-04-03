@@ -3617,20 +3617,14 @@ only screen and (min-device-pixel-ratio:1.5) {
   background-color: #fff
 }
 
-.pricing .section--top .inner {
-  padding-top: 72px;
-  border-top: 1px solid #e1e5ec
-}
-
 .pricing .section--top .inner h2 {
-  margin-bottom: 96px;
-  text-transform: uppercase;
-  font-weight: 500
+    margin-bottom: 96px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 34px;
+    font-weight: bold;
 }
 
-.pricing .section--top .inner h2 .light {
-  font-weight: 300
-}
 
 @media (max-width:870px) {
   .pricing .section--top .inner {
@@ -3669,7 +3663,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 .pricing .product-header {
   float: left;
   display: inline-block;
-  width: 24.625%;
+  width: 24%;
   height: 70px;
   margin-right: .5%;
   -webkit-border-top-right-radius: 4px;
@@ -3743,7 +3737,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 .pricing .product {
   float: left;
   display: inline-block;
-  width: 24.6%;
+  width: 24%;
   height: auto;
   margin-right: .5%
 }
@@ -3800,7 +3794,6 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .pricing .product .features--title {
-  padding: 12px 0 10px 20px;
   font-size: 12px;
   font-size: 1.2rem;
   line-height: 1em;

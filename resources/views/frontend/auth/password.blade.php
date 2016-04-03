@@ -39,4 +39,7 @@
         </div><!-- col-md-8 -->
 
     </div><!-- row -->
+   <div class="log-fundal-image">
+        
+    </div>
 @endsection
