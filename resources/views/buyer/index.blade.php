@@ -22,6 +22,7 @@
 
     <script>
         _config['r_get_all']    = "{!! route('terrain.all') !!}";
+        _config["r_post_info"]  = "{!! route('terrain.info') !!}";
         _config["page"]="search";
         _config["polygonColor"]="#ff0000";
         function getInfo(){
@@ -30,6 +31,7 @@
     </script>
     <script type="text/javascript" src="{!! asset('custom/js/map/cluster.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('custom/js/map/init.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('custom/js/map/SearchInit.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/services/TerrainService.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/controllers/BuyerCtrl.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/controllers/terrain_coords.js') !!}"></script>

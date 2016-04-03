@@ -23,7 +23,6 @@ $router->group(['namespace' => 'Auth'], function () use ($router) {
         get('account/confirm/resend/{user_id}', 'AuthController@resendConfirmationEmail')->name('account.confirm.resend');
 
         get('auth/pre-register', 'AuthController@preRegister')->name('preregister');
-//        get('auth-register/{type}', 'AuthController@preRegisterType')->name('preregistertype');
         $router->controller('auth', 'AuthController');
         $router->controller('password', 'PasswordController');
     });

@@ -1,0 +1,16 @@
+{
+    "name": "lupac/package",
+    "authors": [
+        {
+            "name": "binaryk",
+            "email": "lupacescueduard@yahoo.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Vendor\\Package\\": "packages/binaryk/package/src"
+        }
+    }
+}

@@ -27,4 +27,13 @@ class StringHelper
 		$value = (bool) $value;
 		return \HTML::image( \URL::to('/') . '/admin/img/symbols/' . ($value ? '' : 'un') . 'check.png' );
 	}
+
+	public static function Text($value)
+	{
+		if(!$value || $value == ''){
+			return '- Nu este definit -';
+		}else{
+			return $value;
+		}
+	}
 }

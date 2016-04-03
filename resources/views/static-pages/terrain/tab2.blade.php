@@ -1,0 +1,1 @@
+Datele de contact nu pot fi vazute.

@@ -1,0 +1,2 @@
+FAQ
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores aut iusto odio quidem, quis quos sed ut. Consequuntur culpa minus nihil officia. Dolorem, fugit nam possimus suscipit tempore ut.

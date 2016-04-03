@@ -68,17 +68,19 @@ app.controller(
             $scope.showArrays = function(event, tmp) {
                 infoWindow = new goo.InfoWindow;
                 var vertices = tmp.getPath();
-                var contentString = '<b>Bermuda Triangle polygon</b><br>' +
-                    'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
-                    '<br>';
-                for (var i =0; i < vertices.getLength(); i++) {
+                TerrainService.info($scope.currentTerrain.id).then(function(data){
+                  var contentString = data;
+              /*    for (var i =0; i < vertices.getLength(); i++) {
                     var xy = vertices.getAt(i);
                     contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
                         xy.lng();
-                }
-                infoWindow.setContent(contentString);
-                infoWindow.setPosition(event.latLng);
-                infoWindow.open(map);
+                  }*/
+                  infoWindow.setContent(contentString);
+                  infoWindow.setPosition(event.latLng);
+                  infoWindow.open(map);
+                    
+                });
+
             }
 
             $scope.zoomToObject = function(obj){

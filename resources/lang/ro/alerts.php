@@ -39,6 +39,14 @@ return [
         'updated_password' => "The user's password was successfully updated.",
         'confirmation_email' => 'A new confirmation e-mail has been sent to the address on file.'
 
-    ]
+    ],
+    
+    'login' => [
+        'fail' => 'Datele folosite pentru logare nu sunt crespund.',
+    ],
+
+    'register' => [
+        'success' => 'Contul dvs a fost creat cu succes, va rugam sa verificati casuta postala pentru a confirma contul.',
+    ],
 
 ];

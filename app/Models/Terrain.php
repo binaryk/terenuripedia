@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Binaryk\Model\BModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Terrain extends Model
+class Terrain extends BModel
 {
+
+
     protected $guarded = ['_token','id_tip_caracteristici'];
 
     public static function createRecord($data)
@@ -99,7 +102,32 @@ class Terrain extends Model
 			'47' => 'Vrancea',
     	];
 			
-    } 
+    }
+
+
+	public static function generalValidatorRules($array = [])
+	{
+		return [
+			/*AppServiceProvider ==> custom rules*/
+			'title'   			      => 'required',
+			'id_tip_caracteristici'   => 'required|not_in:0',
+			'id_locatie'   			  => 'required|not_in:0',
+			'pret'   				  => 'required|not_in:0',
+		];
+	}
+
+	public static function generalValidatorMessages()
+	{
+		return [
+			'title.required'        			  => 'Titlul anuntului trebuie completat.',
+			'id_tip_caracteristici.required'      => 'Caracteristicile trebuiesc completate.',
+			'id_tip_caracteristici.not_in'        => 'Caracteristicile trebuiesc completate.',
+			'id_locatie.required'        		  => 'Locatia trebuie completata.',
+			'id_locatie.not_in'        			  => 'Locatia trebuie completata.',
+			'pret.required'        				  => 'Pretul trebuie completat.',
+			'pret.not_in'        				  => 'Pretul trebuie sa fie mai mare ca 0 (zero).',
+		];
+	}
 
 
 }

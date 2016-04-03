@@ -25,3 +25,13 @@
  .grid-terrains{
 
  }
+
+ .main-footer{
+   position: absolute;
+   bottom: -5px;
+   height: 25px !important;
+   width: 100%;
+   background: #ddd;
+   line-height: 20px;
+   padding: 0 !important;
+ }

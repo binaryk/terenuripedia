@@ -1,49 +1,8 @@
- var infowindow;
- var map;
- var buyer_shapes = [];
- function initialize_search(){
-   goo = google.maps;
+function initMap() {
+}
 
-      map_in=new goo.Map(document.getElementById('map_in'), {
-          zoom: 11,
-          center: new goo.LatLng(44.42684, 26.1025),
-        disableDefaultUI: false,
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-          position: google.maps.ControlPosition.TOP_CENTER
-        },
-        zoomControl: true,
-        zoomControlOptions: {
-          position: google.maps.ControlPosition.LEFT_CENTER,
-          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
-        },
-        scaleControl: true,
-        streetViewControl: false,
-        streetViewControlOptions: {
-          position: google.maps.ControlPosition.TOP_CENTER
-        }
-      });
 
-       drawman = new goo.drawing.DrawingManager({
-          map: map_in,
-          drawingControl: false
-      }),
-      shapes = [],
-      selected_shape = null,
-     clearShapes = function() {
-       for (var i = 0; i < shapes.length; ++i) {
-         shapes[i].setMap(null);
-       }
-       for (var i = 0; i < buyer_shapes.length; ++i) {
-         buyer_shapes[i].setMap(null);
-       }
-       shapes = [];
-       buyer_shapes = [];
-     };
-      map = new google.maps.Map(document.getElementById('map_in'),map_in);
-  };
- function initialize() {
+function initialize() {
    goo = google.maps;
    var mapOptions = {
      zoom: 12,
@@ -71,6 +30,7 @@
        }
     });
    shapes = [],
+   buyer_shapes = [],
    selected_shape = null,
    drawman = new goo.drawing.DrawingManager({
        map: map_in,
@@ -137,6 +97,7 @@
              encoded //boolean indicating whether pathes should be stored encoded
          ) {
              var shapes = [],
+                 buyer_shapes = [],
                  goo = google.maps,
                  shape, tmp;
              for (var i = 0; i < arr.length; i++) {
@@ -164,6 +125,8 @@
              shapeColor
          ) {
              shapes=[];
+             buyer_shapes=[];
+
              var goo = google.maps,
                  map = map || null,
                  shape, tmp;
@@ -199,11 +162,6 @@
                          };
 
                          if(_config["page"]=="search") {
-                             //google.maps.event.addListener(tmp, 'click', function (event) {
-                             //    infowindow=handleInfoWindow(infowindow,map,event);
-                             //    map.center=tmp.getPosition();
-                             //    map.zoom=12;
-                             //});
                              google.maps.event.addListener(map, 'click', function (event) {
                                  infowindow.close();
                              });
@@ -321,8 +279,5 @@
   }
 
   if(_config["page"]=="terrain") {
-         google.maps.event.addDomListener(window, 'load', initialize);
-     }
-  else if(_config["page"]=="search"){
-         google.maps.event.addDomListener(window, 'load', initialize_search);
-  }
+       google.maps.event.addDomListener(window, 'load', initMap);
+   }

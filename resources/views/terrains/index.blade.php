@@ -4,7 +4,7 @@
 ng-controller="TerrainCtrl"
 @stop
 @section('content')
-<div class="navigator-const" ng-cloak>
+<div class="navigator-const" ng-cloak load>
     @include('terrains.partials.tabs')
 </div>
 

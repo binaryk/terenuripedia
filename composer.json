@@ -40,7 +40,8 @@
 		"classmap": [
 			"tests/TestCase.php",
 			"app/Models",
-			"app/~Libs"
+			"app/~Libs",
+		    "app/Mailers"
 		]
 	},
 	"scripts": {

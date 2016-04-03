@@ -12,10 +12,9 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-                    <li><a href="{!! url('/') !!}" class="animate-link">Prezentare</a></li>
-					@role('Saller')
+                    <li><a href="{!! route('about') !!}" class="animate-link">Despre</a></li>
+                    <li><a href="{!! route('howWork') !!}" class="animate-link">Cum functioneaza</a></li>
                     <li><a href="{!! route('frontend.abonamente') !!}">Abonamente</a></li>
-					@endauth
 					@role('Buyer')
                     <li><a href="{!! route('buyer.search') !!}">Terenuri</a></li>
 					@endauth
@@ -24,7 +23,7 @@
 						<li>{!! link_to('auth/pre-register', trans('navs.register')) !!}</li>
 					@else
                         @role('Saller')
-                        <li>{!! link_to('terrain', trans('navs.terrain_add')) !!}</li>
+                        <li>{!! link_to('terenuri', trans('navs.terrain_add')) !!}</li>
                         @endauth
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
