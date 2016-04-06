@@ -98,7 +98,6 @@
             <input type="hidden" id="inserted_terrain" name="inserted_terrain">
             {!! $controls['photo'] !!}
         </div>
-
     </div>
 </div>
 

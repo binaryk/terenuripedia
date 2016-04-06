@@ -15,7 +15,7 @@ class GMap{
     public map : any;
     public params : IMapParams;
     public selected_shape : any;
-
+    public pops : Array<any> = [];
     constructor(public poly_btn: string, public hand_btn:string, public trash_btn: string){
         this.params = {
             zoom: 12,
@@ -48,6 +48,7 @@ class GMap{
 
 
     clearShapes = (tab?:number):void => {
+        console.log('clear');
         for (var i = 0; i < shapes.length; ++i) {
             shapes[i].setMap(null);
         }
@@ -137,6 +138,29 @@ class GMap{
 
     setMapCenter = (center: any):void => {
         this.map.setCenter(center);
+    }
+
+    zoomToObject = function(obj) {
+        var bounds = new google.maps.LatLngBounds();
+        var points = obj.getPath().getArray();
+
+        for (var n = 0; n < points.length; n++) {
+            bounds.extend(points[n]);
+        }
+        console.log(bounds.getCenter().lng());
+        var lat = bounds.getCenter().lat(),
+            long = bounds.getCenter().lng();
+        _that.map.setCenter(bounds.getCenter());
+    }
+
+    addPop = (info) => {
+        _that.pops.push(info);
+    }
+
+    clearPops = () => {
+        _that.pops.map((el) => {
+            el.close();
+        });
     }
 
 

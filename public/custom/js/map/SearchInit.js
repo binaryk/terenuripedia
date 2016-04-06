@@ -33,6 +33,7 @@ function initialize_search(){
       shapes = [],
       selected_shape = null,
       clearShapes = function() {
+        console.log('clearsearch',shapes,buyer_shapes);
         for (var i = 0; i < shapes.length; ++i) {
           shapes[i].setMap(null);
         }

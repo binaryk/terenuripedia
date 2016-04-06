@@ -6,7 +6,9 @@ var GMap = (function () {
         this.poly_btn = poly_btn;
         this.hand_btn = hand_btn;
         this.trash_btn = trash_btn;
+        this.pops = [];
         this.clearShapes = function (tab) {
+            console.log('clear');
             for (var i = 0; i < shapes.length; ++i) {
                 shapes[i].setMap(null);
             }
@@ -84,6 +86,24 @@ var GMap = (function () {
         this.setMapCenter = function (center) {
             _this.map.setCenter(center);
         };
+        this.zoomToObject = function (obj) {
+            var bounds = new google.maps.LatLngBounds();
+            var points = obj.getPath().getArray();
+            for (var n = 0; n < points.length; n++) {
+                bounds.extend(points[n]);
+            }
+            console.log(bounds.getCenter().lng());
+            var lat = bounds.getCenter().lat(), long = bounds.getCenter().lng();
+            _that.map.setCenter(bounds.getCenter());
+        };
+        this.addPop = function (info) {
+            _that.pops.push(info);
+        };
+        this.clearPops = function () {
+            _that.pops.map(function (el) {
+                el.close();
+            });
+        };
         this.params = {
             zoom: 12,
             center: new google.maps.LatLng(44.42684, 26.1025),
@@ -156,6 +176,7 @@ var IO = {
         var goo = google.maps, map = map || null, shape, tmp;
         for (var i = 0; i < arr.length; i++) {
             shape = arr[i];
+            //shape.type = 'POLYGON';
             switch (shape.type) {
                 case 'POLYGON':
                     tmp = new goo.Polygon({
@@ -234,7 +255,9 @@ var IO = {
         return new google.maps.LatLng(lat, lng);
     },
     b_: function (bounds) {
-        return ([this.p_(bounds.getSouthWest()), this.p_(bounds.getNorthEast())]);
+        return ([this.p_(bounds.getSouthWest()),
+            this.p_(bounds.getNorthEast())
+        ]);
     },
     bb_: function (sw, ne) {
         return new google.maps.LatLngBounds(this.pp_.apply(this, sw), this.pp_.apply(this, ne));

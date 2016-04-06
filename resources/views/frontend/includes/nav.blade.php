@@ -7,7 +7,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<div class="navbar-logo"><a href="{!! url('/') !!}"><!--{!! HTML::image('/img/logo.png', 'a picture') !!}--></a></div>
+				<a href="{!! url('/') !!}"><div class="navbar-logo"><!--{!! HTML::image('/img/logo.png', 'a picture') !!}--></div></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

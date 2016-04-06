@@ -6,6 +6,7 @@ const MESSAGES = {
   REMOVE      : 'Stergeti terenul ',
   EDIT        : 'Editati terenul '
 }
+
 app.controller(
             'TerrainCtrl', ['$scope', '$http', '$rootScope','$compile', 'TerrainService', '$timeout','FormService','$http', 
     function TerrainCtrl($scope, $http, $rootScope, $compile, TerrainService, $timeout,FormService) {
@@ -79,8 +80,7 @@ app.controller(
         }else{
           FormService.removeFieldsErrors();
           toastr.success(data.message);
-          if(! data.has_abonament){
-            bootbox.dialog({
+          if(! data.has_abonament){ bootbox.dialog({
               title: "Atentie",
               message: 'ATENTIE ACESTA ESTE UN CONT NEPLATIT (CUMPARA ABONAMENT).'
             });
@@ -99,9 +99,16 @@ app.controller(
 
     }
 
+    $scope.afterUpload = function(event, data, previewId, index){
+        $(fileinput.input_selector).fileinput('clear');
+        $scope.currentTerrain.photos.push(data.response.photo);
+        $scope.$apply();
+    }
+
     $scope.edit = function(item){
         $scope.currentTerrain=item;
         $scope.EDIT          = true;
+        fileinput.init(item.id, $scope.afterUpload);
         var coords = JSON.parse(item.geometry);
         gmap.clearShapes();
         var polygon= gmap.drawPolygon(coords,item.color_text);

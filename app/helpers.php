@@ -1,5 +1,32 @@
 <?php
-
+if (! function_exists('success')) {
+    /**
+     * Get the fallback locale
+     *
+     * @return \Illuminate\Foundation\Application|mixed
+     */
+    function success($data = null, $msg = 'Success')
+    {
+        return response()->json([
+                'code' => 200,
+                'msg' => $msg
+            ] + $data);;
+    }
+}
+if (! function_exists('error')) {
+    /**
+     * Get the fallback locale
+     *
+     * @return \Illuminate\Foundation\Application|mixed
+     */
+    function error($msg = 'Err')
+    {
+        return response()->json([
+            'code' => 500,
+            'msg' => $msg
+        ]);;
+    }
+}
 /**
  * Global helpers file with misc functions
  *

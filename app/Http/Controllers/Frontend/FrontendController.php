@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Terrain;
 
 /**
  * Class FrontendController
@@ -19,7 +20,9 @@ class FrontendController extends Controller
             'test' => 'it works!',
         ]);
 
-        return view('frontend.index');
+        return view('frontend.index')
+            ->withMaxExpense(Terrain::bigestPrice())
+            ->withMaxAria(Terrain::biggestArea());
     }
 
     /**

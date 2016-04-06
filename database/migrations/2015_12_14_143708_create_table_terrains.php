@@ -23,7 +23,7 @@ class CreateTableTerrains extends Migration
             $t->float('radius');
             $t->text('style');
             $t->integer('id_locatie');
-            $t->text('suprafata');
+            $t->float('suprafata');
             $t->integer('id_tip_teren');
             $t->text('deschidere');
             $t->integer('id_tip_caracteristici')->nullable();

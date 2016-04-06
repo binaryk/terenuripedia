@@ -7187,10 +7187,10 @@ p.ppre {
 }
 
 
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a.active {
     color: #6BAFB8!important;
 }
-.nav>li>a:focus, .nav>li>a:hover {
+.nav>li>a:focus, .nav>li>a:hover, .nav>li>a.active {
     color: #FFFFFF!important;
     background: #2B303C!important;
     border-radius: 0px!important;
@@ -7326,7 +7326,7 @@ input#front_stradal_2 {
     width: 25px;
     margin-top: 7px;
 }
-#proiect {
+#proiect, #poze {
     position: fixed;
     width: 632px;
     top: 148px;
@@ -7814,7 +7814,7 @@ input.log-control {
     float: left;
     margin-right: 10px;
 }
-.title_search_link:hover .check {
+.title_search_link:hover .check, .title_search_link.active .check {
     background-image: url(../../img/sprite.png);
     background-position: -586px -398px; 
     width: 24px;

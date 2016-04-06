@@ -44,7 +44,7 @@ class PreTerrainController extends ControlsTerrainController
 	}
 
 	public function getUserTerrains(){
-		$data = Terrain::where('user_id',Auth::user()->id)->with('characteristics')->get();
+		$data = Terrain::where('user_id',Auth::user()->id)->with('characteristics','photos')->get();
 		return Response::json(['data' => $data]);
 	}
 

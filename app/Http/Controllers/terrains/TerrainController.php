@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Terrains;
 
 use App\Models\Access\User\User;
+use App\Models\Photo;
 use App\Models\Terrain;
 use App\Models\TerrainCoord;
 use Illuminate\Support\Facades\Validator;
@@ -117,9 +118,20 @@ class TerrainController extends PreTerrainController
 
     public function photo()
     {
-        $input   = Input::all();
-        return \Database\Actions::make()->model('\App\Models\Terrain')->data(['terrain_id' => $input['terrain_id']])
-            ->upload($input['file_data'], Config::get('uploads.terrain'));
+        $input = Input::all();
+        $id =   $input['terrain_id'];
+        $file    = $input['file_data'];
+        $path = 'photos/terrains/'.$id;
+        $res = $file->move(public_path($path), $file->getClientOriginalName());
+        $data = [];
+        $data['terrain_id'] = $id;
+        $data['author']     = access()->user()->id;
+        $data['path']       = $res->getPathName();
+        $data['extention']  = $res->getExtension();
+        $data['storage']    = $res->getSize();
+        $data['location']   = asset($path . '/' .$res->getFileName());
+        $photo = Photo::create($data);
+        return success(['photo' => $photo]);
     }
 
     public function info()

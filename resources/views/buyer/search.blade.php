@@ -1,7 +1,7 @@
 <div id="search_div">
     <div class="col-md-12">
         <label class="control-label">Preț</label>
-        <div range-slider min="0" max="1000" model-min="price.min" model-max="price.max" filter="currency:'RON'" step="10"></div>
+        <div range-slider min="0" max="{!! App\Models\Terrain::bigestPrice() !!}" model-min="price.min" model-max="price.max" filter="currency:'RON'" step="1"></div>
         <label for="">@{{ price.min  }}</label>
         <label for="" class="pull-right">@{{ price.max  }}</label>
     </div>
@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-12">
         <label class="control-label">Suprafata</label>
-        <div range-slider min="0" max="1000" model-min="suprafata.min" model-max="suprafata.max" filter="currency:'RON'" step="10"></div>
+        <div range-slider min="0" max="{!! App\Models\Terrain::biggestArea() !!}" model-min="suprafata.min" model-max="suprafata.max" filter="currency:'RON'" step="1"></div>
         <label for="">@{{ suprafata.min  }}</label>
         <label for="" class="pull-right">@{{ suprafata.max  }}</label>
     </div>

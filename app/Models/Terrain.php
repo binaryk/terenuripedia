@@ -129,5 +129,28 @@ class Terrain extends BModel
 		];
 	}
 
+	public static function bigestPrice($priceOnly = false)
+	{
+        $node = self::orderBy('pret', 'desc')->first();
+        if($node){
+            return $priceOnly ? $node : $node->pret;
+        }
+		return 0;
+	}
+
+	public static function biggestArea($ariaOnly = false)
+	{
+        $node = self::orderBy('suprafata', 'desc')->first();
+        if($node){
+            return $ariaOnly ? $node : floatval($node->suprafata);
+        }
+		return 0;
+	}
+
+	public function photos()
+	{
+		return $this->hasMany('App\Models\Photo','terrain_id');
+	}
+
 
 }
