@@ -20,7 +20,6 @@
 					@endauth
 					@if (Auth::guest())
 						<li>{!! link_to('auth/login', trans('navs.login')) !!}</li>
-						<li>{!! link_to('auth/pre-register', trans('navs.register')) !!}</li>
 					@else
                         @role('Saller')
                         <li>{!! link_to('terenuri', trans('navs.terrain_add')) !!}</li>

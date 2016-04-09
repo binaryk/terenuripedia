@@ -74,7 +74,7 @@ class AuthController extends Controller
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
 
-        return redirect()->to('auth/login')->withFlashSuccess('Contul dvs a fost confirmat cu succes.');
+        return redirect()->to('auth/login')->withFlashSuccess('Contul dvs a fost activat cu succes.');
     }
 
     public function resendConfirmationEmail($user_id)

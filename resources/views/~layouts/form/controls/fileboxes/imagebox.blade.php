@@ -1,4 +1,4 @@
-<input id="{!! $name !!}" type="file" />
+<input id="{!! $name !!}" type="file" multiple />
 @section('custom-styles')
     @parent
     @foreach($styles as $k => $style)
@@ -13,6 +13,7 @@
     <script>
         var {!! $name !!} = $("#{!! $name !!}").fileinput({
             'previewClass'    : 'one-file',
+            'allowedFileExtensions' : ['jpg', 'png','gif'],
             'previewSettings' :
             {
                 image:  {width: "auto", height: "160px"},
@@ -28,7 +29,7 @@
             'browseLabel'     : 'Alege fişier',
             'removeLabel'     : 'Şterge selecţia',
             'uploadLabel'     : 'Încarcă fişierul',
-            'uploadAsync'     : false,
+            'uploadAsync'     : true,
             'uploadUrl'       : "{!! route($route)!!}",
             uploadExtraData: function() {
                 return {
@@ -45,21 +46,6 @@
             }
         });
 
-        {!! $name !!}.on('fileuploaded', function(event, data, previewId, index){
-            $("#{!! $name !!}").fileinput('clear');
-            console.log(data)
-            document.modificari = true;
-            var file_name = data.files[0].name;
-            var extention = file_name.split('.')[1];
-            var file_name = file_name.split('.')[0];
-            @foreach($extraData as $k => $data)
-            {!! $data['clean'] !!};
-            @endforeach
-            var MyDate = new Date();
-            var MyDateString;
-            console.log(MyDateString);
-            MyDateString =  MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2)   + '-' + ('0' + MyDate.getDate()).slice(-2) ;
-        });
 
         function uploadAsincImage(){
             {!! $name !!}.fileinput('upload');

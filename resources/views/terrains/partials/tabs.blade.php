@@ -3,7 +3,7 @@
     <li><a data-toggle="tab" href="#data"><div class="icon-terenuri"></div> Teren</a></li>
     <li><a data-toggle="tab" href="#proiect"><div class="icon-anunt"></div> Detalii</a></li>
     <li ng-if="EDIT" ><a data-toggle="tab" href="#poze"><div class="icon-anunt"></div> Photo</a></li>
-    <li class="salvare"><a ng-click="WriteAction();$event.stopPropagation();" href=""><div class="icon-save"></div> Salveaza</a></li>
+    <li ng-if="EDIT || ADD" class="salvare"><a ng-click="WriteAction();$event.stopPropagation();" href=""><div class="icon-save"></div> Salveaza</a></li>
   </ul>
   <div class="tab-content">
     <div id="lista" class="tab-pane fade in active">
