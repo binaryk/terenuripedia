@@ -8,6 +8,7 @@
 {!! HTML::script('custom/js/general.js') !!}
 {!! HTML::script('components/angular-rangeslider/angular.rangeSlider.js') !!}
 {!! HTML::script('custom/js/general/ctmodal.js') !!}
+{!! HTML::script('custom/js/general/jquery.smoothState.min.js') !!}
 
 <script>
 </script>

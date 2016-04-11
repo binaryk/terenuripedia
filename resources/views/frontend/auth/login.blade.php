@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-
+                     
                         <div class="form-group">
                             <div class="md-6">
                                 {!! Form::submit(trans('labels.login_button'), ['class' => 'btn btn-confirm', 'style' => 'margin-right:15px']) !!}

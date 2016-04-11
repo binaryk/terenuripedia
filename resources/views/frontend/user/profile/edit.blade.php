@@ -33,8 +33,14 @@
                                         {!! Form::selectType('type_id', null, ['class' => 'form-control']) !!}
                                     </div>
                                 </div>
+                    
+                                <div class="form-group fiz_jur">
+                                    {!! Form::label('fiz_jur', trans('validation.attributes.fiz_jur'), ['class' => 'col-md-4 control-label']) !!}
+                                    <div class="col-md-6">
+                                        {!! Form::fizJur('fiz_jur', null, ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
                             @endauth
-
                               @if ($user->canChangeEmail())
                                   <div class="form-group">
                                       {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-md-4 control-label']) !!}

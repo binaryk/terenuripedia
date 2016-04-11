@@ -3,52 +3,51 @@
 @section('content')
     <div class="log-fundal">
 
-        <div class="log">
+        <div class="user_dashboard">
 
             <div class="panel panel-default">
-                <div class="log-heading">{!! HTML::image('/img/lock-blue.png', 'a picture') !!} </br> <div class="log-title">{{ trans('navs.my_information') }}</div></div>
-				<div class="panel-heading">{{ trans('navs.dashboard') }}</div>
+                <div class="img-heading">{!! HTML::image('/img/lock-blue.png', 'a picture') !!}</div> 
+                <div class="dash_left">
+                <div class="log-title"><strong>{!! $user->name !!}</strong></div>
+                    @if(access()->user()->hasRole('Saller'))
+                    <div class="log-attr">{!! @App\Models\Access\User\User::type()[access()->user()->type_id] !!}</div>
+                    <div class="log-attr">{!! @App\Models\Access\User\User::fizjur()[access()->user()->fiz_jur] !!}</div>
+                    @endif
+                    <div class="actions">     
+                    <a href="{!!route('frontend.profile.edit')!!}" class="btn btn-primary btn-xs">{{ trans('labels.edit_information') }}</a>
+                    @if (access()->user()->canChangePassword())
+                        <a href="{!!url('auth/password/change')!!}" class="btn btn-warning btn-xs">{{ trans('navs.change_password') }}</a>
+                    @endif
+                    </div>  
+                </div>  
+                <div class="dash_left">
+                    <div class="log-attr"><strong class="width-fix">{{ trans('validation.attributes.email') }} :</strong> {!! $user->email !!} </div>
+                    <div class="log-attr"><strong class="width-fix">{{ trans('validation.attributes.phone') }} :</strong> {!! $user->phone !!}  </div>
+                    <div class="log-attr"><strong class="width-fix">{{ trans('validation.attributes.type') }} :</strong> {!! @$user::type()[$user->type_id] !!} </div>
+                    <div class="log-attr"><strong class="width-fix">{{ trans('validation.attributes.created_at') }} :</strong> {!! $user->created_at !!}</div>
+                    <div class="log-attr"><strong class="width-fix">{{ trans('validation.attributes.last_updated') }} :</strong> {!! $user->updated_at !!}</div>
+                </div>
+            </div>
+				
 
-				<div class="panel-body">
+				<div class="istoric panel-body">
 					<div role="tabpanel">
                       <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="profile">
                             <table class="table table-striped table-hover table-bordered dashboard-table">
                                 <tr>
-                                    <th>{{ trans('validation.attributes.name') }}</th>
-                                    <td>{!! $user->name !!}</td>
+                                    <th>Terenuri publicate/deblocate</th>
+                                    <td></td>
                                 </tr>
                                 <tr>
-                                    <th>{{ trans('validation.attributes.email') }}</th>
-                                    <td>{!! $user->email !!}</td>
+                                    <th>Teren extravilan Bucuresti</th>
+                                    <td>12.08.2016</td>
                                 </tr>
-                                <tr>
-                                    <th>{{ trans('validation.attributes.phone') }}</th>
-                                    <td>{!! $user->phone !!}</td>
-                                </tr>
-                                @role('Saller')
-                                <tr>
-                                    <th>{{ trans('validation.attributes.type') }}</th>
-                                    <td>{!! $user::type()[$user->type_id] !!}</td>
-                                </tr>
-                                @endauth
-                                <tr>
-                                    <th>{{ trans('validation.attributes.created_at') }}</th>
-                                    <td>{!! $user->created_at !!}</td>
-                                </tr>
-                                <tr>
-                                    <th>{{ trans('validation.attributes.last_updated') }}</th>
-                                    <td>{!! $user->updated_at !!}</td>
-                                </tr>
+
                             </table>
                         </div><!--tab panel profile-->
                           
-                     <div class="actions">     
-                    <a href="{!!route('frontend.profile.edit')!!}" class="btn btn-primary btn-xs">{{ trans('labels.edit_information') }}</a>
-                    @if (access()->user()->canChangePassword())
-                        <a href="{!!url('auth/password/change')!!}" class="btn btn-warning btn-xs">{{ trans('navs.change_password') }}</a>
-                    @endif
-                    </div>     
+   
                       </div><!--tab content-->
 
                     </div><!--tab panel-->

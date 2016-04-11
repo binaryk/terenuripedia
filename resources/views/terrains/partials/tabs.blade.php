@@ -1,4 +1,4 @@
-  <ul class="content-add">
+<ul class="content-add">
     <li class="active"><a data-toggle="tab" href="#lista"><div class="icon-lista"></div> Anunturi</a></li>
     <li><a data-toggle="tab" href="#data"><div class="icon-terenuri"></div> Teren</a></li>
     <li><a data-toggle="tab" href="#proiect"><div class="icon-anunt"></div> Detalii</a></li>
