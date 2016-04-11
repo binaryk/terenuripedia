@@ -12,6 +12,7 @@ app.controller(
     function TerrainCtrl($scope, $http, $rootScope, $compile, TerrainService, $timeout,FormService) {
     $scope.terrains = []
     $scope.EDIT     = false;
+    $scope.ADD      = false;
     $scope.currentTerrain;
     $rootScope.$watch('config', function(n, o) {
       TerrainService.getUserTerrains().then(function (data) {
@@ -23,6 +24,7 @@ app.controller(
     $scope.add = function () {
       $scope.currentTerrain = null;
       $scope.EDIT           = false;
+      $scope.ADD            = true;
       FormService.safe( FormService.emptyControls );
       gmap.clearShapes(2);
       toastr.info(MESSAGES.INSERT);
@@ -58,7 +60,8 @@ app.controller(
           }
           else
           {
-            swal(data.alert.caption, data.alert.message, data.alert.type);
+          $scope.EDIT            = false;
+          swal(data.alert.caption, data.alert.message, data.alert.type);
             gmap.clearShapes(1);
             $scope.currentTerrain.geometry = data.node.geometry;
             $scope.currentTerrain.characteristics = data.node.characteristics;
@@ -69,7 +72,6 @@ app.controller(
     }
 
     $scope.STORE = function(data){
-
       TerrainService.store(data).then(function(data){
         if( ! data.success)
         {
@@ -78,18 +80,27 @@ app.controller(
           toastr.error(MESSAGES.INSERT)
           gmap.activateTab(3);
         }else{
-          FormService.removeFieldsErrors();
+            $scope.ADD            = false;
+            var photos = [];
+            if(file_document){
+                $('#inserted_terrain').val(data.out.id);
+                file_document.on('fileuploaded', function(event, data, previewId, index){
+                    photos.push(data.response.photo);
+                });
+                file_document.fileinput('upload');
+                file_document.fileinput('clear');
+            }
+            FormService.removeFieldsErrors();
           toastr.success(data.message);
           if(! data.has_abonament){ bootbox.dialog({
               title: "Atentie",
               message: 'ATENTIE ACESTA ESTE UN CONT NEPLATIT (CUMPARA ABONAMENT).'
             });
           }
-          $scope.terrains.push(data.out);
-          /*
-            salvez id-ul, pentru a-l prelua la fileinput
-            $('#inserted_terrain').val(data.out.id);
-           */
+          $timeout(function(){
+              data.out.photos = photos;
+              $scope.terrains.push(data.out);
+          },1000);
           gmap.activateTab(1);
           gmap.clearShapes();
           FormService.safe( FormService.emptyControls );
@@ -107,7 +118,8 @@ app.controller(
 
     $scope.edit = function(item){
         $scope.currentTerrain=item;
-        $scope.EDIT          = true;
+        $scope.EDIT           = true;
+        $scope.ADD            = false;
         fileinput.init(item.id, $scope.afterUpload);
         var coords = JSON.parse(item.geometry);
         gmap.clearShapes();
