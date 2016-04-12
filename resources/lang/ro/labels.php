@@ -37,7 +37,7 @@ return [
     'reset_password_box_title' => 'Reseteaza parola',
     'reset_password_button' => 'Reseteaza parola',
     'save_button' => 'Salveaza',
-    'send_password_reset_link_button' => 'Trimite un link pentru a reseta parola',
+    'send_password_reset_link_button' => 'Soclicitare parola',
     'toggle_navigation' => 'Navigare',
     'update_information_box_title' => 'Actualizeaza informatii',
     'fonds' => 'Administrare fonduri',

@@ -17,7 +17,7 @@
     <body @yield('body-attributes')>
         @include('frontend.layouts.~loading')
         @include('frontend.includes.nav')
-        <div class="container-fluid">
+        <div id="main" class="container-fluid">
             @include('includes.partials.messages')
 
             @yield('content')

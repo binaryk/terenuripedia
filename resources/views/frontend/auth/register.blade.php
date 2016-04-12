@@ -3,7 +3,7 @@
 	<div class="log-fundal">
 		<div class="log">
 			<div class="panel panel-default">
-                <div class="log-heading">{!! HTML::image('/img/profile-blue.png', 'a picture') !!} </br> <div class="log-title">{{ trans('labels.register_box_title') }}</div></div>
+                <div class="log-heading">{!! HTML::image('/img/user-512.png', 'a picture') !!} </br> <div class="log-title">{{ trans('labels.register_box_title') }}</div></div>
 
 				<div class="log-body">
 

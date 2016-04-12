@@ -1,21 +1,22 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+
 <div class="log-fundal">
+    <h1 style="text-align:center;color:#fff;font-weight:100!important">Commercial Lease Comps On Demand</h1>
+    <p class="signup-subtitle mHide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi scelerisque, diam id ornare dapibus, nisl risus tempor augue, ac aliquam nisl urna vitae felis. Sed vitae nisi placerat nisi mattis faucibus. Cras suscipit rhoncus nunc non sagittis. Vivamus bibendum dolor eu lorem hendrerit, vitae tristique sapien malesuada. </p>
  <div class="log-pre">
   <div class="panel panel-default">
                 
-    <div class="col-md-6 col1">
-        {!! HTML::image('/img/profile-blue.png', 'a picture') !!}</br>
-        <h5>Cumparator</h5>
-      <p class="ppre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in accumsan nibh. Fusce congue justo quis lacus varius, in sollicitudin mi blandit. Donec dolor ex, scelerisque at efficitur id, laoreet quis justo. Duis ut nunc at velit laoreet porttitor. Vivamus interdum, tortor convallis maximus consectetur, tellus dolor congue nulla, eget malesuada magna metus non odio. Phasellus fringilla massa ex, et sagittis nisi rutrum ut.</p>
-      <a class="btn btn-confirm" data-target="one" href="{!! url('auth/register/buyer') !!}">Inregistrare</a>
+    <div class="cumparator">
+        {!! HTML::image('/img/user-512.png', 'a picture') !!}</br>
+      <p class="ppre">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a class="btn-signup" data-target="one" href="{!! url('auth/register/buyer') !!}">Cumparator</a>
     </div>
-    <div class="col-md-6 col2">
-       {!! HTML::image('/img/profile-blue.png', 'a picture') !!}
-       <h5>Vanzator</h5> 
-        <p class="ppre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc in accumsan nibh. Fusce congue justo quis lacus varius, in sollicitudin mi blandit. Donec dolor ex, scelerisque at efficitur id, laoreet quis justo. Duis ut nunc at velit laoreet porttitor. Vivamus interdum, tortor convallis maximus consectetur, tellus dolor congue nulla, eget malesuada magna metus non odio. Phasellus fringilla massa ex, et sagittis nisi rutrum ut.</p>
-        <a class="btn btn-confirm" data-target="five" href="{!! url('auth/register/saller') !!}">Inregistrare</a>
+    <div class="vanzator">
+       {!! HTML::image('/img/user-512.png', 'a picture') !!}
+        <p class="ppre">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a class="btn-signup" data-target="five" href="{!! url('auth/register/saller') !!}">Vanzator</a>
     </div>
       
       
@@ -32,6 +33,7 @@
     <script>
         $(document).ready(function(){
             /*asta se poate rezolva din css, dar eu nu stiu cum :(*/
+            $('footer').hide();
             $('.preregister li[role=presentation]').on('mouseover', function(){
                 console.log(this);
                 $(this).siblings('li').removeClass('active');

@@ -35,3 +35,173 @@
    line-height: 20px;
    padding: 0 !important;
  }
+.panel-body {
+    margin-top: 20px;
+}
+.tab-content .actions {
+    margin-bottom: 25px;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #353B4A!important;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc!important;
+    border: 1px solid rgb(50, 55, 68)!important;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.img-heading {
+    float: left;
+}
+.user_dashboard {
+    padding: 40px;
+    background: #fff;
+}
+strong.width-fix {
+    width: 150px;
+    display: inline-block;
+    font-family: roboto;
+    font-weight: 600;
+    margin: 3px 0px;
+}
+.istoric {margin-top:45px;}
+
+/* window info */
+.window_tab1 {
+    float: left;
+    width: 316px;
+    height: 220px;
+    color: #000;
+    padding: 0px 10px;
+    background: aliceblue;
+}
+.window_tab2 p{ margin: 0px;}
+.window_tab2 {
+    float: right;
+    width: 210px;
+    padding: 10px 0px 0px 10px;
+}
+.telefon {
+    font-size: 2em;
+    font-weight: bold;
+    color: #264165;
+    margin: 15px 0px;
+    color: transparent;
+    text-shadow: 0 0 9px rgba(0,0,0,0.5);
+    padding: 0px 6px;
+    display: inline-block;
+}
+.deblocheaza {
+    background: #02a650;
+    color: #fff;
+    padding: 3px 16px;
+    border-radius: 9px;
+    margin: 7px 0px;
+    position: relative;
+    display: inline-block;
+}
+
+.deblocheaza_icon {
+    background-image: url(../../img/sprite.png);
+    background-position: -975px -951px;
+    width: 11px;
+    height: 12px;
+    right: -140px;
+    display: inline-block;
+    position: relative;
+}
+
+.telefon_icon {
+    background-position: -237px -920px;
+    width: 27px;
+    height: 24px;
+    background-image: url(../../img/sprite.png);
+    display: inline-block;
+    position: relative;
+    right: -80px;
+    top: 5px;
+}
+.locatie_line {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+i.bullet {
+    width: 5px;
+    height: 5px;
+    background: #F1A51B;
+    display: block;
+    border-radius: 5px;
+    float: left;
+    top: 8px;
+    position: relative;
+    margin-right: 5px;
+}
+.total_price {
+    font-size: 1.5em;
+    text-align: right;
+    font-weight: bold;
+    color: #264165;
+    bottom: 0px;
+    position: absolute;
+    right: 28px;
+}
+.carousel {
+    height: 220px;
+}
+i.fa.fa-arrow-left.slick-arrow {
+    position: absolute;
+    top: 41%;
+    z-index: 9999;
+    background: #264165;
+    color: #fff;
+    padding: 13px;
+    cursor: pointer;
+}
+i.fa.fa-arrow-right.slick-arrow {
+    position: absolute;
+    top: 41%;
+    right: 0px;
+    z-index: 9999;
+    background: #264165;
+    color: #fff;
+    padding: 13px;
+    cursor: pointer;
+}
+.pret label.control-label {
+    width: 120px;
+}
+#photos {overflow: visible!important}
+.file-footer-buttons, .file-upload-indicator, .file-caption {
+    display: none;
+}
+.form-control.file-caption.kv-fileinput-caption {
+    display: none;
+}
+.fileinput-remove-button {
+    width: 146px;
+    display: block;
+}.fileinput-remove-button:hover {
+    width: 146px;
+}
+.fileinput-upload-button {
+    width: 146px;
+    display: block;
+}.fileinput-upload-button:hover {
+    width: 146px;
+}
+.btn.btn-primary.btn-file {
+    margin-top: 27px;
+}

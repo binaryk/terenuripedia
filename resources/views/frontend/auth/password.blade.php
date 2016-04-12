@@ -14,7 +14,7 @@
 							{{ session('status') }}
 						</div>
 					@endif
-
+                 <div class="log-body">
 					{!! Form::open(['to' => 'password/email', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
 						<div class="form-group">
@@ -33,6 +33,7 @@
 					{!! Form::close() !!}
 
 				</div><!-- panel body -->
+            </div><!-- panel body -->
 
             </div><!-- panel -->
 

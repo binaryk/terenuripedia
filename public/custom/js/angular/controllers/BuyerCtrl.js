@@ -43,6 +43,7 @@ app.controller(
                     infoWindow.setContent(contentString);
                     infoWindow.setPosition(event.latLng);
                     infoWindow.open(gmap.map);
+                    init_carouser();
                 });
 
             }
