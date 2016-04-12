@@ -25,7 +25,7 @@ class PreTerrainController extends ControlsTerrainController
 		$data = Terrain::with('characteristics','owner')->where('aprobat',1)->orderBy('id','DESC')->get()->toArray();
 		$out = [];
 		foreach($data as $k => $in){
-			$in['locatie_string'] = Terrain::locatie()[$in['id_locatie']];
+			$in['locatie_string'] = @Terrain::locatie()[$in['id_locatie']];
 			$out[]=  $in;
 		}
 		return Response::json(['data' => $out]);

@@ -34,7 +34,7 @@
 
 <div class="lista-label content-tip">
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 pret">
         {!! $controls['pret'] !!}
         <span class="input-addon">euro</span>
     </div>

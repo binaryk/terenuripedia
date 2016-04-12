@@ -109,10 +109,10 @@ class Terrain extends BModel
 	{
 		return [
 			/*AppServiceProvider ==> custom rules*/
-//			'title'   			      => 'required',
-//			'id_tip_caracteristici'   => 'required|not_in:0',
-//			'id_locatie'   			  => 'required|not_in:0',
-//			'pret'   				  => 'required|not_in:0',
+			'title'   			      => 'required',
+			'id_tip_caracteristici'   => 'required|not_in:0',
+			'id_locatie'   			  => 'required|not_in:0',
+			'pret'   				  => 'required|not_in:0',
 		];
 	}
 

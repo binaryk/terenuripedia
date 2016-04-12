@@ -7352,7 +7352,7 @@ input#front_stradal_2 {
 #proiect, #poze {
     position: fixed;
     width: 632px;
-    top: 148px;
+    top: 137px;
     left: 10px;
     bottom: 0;
     overflow: hidden;
@@ -8049,4 +8049,8 @@ a.btn-signup:hover {
 .dash_left {
     float: left;
     margin-left: 28px;
+}
+.tab-content>.active {
+    display: block;
+    overflow: hidden;
 }

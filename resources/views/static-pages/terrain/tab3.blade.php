@@ -1,13 +1,12 @@
 
 <div class="window_tab">
-    <div class="window_tab1">
-        @if(count($terrain->photos) > 0)
-    <?php $i = 0; ?>
-    @foreach($terrain->photos as $k => $photo)
-        @if(++$i < 4)
-            <img src="{!! $photo->location !!}" alt="poza" width="200" height="200">
-        @endif
+    <div style="padding:0px" class="window_tab1">
+  @if(count($terrain->photos) > 0)
+    <div class="carousel">     
+    @foreach($terrain->photos as $k => $photo)                  
+            <img src="{!! $photo->location !!}" width="200" height="200">
     @endforeach
+        </div>      
     </div> 
     <div class="window_tab2">
         <p><i class="bullet"></i> Zona Rezidentiala</p>
