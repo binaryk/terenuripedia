@@ -14,12 +14,6 @@
 
                        {!! Form::open(['route' => ['password.change'], 'class' => 'form-horizontal']) !!}
 
-                              <div class="form-group">
-                                  {!! Form::label('old_password', trans('validation.attributes.old_password'), ['class' => 'col-md-4 control-label']) !!}
-                                  <div class="col-md-6">
-                                      {!! Form::input('password', 'old_password', null, ['class' => 'form-control']) !!}
-                                  </div>
-                              </div>
 
                               <div class="form-group">
                                   {!! Form::label('password', trans('validation.attributes.new_password'), ['class' => 'col-md-4 control-label']) !!}

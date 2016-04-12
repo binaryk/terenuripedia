@@ -14,8 +14,6 @@
     {!! HTML::script('//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js') !!}
     <link rel="stylesheet" href="{!! asset('custom/css/list.css') !!}">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-
-
 @stop
 
 @section('custom-scripts')
