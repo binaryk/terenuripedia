@@ -1,11 +1,17 @@
 app.controller(
-            'MainCtrl', ['$scope', '$http', '$rootScope', '$compile', '$timeout','$http','uiGmapGoogleMapApi',
-    function MainCtrl($scope, $http, $rootScope, $compile, $timeout, uiGmapGoogleMapApi) {
+            'MainCtrl', ['$scope', '$http', '$rootScope', '$compile', '$timeout','$http',
+    function MainCtrl($scope, $http, $rootScope, $compile, $timeout) {
         console.log('MainCtrl');
+        var _that = this;
+        this.credit = 10;
 
-      
+        this.creditfn = function(){
+            location.href = $rootScope.config.baseUrl + "/credit";
+        }
 
-   $scope.locationsFiltered = [{
+
+    }]);
+  /* $scope.locationsFiltered = [{
       id: 5,
       latitude: 44.4284821,
       longitude: 26.1241451,
@@ -81,10 +87,10 @@ app.controller(
       }
     },
     options: {
- /*     mapTypeControl: false,
+ /!*     mapTypeControl: false,
       zoomControl: false,
       streetViewControl: false,
-      scrollwheel: false*/
+      scrollwheel: false*!/
     },
      drawingManagerOptions: {
 
@@ -115,7 +121,6 @@ app.controller(
        google.maps.event.addListener($scope.map.drawingManagerControl.getDrawingManager(), 'circlecomplete', function (e) {
            console.log(e);
        });
-
    });
 
 
@@ -125,3 +130,4 @@ app.controller(
 
 }]); 
 
+   */

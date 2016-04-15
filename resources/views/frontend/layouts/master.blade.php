@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="" ng-app="app">
+<html class="no-js" lang="" ng-app="app" ng-controller="MainCtrl as mc">
     @include('frontend.layouts.~head')
     <style>
         #frm_termeni_conditii_inner,

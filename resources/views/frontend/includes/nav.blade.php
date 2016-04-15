@@ -24,10 +24,12 @@
                         @role('Saller')
                         <li>{!! link_to('terenuri', trans('navs.terrain_add')) !!}</li>
                         @endauth
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-							    <li>{!! link_to('dashboard', trans('navs.dashboard')) !!}</li>
+                        <span class="badge" title="Credit" ng-click="mc.creditfn()" style="position:absolute; top: 5px; right: 0px;z-index: 9999;cursor: pointer;">@{{mc.credit}}R</span>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li>{!! link_to('dashboard', trans('navs.dashboard')) !!}</li>
 
 							    @permission('view-backend')
 							        <li>{!! link_to_route('admin.dashboard', trans('navs.administration')) !!}</li>

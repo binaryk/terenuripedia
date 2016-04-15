@@ -9,6 +9,8 @@
 {!! HTML::script('components/angular-rangeslider/angular.rangeSlider.js') !!}
 {!! HTML::script('custom/js/general/ctmodal.js') !!}
 {!! HTML::script('custom/js/general/jquery.smoothState.min.js') !!}
+{!! HTML::script('custom/js/bpackage/Call.js') !!}
+{!! HTML::script('custom/js/angular/controllers/MainCtrl.js') !!}
 
 <script>
 </script>

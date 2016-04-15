@@ -28,7 +28,8 @@
     {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
     <script>
         var _config = {
-            assetBaseUrl : "{{ asset('') }}"
+            assetBaseUrl : "{{ asset('') }}",
+            baseUrl : "{{ url('/') }}"
         };
     </script>
     @yield('custom-styles')
