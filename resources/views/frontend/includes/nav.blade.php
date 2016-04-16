@@ -14,7 +14,6 @@
 				<ul class="nav navbar-nav navbar-right">
                     <li><a href="{!! route('about') !!}" class="animate-link">Despre</a></li>
                     <li><a href="{!! route('howWork') !!}" class="animate-link">Cum functioneaza</a></li>
-                    <li><a href="{!! route('frontend.abonamente') !!}">Abonamente</a></li>
 					@role('Buyer')
                     <li><a href="{!! route('buyer.search') !!}">Terenuri</a></li>
 					@endauth

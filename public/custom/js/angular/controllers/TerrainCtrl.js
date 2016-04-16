@@ -94,7 +94,7 @@ app.controller(
           toastr.success(data.message);
           if(! data.has_abonament){ bootbox.dialog({
               title: "Atentie",
-              message: 'ATENTIE ACESTA ESTE UN CONT NEPLATIT (CUMPARA ABONAMENT).'
+              message: 'PRIN ADAUGAREA ACESTUI TEREN DIN CONTUL DVS AU FOST EXTRASI 4.16E.'
             });
           }
           $timeout(function(){

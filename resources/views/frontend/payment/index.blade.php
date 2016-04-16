@@ -72,6 +72,9 @@
                             <input class="form-control" TYPE="hidden" NAME="timestamp" SIZE="15" VALUE="<?php echo  $dataAll['timestamp'] ?>" />
                             <input class="form-control" TYPE="hidden" NAME="nonce" SIZE="35" VALUE="<?php echo  $dataAll['nonce'] ?>" />
                             <input class="form-control" TYPE="hidden" NAME="fp_hash" SIZE="40" VALUE="<?php echo  $dataAll['fp_hash'] ?>" />
+                            @if(env('APP_ENV') == 'local')
+                                <a href="#" id="simulare" class="btn btn-warning pull-left row">Simuleaza plata</a>
+                            @endif
                             <p><a class="btn btn-confirm pull-right row" href="javascript:gateway.submit();" class="txtCheckout">Plătește acum</a></p>
                         </form>
                     </div>
@@ -84,9 +87,16 @@
 
 
     </div><!-- row -->
+</div><!-- row -->
 
 
 @endsection
 @section('custom-scripts')
-
+    <script>
+        $('#simulare').on('click',function(){
+            var val = $('#suma').val();
+            console.log("{!! route('credit.simulare') !!}"+ '/' + val);
+            location.href = "{!! url('credit-simulare') !!}"+ '/' + val;
+        })
+    </script>
 @stop

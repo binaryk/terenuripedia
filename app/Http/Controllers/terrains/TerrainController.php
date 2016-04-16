@@ -36,6 +36,11 @@ class TerrainController extends PreTerrainController
 
     public function save(){
         //De facut verificare cu db daca aprobarea era null si s-a modificat sa se trimita mail cu confirmare
+        if(auth()->user()->hasRole('Buyer')){
+            if( (int) auth()->user()->credit <= 4.16) {
+                return redirect()->back()->withFlashError('Nu mai aveti credit');
+            }
+        }
         $data = Input::get('data');
         $data['color_text'] = User::color();
         $validator = Validator::make(
@@ -48,6 +53,7 @@ class TerrainController extends PreTerrainController
             try
             {
                 $out  = Terrain::create($data+['user_id'=>Auth::user()->id]);
+                User::credit(-4.16);
                 if($data['id_tip_caracteristici']){
                     $out->characteristics()->attach($data['id_tip_caracteristici']);
                 }

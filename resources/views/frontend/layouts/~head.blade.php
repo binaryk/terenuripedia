@@ -29,7 +29,8 @@
     <script>
         var _config = {
             assetBaseUrl : "{{ asset('') }}",
-            baseUrl : "{{ url('/') }}"
+            baseUrl : "{{ url('/') }}",
+            credit: "{!! @access()->user()->credit!!}"
         };
     </script>
     @yield('custom-styles')

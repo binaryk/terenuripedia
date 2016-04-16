@@ -3,14 +3,12 @@ app.controller(
     function MainCtrl($scope, $http, $rootScope, $compile, $timeout) {
         console.log('MainCtrl');
         var _that = this;
-        this.credit = 10;
-
+        this.credit = parseFloat($rootScope.config.credit);
         this.creditfn = function(){
             location.href = $rootScope.config.baseUrl + "/credit";
         }
 
-
-    }]);
+}]);
   /* $scope.locationsFiltered = [{
       id: 5,
       latitude: 44.4284821,

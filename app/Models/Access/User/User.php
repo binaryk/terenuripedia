@@ -140,4 +140,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return count($abonamente) > 0;
 
     }
+
+    public static function credit($val)
+    {
+        access()->user()->credit += $val;
+        access()->user()->save();
+        return access()->user()->credit;
+    }
 }
