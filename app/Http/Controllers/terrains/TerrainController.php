@@ -71,6 +71,7 @@ class TerrainController extends PreTerrainController
             {
                 $result = ['success' => false, 'runtime' => 1, 'exception' => ['message' => $e->getMessage(), 'method' => __METHOD__, 'line' => $e->getLine(), 'file' => $e->getFile()]];
             }
+            $result['credit'] = auth()->user()->credit;
             return $result;
         }
         $alert = [
