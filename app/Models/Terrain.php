@@ -9,7 +9,7 @@ class Terrain extends BModel
 {
 
 
-    protected $guarded = ['_token','id_tip_caracteristici'];
+    protected $guarded = ['_token','id_tip_caracteristici', 'user_owner'];
 
     public static function createRecord($data)
     {
