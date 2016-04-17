@@ -22,11 +22,11 @@ class TerrainController extends PreTerrainController
         parent::__construct();
     }
 
-    public function index()
+    public function index($user = null)
     {  
         $terrain    = Terrain::with('characteristics')->get();
         $controls   = $this->controls();
-        return view('terrains.index',compact('terrain', 'controls'));
+        return view('terrains.index',compact('terrain', 'controls', 'user'));
     }
 
     public function create()
@@ -41,6 +41,7 @@ class TerrainController extends PreTerrainController
                 return redirect()->back()->withFlashError('Nu mai aveti credit');
             }
         }
+
         $data = Input::get('data');
         $data['color_text'] = User::color();
         $validator = Validator::make(
@@ -52,8 +53,13 @@ class TerrainController extends PreTerrainController
         {
             try
             {
-                $out  = Terrain::create($data+['user_id'=>Auth::user()->id]);
-                User::credit(-4.16);
+                $user_ud = (int)$data['user_owner'] > 0 ? $data['user_owner'] : Auth::user()->id;
+                unset($data['user_owner']);
+
+                $out  = Terrain::create($data+['user_id'=>$user_ud]);
+                if(! auth()->user()->hasRole('Administrator')){
+                    User::credit(-4.16);
+                }
                 if($data['id_tip_caracteristici']){
                     $out->characteristics()->attach($data['id_tip_caracteristici']);
                 }

@@ -37,6 +37,7 @@ app.controller(
       }else
       {
           data = FormService.datasource();
+          data['user_owner'] = $('#user_owner').val();
           data['geometry']      = gmap.getGeometry(true);
           data['geometry_text'] = gmap.getGeometry(false);
           if($scope.EDIT){

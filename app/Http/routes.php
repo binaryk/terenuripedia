@@ -40,6 +40,15 @@ $router->group(['namespace' => 'Backend'], function () use ($router) {
             require (__DIR__ . '/Routes/Backend/Access.php');
             require (__DIR__ . '/Routes/Backend/LogViewer.php');
             require (__DIR__ . '/Routes/Backend/Terrains.php');
+
         });
     });
+});
+
+
+
+$router->group(['middleware' => 'access.routeNeedsPermission:view-backend'], function () use ($router) {
+
+    get('terenuri-admin/{user}','Terrains\TerrainController@index')
+        ->name('terrains_index.admin');
 });

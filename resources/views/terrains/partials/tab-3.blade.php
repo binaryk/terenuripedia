@@ -1,6 +1,7 @@
 <div class="lista-label">
 <div class="row">
    <div class="col-md-6">
+       <input id="user_owner" name="user_owner" type="hidden" value="{!! @$user !!}">
        {!! $controls['title'] !!}
    </div>
    <div class="col-md-6">

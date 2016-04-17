@@ -32,6 +32,7 @@
                         <th>{{ trans('crud.users.other_permissions') }}</th>
                         <th class="visible-lg">{{ trans('crud.users.created') }}</th>
                         <th class="visible-lg">{{ trans('crud.users.last_updated') }}</th>
+                        <th>Terenuri</th>
                         <th>{{ trans('crud.actions') }}</th>
                     </tr>
                     </thead>
@@ -62,6 +63,7 @@
                             </td>
                             <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
                             <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
+                            <td><a href="{!! route('terrains_index.admin',['user' => $user->id]) !!}" class="btn btn-info">Vezi</a></td>
                             <td>{!! $user->action_buttons !!}</td>
                         </tr>
                     @endforeach
