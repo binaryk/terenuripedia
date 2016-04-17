@@ -41,6 +41,9 @@ class Terrain extends BModel
 		if(! auth()->user()){
 			return 0;
 		}
+        if(self::find($id)->user_id == auth()->user()->id){
+            return 1;
+        }
 		return UnlokedTerrain::where('user_id', auth()->user()->id)->where('terrain_id', $id)->count();
 	}
 
