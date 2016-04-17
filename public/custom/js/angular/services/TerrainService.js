@@ -61,6 +61,13 @@ app.factory('TerrainService', ['$rootScope','$http','$timeout', function($rootSc
         return promise;
     }
 
+    mixin.open = function(id){
+        var promise = $http.post($rootScope.config.r_post_open, {id: id}).then(function(response){
+            return response.data;
+        });
+        return promise;
+    }
+
     return mixin;
 
 }]);

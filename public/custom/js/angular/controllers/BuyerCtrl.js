@@ -22,17 +22,11 @@ app.controller(
             $scope.searchTerrains = [];
             $scope.shapes=[];
             $scope.currentTerrain={};
-            //scope.$watch('config', function(n, o){
             TerrainService.get().then(function(data){
                 console.log(data.data);
                 $scope.searchTerrains = data.data;
                 $scope.length_result  = data.data.length;
-             /*   $timeout(function(){
-                    $scope.getAllShapes();
-                },500);*/
-                //$compile($('.my_form').contents())($scope);
             });
-            //});
 
             $scope.showArrays = function(event, id) {
                 gmap.clearPops();
@@ -44,8 +38,41 @@ app.controller(
                     infoWindow.setPosition(event.latLng);
                     infoWindow.open(gmap.map);
                     init_carouser();
+                    $compile($('#info_tab').contents())($scope)
                 });
 
+            }
+
+            $scope.debloc = function ($id) {
+                console.log($id);
+                TerrainService.open($id).then(function(data){
+                    console.log(data);
+                    $scope.credit = data.credit;
+                    $scope.$parent.mc.credit = data.credit;
+                    if($id == false){
+                        bootbox.dialog({
+                            title: "Atentie",
+                            message: data.msg
+                        });
+                    }else{
+                        if(data.code == 200 && $id){
+                            $('#base_telefon').html(data.telefon).css('color','#264165');
+                            $('.rdeblocheaza').remove();
+                        } else{
+                            bootbox.dialog({
+                                title: "Atentie",
+                                message: 'Trebuie sa aveti minim 4.5 RON credit.'
+                            });
+                        }
+                    }
+
+                });
+            }
+
+            $scope.refresh_credit = function(terrain){
+                $scope.drawAll();
+                gmap.clearPops();
+                $scope.debloc(false);
             }
 
             $scope.drawAll = function(){
@@ -59,6 +86,7 @@ app.controller(
                         google.maps.event.addListener(tmp, 'click', function (event) {
                             $scope.showArrays(event, terrain.id);
                         });
+                        document.EL = tmp;
                     }
                 });
             }

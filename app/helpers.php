@@ -19,12 +19,13 @@ if (! function_exists('error')) {
      *
      * @return \Illuminate\Foundation\Application|mixed
      */
-    function error($msg = 'Err')
+    function error($msg = 'Err', $data = [])
     {
         return response()->json([
             'code' => 500,
-            'msg' => $msg
-        ]);;
+            'msg' => $msg,
+        ] + $data
+        );;
     }
 }
 /**

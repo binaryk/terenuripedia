@@ -8,12 +8,14 @@
         var infowindow;
         var map;
         var buyer_shapes = [];
-        _config['r_get_byUser']           = "{!! route('terrain.getUserTerrains') !!}";
+        _config['r_get_byUser']           = "{!! route('terrain.getUserTerrains',['id' => @$user]) !!}";
         _config['r_post_save']            = "{!! route('terrain.save') !!}";
         _config['r_post_edit']            = "{!! route('terrain.edit') !!}";
         _config['r_post_revenue_delete']  = "{!! route('terrain.delete') !!}";
         _config["page"]                   ="terrain";
         _config["polygonColor"]           = "{!! _color() !!}";
+        _config['admin']                  = "{!! @$user !!}";
+        _config['isAdmin']                  = ! isNaN(parseInt("{!! @$user !!}"));
         var fileinput = new App.FileInput('#photos', '{!! route('terrain.photo') !!}');
     </script>
     <script type="text/javascript" src ="{!! asset('packages/fileinput/js/fileinput.min.js') !!}"></script>

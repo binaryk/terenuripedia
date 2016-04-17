@@ -1,6 +1,6 @@
 <?php
 $router->group(['middleware' => 'auth'], function () {
-    get('get-terrain-byUser',   'TerrainController@getUserTerrains')
+    get('get-terrain-byUser/{id?}',   'TerrainController@getUserTerrains')
         ->name('terrain.getUserTerrains');
     post('post-revenue-delete', 'TerrainController@delete')
         ->name('terrain.delete');
@@ -12,4 +12,8 @@ $router->group(['middleware' => 'auth'], function () {
         ->name('terrain.photo');
     get('terenuri',              'TerrainController@index')
         ->name('terrains_index');
+
+
+    post('post-terrain-open',  'TerrainController@open')
+        ->name('terrain.open');
 });

@@ -93,7 +93,8 @@ app.controller(
             }
             FormService.removeFieldsErrors();
           toastr.success(data.message);
-          if(! data.has_abonament){ bootbox.dialog({
+
+          if(! data.has_abonament && ! _config['isAdmin']){ bootbox.dialog({
               title: "Atentie",
               message: 'PRIN ADAUGAREA ACESTUI TEREN DIN CONTUL DVS AU FOST EXTRASI 4.16E.'
             });

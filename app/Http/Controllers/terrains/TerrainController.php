@@ -4,6 +4,7 @@ use App\Models\Access\User\User;
 use App\Models\Photo;
 use App\Models\Terrain;
 use App\Models\TerrainCoord;
+use App\Models\UnlokedTerrain;
 use Illuminate\Support\Facades\Validator;
 use Request;
 use App\Http\Requests;
@@ -149,6 +150,30 @@ class TerrainController extends PreTerrainController
     public function info()
     {
         $id = Input::get('id');
-        return view('static-pages.terrain.info')->with(['terrain' => Terrain::find($id)]);
+        $user = auth()->user();
+        $terr = Terrain::find($id);
+        $terr->opened = $terr->openedForCurrentUser($id) > 0;
+        return view('static-pages.terrain.info')->with(['terrain' => $terr]);
+    }
+
+    public function open()
+    {
+        $id = Input::get('id');
+        if($id == false){
+            // return doar credit (pt reresh)
+            return success(['credit' => auth()->user()->credit],'Credit actualizat. Incercati sa deschideti contactul proprietarului din nou. Aveti:'.auth()->user()->credit.' RON.');
+        }
+        if(auth()->user()->credit <= config('credit.pret_cumparator')){
+            return error('Nu aveti suficient credit', ['credit' =>  auth()->user()->credit]);
+        }else{
+            User::credit(-config('credit.pret_cumparator'));
+            UnlokedTerrain::create([
+                'user_id' => auth()->user()->id,
+                'terrain_id' => $id
+            ]);
+            return success(['success' => 'Am deschis', 'credit' => auth()->user()->credit, 'telefon' => Terrain::find($id)->telefon]);
+        }
+
+
     }
 }

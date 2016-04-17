@@ -1,10 +1,13 @@
-<?php
+<?php namespace App\Models;
 
-namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
 
-class UnlokedTerrain
+
+class UnlokedTerrain extends Model
 {
-    protected $table = "unloked_tarrain";
+    protected $table = "unloked_tarrains";
+
+    protected $guarded = [];
 
 }
 

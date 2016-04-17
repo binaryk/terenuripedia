@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Binaryk\Model\BModel;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\UnlokedTerrain;
 class Terrain extends BModel
 {
 
@@ -35,6 +35,13 @@ class Terrain extends BModel
 
 	public function characteristics(){
 		return $this->belongsToMany('App\Models\Characteristic', 'characteristics_terrain', 'id_terrain', 'id_characteristics');
+	}
+
+	public function openedForCurrentUser($id){
+		if(! auth()->user()){
+			return 0;
+		}
+		return UnlokedTerrain::where('user_id', auth()->user()->id)->where('terrain_id', $id)->count();
 	}
 
 	public static function tip(){
@@ -113,6 +120,7 @@ class Terrain extends BModel
 			'id_tip_caracteristici'   => 'required|not_in:0',
 			'id_locatie'   			  => 'required|not_in:0',
 			'pret'   				  => 'required|not_in:0',
+			'suprafata'   				  => 'required|not_in:0',
 		];
 	}
 
@@ -126,6 +134,8 @@ class Terrain extends BModel
 			'id_locatie.not_in'        			  => 'Locatia trebuie completata.',
 			'pret.required'        				  => 'Pretul trebuie completat.',
 			'pret.not_in'        				  => 'Pretul trebuie sa fie mai mare ca 0 (zero).',
+			'suprafata.required'        		  => 'Suprafata trebuie completata.',
+			'suprafata.not_in'        			  => 'Suprafata trebuie sa fie mai mare ca 0 (zero).',
 		];
 	}
 
