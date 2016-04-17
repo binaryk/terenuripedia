@@ -74,6 +74,7 @@ app.controller(
 
     $scope.STORE = function(data){
       TerrainService.store(data).then(function(data){
+      console.log(data);
         if( ! data.success)
         {
           FormService.removeFieldsErrors();
