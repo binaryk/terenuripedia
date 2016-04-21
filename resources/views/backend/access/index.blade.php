@@ -27,6 +27,7 @@
                         <th>{{ trans('crud.users.id') }}</th>
                         <th>{{ trans('crud.users.name') }}</th>
                         <th>{{ trans('crud.users.email') }}</th>
+                        <th>Credit</th>
                         <th>{{ trans('crud.users.confirmed') }}</th>
                         <th>{{ trans('crud.users.roles') }}</th>
                         <th>{{ trans('crud.users.other_permissions') }}</th>
@@ -42,6 +43,7 @@
                             <td>{!! $user->id !!}</td>
                             <td>{!! $user->name !!}</td>
                             <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
+                            <td>{!! $user->credit !!}</td>
                             <td>{!! $user->confirmed_label !!}</td>
                             <td>
                                 @if ($user->roles()->count() > 0)

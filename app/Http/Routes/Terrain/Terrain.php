@@ -10,8 +10,15 @@ $router->group(['middleware' => 'auth'], function () {
         ->name('terrain.edit');
     post('post-terrain-photo',  'TerrainController@photo')
         ->name('terrain.photo');
+    post('post-terrain-photo-remove',  'TerrainController@photoDelete')
+        ->name('terrain.delete-photo');
     get('terenuri',              'TerrainController@index')
         ->name('terrains_index');
+
+
+
+    get('terrain-dinamic-locality/{txt?}',  'TerrainController@locality')
+        ->name('terrain.dinamic_locality');
 
 
     post('post-terrain-open',  'TerrainController@open')

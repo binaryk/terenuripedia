@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Terrains;
 
 use App\Models\Access\User\User;
+use App\Models\Localitate;
 use App\Models\Terrain;
 use App\Models\TerrainCoord;
 use Request;
@@ -25,7 +26,7 @@ class PreTerrainController extends ControlsTerrainController
 		$data = Terrain::with('characteristics','owner')->where('aprobat',1)->orderBy('id','DESC')->get()->toArray();
 		$out = [];
 		foreach($data as $k => $in){
-			$in['locatie_string'] = @Terrain::locatie()[$in['id_locatie']];
+			$in['locatie_string'] = Localitate::find($in['id_locatie']) ?  Localitate::find($in['id_locatie'])->localitate : '';
 			$out[]=  $in;
 		}
 		return Response::json(['data' => $out]);
@@ -45,7 +46,7 @@ class PreTerrainController extends ControlsTerrainController
 
 	public function getUserTerrains($id = null){
         $filter = $id ? $id : Auth::user()->id;
-		$data = Terrain::where('user_id',$filter)->with('characteristics','photos')->get();
+		$data = Terrain::where('user_id',$filter)->with('characteristics','photos','localitate')->get();
 		return Response::json(['data' => $data]);
 	}
 

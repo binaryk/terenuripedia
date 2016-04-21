@@ -219,7 +219,7 @@ class EloquentUserRepository implements UserContract
         $user        = access()->user();
         $user->name  = $input['name'];
         $user->phone = $input['phone'];
-        $user->fiz_jur =  $input['fiz_jur'];
+        $user->fiz_jur =  @$input['fiz_jur'];
 
         if($user->hasRole('Saller')){
             $user->type_id = $input['type_id'];

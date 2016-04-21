@@ -68,6 +68,13 @@ app.factory('TerrainService', ['$rootScope','$http','$timeout', function($rootSc
         return promise;
     }
 
+    mixin.destroyPhoto = function(photo){
+        var promise = $http.post($rootScope.config.r_post_delete_photo, {data: photo}).then(function(response){
+            return response.data;
+        });
+        return promise;
+    }
+
     return mixin;
 
 }]);

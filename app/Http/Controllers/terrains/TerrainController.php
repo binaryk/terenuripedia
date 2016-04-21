@@ -1,10 +1,12 @@
 <?php namespace App\Http\Controllers\Terrains;
 
 use App\Models\Access\User\User;
+use App\Models\Localitate;
 use App\Models\Photo;
 use App\Models\Terrain;
 use App\Models\TerrainCoord;
 use App\Models\UnlokedTerrain;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Request;
 use App\Http\Requests;
@@ -38,7 +40,7 @@ class TerrainController extends PreTerrainController
     public function save(){
         //De facut verificare cu db daca aprobarea era null si s-a modificat sa se trimita mail cu confirmare
         if(auth()->user()->hasRole('Buyer')){
-            if( (int) auth()->user()->credit <= 4.16) {
+            if( (int) auth()->user()->credit <= config('credit.pret_vanzator')) {
                 return redirect()->back()->withFlashError('Nu mai aveti credit');
             }
         }
@@ -59,7 +61,7 @@ class TerrainController extends PreTerrainController
 
                 $out  = Terrain::create($data+['user_id'=>$user_ud]);
                 if(! auth()->user()->hasRole('Administrator')){
-                    User::credit(-4.16);
+                    User::credit(-config('credit.pret_vanzator'));
                 }
                 if($data['id_tip_caracteristici']){
                     $out->characteristics()->attach($data['id_tip_caracteristici']);
@@ -146,6 +148,28 @@ class TerrainController extends PreTerrainController
         $data['location']   = asset($path . '/' .$res->getFileName());
         $photo = Photo::create($data);
         return success(['photo' => $photo]);
+    }
+
+    public function photoDelete()
+    {
+        $photo = Input::get('data');
+        File::delete($photo['location']);
+        Photo::where('id', $photo['id'])->delete();
+        return success([], 'Stergerea a avut loc cu success.');
+    }
+
+    public function locality($txt = null)
+    {
+        $txt = Input::get('txt')['term'];
+        $out = [];
+        foreach(Localitate::where('localitate','like',$txt."%")->get() as $localitate){
+            $tmp = [];
+            $tmp['id'] = $localitate->id;
+            $tmp['text'] = $localitate->localitate;
+            $out[] = $tmp;
+        }
+        return json_encode( $out );
+
     }
 
     public function info()

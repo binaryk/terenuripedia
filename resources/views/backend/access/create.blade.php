@@ -37,6 +37,13 @@
                 </div><!--form control-->
 
                 <div class="form-group">
+                    {!! Form::label('credit', "Credit", ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('credit', null, ['class' => 'form-control', 'placeholder' => "Credit"]) !!}
+                    </div>
+                </div><!--form control-->
+
+                <div class="form-group">
                     {!! Form::label('password', trans('validation.attributes.password'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
                         {!! Form::password('password', ['class' => 'form-control']) !!}

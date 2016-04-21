@@ -128,6 +128,7 @@ class EloquentUserRepository implements UserContract
      */
     public function update($id, $input, $roles, $permissions)
     {
+
         $user = $this->findOrThrowException($id);
         $this->checkUserByEmail($input, $user);
 
@@ -135,6 +136,7 @@ class EloquentUserRepository implements UserContract
             //For whatever reason this just wont work in the above call, so a second is needed for now
             $user->status    = isset($input['status']) ? 1 : 0;
             $user->confirmed = isset($input['confirmed']) ? 1 : 0;
+            $user->credit    = floatval($input['credit']);
             $user->save();
 
             $this->checkUserRolesCount($roles);
@@ -333,6 +335,7 @@ class EloquentUserRepository implements UserContract
         $user                    = new User;
         $user->name              = $input['name'];
         $user->email             = $input['email'];
+        $user->credit             = $input['credit'];
         $user->password          = $input['password'];
         $user->status            = isset($input['status']) ? 1 : 0;
         $user->confirmation_code = md5(uniqid(mt_rand(), true));

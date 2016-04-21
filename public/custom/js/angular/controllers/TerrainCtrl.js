@@ -101,7 +101,7 @@ app.controller(
 
               bootbox.dialog({
               title: "Atentie",
-              message: 'PRIN ADAUGAREA ACESTUI TEREN DIN CONTUL DVS AU FOST EXTRASI 4.16E.'
+              message: 'PRIN ADAUGAREA ACESTUI TEREN DIN CONTUL DVS AU FOST EXTRASI 18.72.'
             });
           }
           $timeout(function(){
@@ -117,6 +117,24 @@ app.controller(
 
     }
 
+    $scope.removePhoto = function(photo){
+        var afirm = new App.Afirm();
+        afirm.question('Atentie','Sigur doriti sa stergeti definitiv poza ?');
+        afirm.onConfirm = destroy.bind(this,photo);
+
+    }
+
+    var destroy = function(photo){
+        var index  = $scope.currentTerrain.photos.indexOf(photo);
+        TerrainService.destroyPhoto(photo).then(function(data){
+            if(data.code == 200){
+                afirm.success(data.msg);
+                $scope.currentTerrain.photos.splice(index, 1);
+                $scope.$apply();
+            }
+        });
+    }
+
     $scope.afterUpload = function(event, data, previewId, index){
         $(fileinput.input_selector).fileinput('clear');
         $scope.currentTerrain.photos.push(data.response.photo);
@@ -125,6 +143,7 @@ app.controller(
 
     $scope.edit = function(item){
         $scope.currentTerrain=item;
+        console.log($scope.currentTerrain.localitate.localitate);
         $scope.EDIT           = true;
         $scope.ADD            = false;
         fileinput.init(item.id, $scope.afterUpload);

@@ -59,7 +59,23 @@ class Terrain extends BModel
 
     	];
     }
+
+    public function localitate()
+    {
+        return $this->belongsTo('\App\Models\Localitate', 'id_locatie');
+    }
+
     public static function locatie(){
+//		$localitati = Localitate::lists('id','localitate');
+//		dd($localitati);
+/*        $out = [];
+
+        foreach(Localitate::all() as $localitate){
+            $out[$localitate->id] = $localitate->localitate;
+        }
+
+       return $out;*/
+
     	return 
     	[
     	'' => 'Alege localitatea',

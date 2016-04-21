@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Terrains;
 
+use App\Models\Localitate;
 use App\Models\Terrain;
 use App\Models\TerrainCoord;
 use Request;
@@ -19,6 +20,7 @@ class ControlsTerrainController extends Controller
     }
 
     public function controls( $model = NULL){
+
         if(! $model){
             $model = $this->model;
         }
@@ -41,15 +43,15 @@ class ControlsTerrainController extends Controller
             'id_locatie' =>
                 \Easy\Form\Combobox::make('~layouts.form.controls.comboboxes.combobox')
                     ->name('id_locatie')
-                    ->ng_model('currentTerrain.id_locatie')
+//                    ->ng_model('currentTerrain.localitate.localitate')
                     ->caption('Locație')
                     ->class('form-control data-source input-group form-select init-on-update-delete')
                     ->controlsource('id_locatie')
                     ->controltype('combobox')
-//                ->value($model ? $model->id_locatie : '')
-                    ->options(Terrain::locatie())
+                    ->value($model ? $model->id_locatie : '')
+                    ->options([])
 //                ->ng_repeat(' item in ' . Terrain::locatie() . ' track by $index' )
-                    ->out(),
+                    ->out($model ? [$model->id_locatie => Localitate::find($model->id_locatie) ? Localitate::find($model->id_locatie)->localitate : ''] : []),
             'suprafata' =>
                 \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
                     ->name('suprafata')

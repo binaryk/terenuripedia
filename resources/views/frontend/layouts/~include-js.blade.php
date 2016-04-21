@@ -11,8 +11,11 @@
 {!! HTML::script('custom/js/general/jquery.smoothState.min.js') !!}
 {!! HTML::script('custom/js/bpackage/Call.js') !!}
 {!! HTML::script('custom/js/angular/controllers/MainCtrl.js') !!}
+{!! HTML::script('custom/js/bpackage/Afirm.js') !!}
+
 
 <script>
+    var afirm = new App.Afirm();
 </script>
 
 @yield('before-scripts-end')
