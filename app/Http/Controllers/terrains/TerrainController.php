@@ -102,7 +102,7 @@ class TerrainController extends PreTerrainController
                 $out->update($data);
                 $out->characteristics()->detach();
                 $out->characteristics()->attach(@$data['id_tip_caracteristici']);
-                $out = Terrain::with('characteristics')->where('id',$id)->first();
+                $out = Terrain::with('characteristics','localitate')->where('id',$id)->first();
                 $alert = [
                     'caption' => 'Succes',
                     'message' => 'Datele au fost actualizate cu succes.',

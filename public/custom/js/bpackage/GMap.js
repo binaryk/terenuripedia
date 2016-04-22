@@ -1,5 +1,108 @@
 var shapes;
 var _that;
+function CenterControl(controlDiv, map) {
+    // Set CSS for the control border.
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#fff';
+    controlUI.style.border = '2px solid #ccc';
+    controlUI.style.borderRadius = '0';
+    controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.marginBottom = '22px';
+    controlUI.style.textAlign = 'center';
+    controlUI.style.width = '140px';
+    controlUI.style.height = '38px';
+    controlUI.style.marginTop = '10px';
+    controlDiv.appendChild(controlUI);
+    // Set CSS for the control interior.
+    var text_prop = document.createElement('div');
+    text_prop.style.color = 'rgb(0,0,0)';
+    text_prop.style.fontFamily = 'Roboto,Arial,sans-serif';
+    text_prop.style.fontSize = '8px';
+    text_prop.style.lineHeight = '10px';
+    text_prop.style.paddingLeft = '5px';
+    text_prop.style.paddingRight = '5px';
+    text_prop.style.position = 'absolute';
+    text_prop.style.top = '33px';
+    text_prop.innerHTML = 'prop';
+    controlUI.appendChild(text_prop);
+    var prop = document.createElement('div');
+    prop.style.border = '0px solid #fff';
+    prop.style.height = '20px';
+    prop.style.width = '20px';
+    prop.style.backgroundColor = '#0087FF';
+    prop.style.boxShadow = '0 2px 6px rgba(255,0,0,.3)';
+    prop.style.cursor = 'pointer';
+    prop.style.marginBottom = '22px';
+    prop.style.borderRadius = '100%';
+    prop.style.textAlign = 'center';
+    prop.style.position = 'absolute';
+    prop.style.top = '13px';
+    prop.style.left = '5px';
+    prop.title = 'Filtreaza dupa proprietari.';
+    controlDiv.appendChild(prop);
+    // Set CSS for the control interior.
+    var text_broker = document.createElement('div');
+    text_broker.style.color = 'rgb(0,0,0)';
+    text_broker.style.fontFamily = 'Roboto,Arial,sans-serif';
+    text_broker.style.fontSize = '8px';
+    text_broker.style.lineHeight = '10px';
+    text_broker.style.paddingLeft = '5px';
+    text_broker.style.paddingRight = '5px';
+    text_broker.style.position = 'absolute';
+    text_broker.style.top = '33px';
+    text_broker.style.left = '40px';
+    text_broker.innerHTML = 'broker';
+    controlUI.appendChild(text_broker);
+    var broker = document.createElement('div');
+    broker.style.border = '0px solid #fff';
+    broker.style.height = '20px';
+    broker.style.width = '20px';
+    broker.style.backgroundColor = '#FFB300';
+    broker.style.boxShadow = '0 2px 6px rgba(255,0,0,.3)';
+    broker.style.cursor = 'pointer';
+    broker.style.marginBottom = '22px';
+    broker.style.borderRadius = '100%';
+    broker.style.textAlign = 'center';
+    broker.style.position = 'absolute';
+    broker.style.top = '13px';
+    broker.style.left = '48px';
+    broker.title = 'Filtreaza dupa brokeri.';
+    controlDiv.appendChild(broker);
+    // Set CSS for the control interior.
+    var text_banca = document.createElement('div');
+    text_banca.style.color = 'rgb(0,0,0)';
+    text_banca.style.fontFamily = 'Roboto,Arial,sans-serif';
+    text_banca.style.fontSize = '8px';
+    text_banca.style.lineHeight = '10px';
+    text_banca.style.paddingLeft = '5px';
+    text_banca.style.paddingRight = '5px';
+    text_banca.style.position = 'absolute';
+    text_banca.style.top = '33px';
+    text_banca.style.left = '87px';
+    text_banca.innerHTML = 'banca';
+    controlUI.appendChild(text_banca);
+    var banca = document.createElement('div');
+    banca.style.border = '0px solid #fff';
+    banca.style.height = '20px';
+    banca.style.width = '20px';
+    banca.style.backgroundColor = '#f00';
+    banca.style.boxShadow = '0 2px 6px rgba(255,0,0,.3)';
+    banca.style.cursor = 'pointer';
+    banca.style.marginBottom = '22px';
+    banca.style.borderRadius = '100%';
+    banca.style.textAlign = 'center';
+    banca.style.position = 'absolute';
+    banca.style.top = '13px';
+    banca.style.left = '97px';
+    banca.title = 'Filtreaza dupa banci.';
+    controlDiv.appendChild(banca);
+    return {
+        banca: banca,
+        prop: prop,
+        broker: broker
+    };
+}
 var GMap = (function () {
     function GMap(poly_btn, hand_btn, trash_btn) {
         var _this = this;
@@ -7,6 +110,22 @@ var GMap = (function () {
         this.hand_btn = hand_btn;
         this.trash_btn = trash_btn;
         this.pops = [];
+        this.legend = function (cbBanca, cbBroker, cbProp) {
+            var centerControlDiv = document.createElement('div');
+            var centerControl = CenterControl(centerControlDiv, _this.getMap());
+            centerControl.banca.addEventListener('click', cbBanca);
+            centerControl.prop.addEventListener('click', cbProp);
+            centerControl.broker.addEventListener('click', cbBroker);
+            _this.getMap().controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+        };
+        this.banca = function () {
+            console.log('banca');
+        };
+        this.broker = function () {
+        };
+        this.prop = function () {
+            console.log('prop');
+        };
         this.clearShapes = function (tab) {
             console.log('clear');
             for (var i = 0; i < shapes.length; ++i) {
@@ -108,7 +227,7 @@ var GMap = (function () {
             zoom: 12,
             center: new google.maps.LatLng(44.42684, 26.1025),
             disableDefaultUI: false,
-            mapTypeControl: true,
+            mapTypeControl: false,
             mapTypeControlOptions: {
                 style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
                 position: google.maps.ControlPosition.TOP_CENTER

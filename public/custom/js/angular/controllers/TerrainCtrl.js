@@ -66,6 +66,7 @@ app.controller(
             gmap.clearShapes(1);
             $scope.currentTerrain.geometry = data.node.geometry;
             $scope.currentTerrain.characteristics = data.node.characteristics;
+            $scope.currentTerrain.localitate = data.node.localitate;
             $scope.currentTerrain = null;
             FormService.safe( FormService.emptyControls );
           }
@@ -141,8 +142,21 @@ app.controller(
         $scope.$apply();
     }
 
+    var initLocation = function(terrain){
+        console.log(terrain);
+        $timeout(function(){
+            console.log('init combo');
+            var $select = $('#id_locatie');
+            var $option = $("<option selected></option>").val(terrain.localitate.id || 0).text(terrain.localitate.localitate || '');
+            $select.html('');
+            $select.append($option).trigger('change');
+            $select.val(terrain.localitate.id || 0).change();
+        },500);
+    }
+
     $scope.edit = function(item){
         $scope.currentTerrain=item;
+        initLocation($scope.currentTerrain);
         console.log($scope.currentTerrain.localitate.localitate);
         $scope.EDIT           = true;
         $scope.ADD            = false;

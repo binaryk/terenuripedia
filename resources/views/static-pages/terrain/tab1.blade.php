@@ -6,7 +6,7 @@
             <p class="telefon" id="base_telefon">0721218737</p><i class="telefon_icon"></i>
         @endif
             <p class="locatie_line"><strong>Adresa: {!! $terrain->title !!}</strong></p>
-        <p>Locatie: @if($terrain->id_locatie) {!! App\Models\Terrain::locatie()[$terrain->id_locatie] !!} @else '- Nu este definita -' @endif</p>
+        <p>Locatie: @if($terrain->id_locatie) {!! App\Models\Localitate::find($terrain->id_locatie)->localitate !!} @else '- Nu este definita -' @endif</p>
 
     @if(auth()->user() && !auth()->user()->hasRole('Administrator') && !$terrain->opened && auth()->user()->credit >= config('credit.pret_cumparator'))
         <span ng-click="debloc({!! $terrain->id !!})" class="deblocheaza rdeblocheaza">deblocheaza</span><i class="deblocheaza_icon rdeblocheaza"></i>
@@ -23,6 +23,6 @@
         <p><i class="bullet"></i> Suprafata: {!! \Easy\Form\StringHelper::Text($terrain->suprafata) !!} mp</p>
         <p><i class="bullet"></i> 33 euro/mp</p>
         <p><i class="bullet"></i> Drum de acces</p>
-        <p class="total_price" >99,000 euro</p>
+        <p class="total_price" >{!! $terrain->pret !!} euro</p>
     </div>    
 </div>

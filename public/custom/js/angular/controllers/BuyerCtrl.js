@@ -26,7 +26,60 @@ app.controller(
                 console.log(data.data);
                 $scope.searchTerrains = data.data;
                 $scope.length_result  = data.data.length;
+                $scope.bindFn();
             });
+
+            $scope.bindFn = function(){
+                gmap.legend($scope.banca, $scope.broker, $scope.prop);
+
+            }
+
+            $scope.banca = function(){
+                gmap.clearShapes();
+                $scope.searchTerrains.map(function(el){
+                    if(el.owner && el.owner.type_id == 3){
+                        $scope.select(el);
+                    }else{
+                        el.selected = false;
+                    }
+                });
+                $timeout(function(){
+                    $scope.$apply();
+                });
+                //    '1' => 'Proprietar',// - asignat cu culoarea albastra
+                //    '2' => 'Broker',// - Galben
+                //    '3' => 'Banca',// - Rosu
+            }
+
+            $scope.broker = function(){
+                gmap.clearShapes();
+                $scope.searchTerrains.map(function(el){
+                    if(el.owner && el.owner.type_id == 2){
+                        $scope.select(el);
+                    }else{
+                        el.selected = false;
+                    }
+                });
+                $timeout(function(){
+                    $scope.$apply();
+                });
+            }
+
+            $scope.prop = function(){
+                gmap.clearShapes();
+                console.log('Filtered by prop');
+                $scope.searchTerrains.map(function(el){
+                    if(el.owner && el.owner.type_id == 1){
+                        $scope.select(el);
+                    }else{
+                        el.selected = false;
+                    }
+                });
+                $timeout(function(){
+                    $scope.$apply();
+                });
+
+            }
 
             $scope.showArrays = function(event, id) {
                 gmap.clearPops();
