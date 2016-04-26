@@ -4,8 +4,8 @@
        <label class="lista-label lista-label-cautare"><div class="icon-cautari"></div></label>
        <input type="text" class="form-lista-cautare" ng-model="f_title">
     </div>
-        <a ng-click="add()" class="btn btn-add pull-right" href="" ng-if="mc.credit > 4.16"><i class="fa fa-plus"></i> Adauga teren</a>
-    	<div ng-if="mc.credit < 4.16" class="row">
+        <a ng-click="add()" class="btn btn-add pull-right" href="" ng-if="mc.credit > 18.1"><i class="fa fa-plus"></i> Adauga teren</a>
+    	<div ng-if="mc.credit < 18.1" class="row">
 			<p class="alert alert-warning">Atentie, nu mai aveti credit.</p>
 			<a href="{!! url('credit') !!}" class="btn btn-add pull-right" href=""><i class="fa fa-plus"></i> Cumpara credit</a>
 		</div>

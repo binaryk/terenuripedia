@@ -256,6 +256,12 @@ var GMap = (function () {
 var gmap = new GMap('btnPolygon', 'btnHand', 'clear_shapes');
 gmap.init();
 gmap.hanlders();
+google.maps.event.addListener(gmap.getMap, "zoom_changed", function () {
+    if (gmap.getZoom() > 13)
+        poly.setMap(null);
+    else
+        poly.setMap(map);
+});
 function disableElement(id, value) {
     $(id).prop('disabled', value);
     if (value) {

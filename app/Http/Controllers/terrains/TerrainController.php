@@ -58,7 +58,9 @@ class TerrainController extends PreTerrainController
             {
                 $user_ud = (int)$data['user_owner'] > 0 ? $data['user_owner'] : Auth::user()->id;
                 unset($data['user_owner']);
-
+                if(auth()->user()->hasRole('Administrator')){
+                    $out['aprobat'] = 1;
+                }
                 $out  = Terrain::create($data+['user_id'=>$user_ud]);
                 if(! auth()->user()->hasRole('Administrator')){
                     User::credit(-config('credit.pret_vanzator'));
