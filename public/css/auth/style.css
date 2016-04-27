@@ -7747,7 +7747,7 @@ input.log-control {
 }
 .log-fundal-image {
     background-image: url(../../img/fundal-page.png);
-    height: 100vh;
+    /*height: 100vh;*/
     width: 100%;
     background-repeat: no-repeat;
     background-position: right top;
@@ -7979,8 +7979,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4f5f', end
 .log-fundal {
     height: 100vh;
     background: #323744;
-    overflow: hidden;
-    overflow-y: hidden;
+    overflow: scroll;
+    /*overflow-y: hidden;*/
 }
 .panel {border-radius: 0px!important;}
 a.btn-signup {
