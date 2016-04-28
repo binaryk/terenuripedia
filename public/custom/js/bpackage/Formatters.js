@@ -88,7 +88,7 @@ var Formatters;
     Formatters.Textbox = Textbox;
 })(Formatters || (Formatters = {}));
 var fm = new Formatters.Combobox();
-fm.addSelectors([".multiple_class", "#id_tip_teren", "#negociabil"]);
+fm.addSelectors([".multiple_class", "#id_tip_teren", "#destinatie", "#front_stradal", "#negociabil"]);
 fm.format();
 var tb = new Formatters.Textbox();
 tb.addSelector("#title");

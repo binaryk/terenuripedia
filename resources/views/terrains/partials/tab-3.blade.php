@@ -22,7 +22,10 @@
 
 <div class="lista-label-lung">
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
+        {!! $controls['destinatie'] !!}
+    </div>
+    <div class="col-md-6">
         {!! $controls['deschidere'] !!}
     </div>
 </div>
@@ -38,6 +41,9 @@
     <div class="col-md-6 pret">
         {!! $controls['pret'] !!}
         <span class="input-addon">euro</span>
+    </div>
+    <div class="col-md-6 pret">
+        {!! $controls['pret_mp'] !!}
     </div>
     <div class="col-md-6">
         {!! $controls['telefon'] !!}
@@ -72,13 +78,7 @@
 </div>
 <div class="row content-tip">
     <div class="col-md-12">
-        <div id="container_front" class="content-tip-tranzactie">
-            <input type="radio" id="de_vanzare2" value="de_vanzare" name="tranzactie2">
-            <label class="col-xs-6 text-center btn-tranzactie" for="de_vanzare2"><span>Are front stradal</span></label>
-            <input type="radio" id="de_inchiriat" value="de_inchiriat2" name="tranzactie">
-            <label class="col-xs-6 text-center btn-tranzactie last" for="de_inchiriat2"><span>Nu are front stradal</span></label>
-        </div>
-        
+        {!! $controls['front_stradal'] !!}
     </div>
 </div>
 <div class="lista-label">

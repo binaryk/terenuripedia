@@ -21,7 +21,7 @@ return [
     'login' => 'Autentificare',
     'logout' => 'Iesire',
     'macros' => 'Macrouri',
-    'register' => 'Nu ateți cont ?',
+    'register' => 'Nu aveți cont ?',
     'button' => 'Button',
     'terrain_add' => 'Adauga terenuri',
 

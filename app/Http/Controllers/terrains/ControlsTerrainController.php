@@ -73,11 +73,34 @@ class ControlsTerrainController extends Controller
                     ->value($model ? $model->id_tip_teren : '')
                     ->options(Terrain::tip())
                     ->out(),
+            'destinatie' =>
+                \Easy\Form\Combobox::make('~layouts.form.controls.comboboxes.combobox')
+                    ->name('destinatie')
+                    ->ng_model('currentTerrain.destinatie')
+                    ->caption('Destinatie teren')
+                    ->class('form-control data-source input-group form-select init-on-update-delete')
+                    ->controlsource('destinatie')
+                    ->controltype('combobox')
+                    ->value($model ? $model->destinatie : '')
+                    ->options(Terrain::destinatie())
+                    ->out(),
+            'front_stradal' =>
+                \Easy\Form\Combobox::make('~layouts.form.controls.comboboxes.combobox')
+                    ->name('front_stradal')
+                    ->ng_model('currentTerrain.front_stradal')
+                    ->caption('Forma front stradal')
+                    ->class('form-control data-source input-group form-select init-on-update-delete')
+                    ->controlsource('front_stradal')
+                    ->controltype('combobox')
+                    ->value($model ? $model->front_stradal : '')
+                    ->options(Terrain::front())
+                    ->out(),
             'deschidere' =>
                 \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
                     ->name('deschidere')
                     ->ng_model('currentTerrain.deschidere')
-                    ->caption('Deschidere')
+                    ->caption('Deschidere teren (?)')
+                    ->title('Text ajutor')
                     ->class('form-control data-source')
                     ->controlsource('deschidere')
                     ->controltype('textbox')
@@ -88,7 +111,8 @@ class ControlsTerrainController extends Controller
                     ->name('characteristics')
                     ->ng_model('currentTerrain.id_tip_caracteristici')
                     ->multiple('multiple')
-                    ->caption('Caracteristici')
+                    ->caption('Caracteristici (?)')
+                    ->title('Text ajutor')
                     ->class('form-control data-source input-group form-select init-on-update-delete multiple_class')
                     ->controlsource('id_tip_caracteristici')
                     ->controltype('combobox')
@@ -113,6 +137,17 @@ class ControlsTerrainController extends Controller
                     ->class('form-control data-source')
                     ->controlsource('telefon')
                     ->controltype('textbox')
+                    ->maxlength(255)
+                    ->out(),
+            'pret_mp' =>
+                \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
+                    ->name('pret_mp')
+                    ->ng_model('currentTerrain.pret_mp')
+                    ->caption('Pret Euro/mp')
+                    ->class('form-control'/*data-source*/)
+                    ->controlsource('pret_mp')
+                    ->controltype('textbox')
+                    ->readonly(true)
                     ->maxlength(255)
                     ->out(),
             'proprietar' =>

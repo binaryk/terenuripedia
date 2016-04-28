@@ -23,6 +23,7 @@ app.controller(
 
     $scope.add = function () {
       $scope.currentTerrain = null;
+      $timeout( initPret, 500);
       $scope.EDIT           = false;
       $scope.ADD            = true;
       FormService.safe( FormService.emptyControls );
@@ -167,7 +168,8 @@ app.controller(
         gmap.setMapCenter( gmap.getPolygonCenter( polygon ) );
         $scope.safe( $scope.init_on_update, item, gmap.activateTab, 3 );
         gmap.disableDrawingControl();
-        toastr.info(MESSAGES.EDIT + '<strong><u>' + item.title + '</u></strong>')
+        toastr.info(MESSAGES.EDIT + '<strong><u>' + item.title + '</u></strong>');
+        $timeout(initPret,500);
     };
 
     $scope.deleteTerrain=function(item){
@@ -222,4 +224,17 @@ app.controller(
         },300);
       }
 }]);
+
+$('#suprafata, #pret').on('keyup', initPret);
+
+function initPret(){
+    var supraf = parseFloat($('#suprafata').val());
+    console.log(supraf);
+    var pret = parseFloat($('#pret').val());
+    if(supraf > 0 && pret > 0){
+        $('#pret_mp').val(pret/supraf);
+    }else{
+        $('#pret_mp').val('');
+    }
+}
 

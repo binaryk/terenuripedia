@@ -50,15 +50,31 @@ class Terrain extends BModel
 	public static function tip(){
     	return [
     		'' => 'Alege tipul de teren ',
-    		'1' =>	'Terenurile cu destinatie agricola',
-    		'2' =>	'Terenurile cu destinatie forestiera',
-    		'3' =>	'Terenurile aflate permanent sub ape',
-    		'4' =>	'Terenurile din intravilan',
-    		'5' =>	'Terenurile din extravilan',
-    		'6' =>	'Terenurile cu destinatie speciala ',
+    		'1' =>	'Terenurile din intravilan',
+    		'2' =>	'Terenurile din extravilan',
 
     	];
     }
+
+	public static function destinatie(){
+    	return [
+    		'' => 'Alege destinatia terenului ',
+    		'1' =>	'Terenurile cu destinatie agricola',
+    		'2' =>	'Terenurile cu destinatie forestiera',
+    		'3' =>	'Terenurile aflate permanent sub ape',
+    		'4' =>	'Terenurile cu destinatie speciala',
+
+    	];
+    }
+
+	public static function front(){
+    	return [
+    		'1' =>	'Are front stradal',
+    		'2' =>	'Nu are front stradal',
+    	];
+    }
+
+
 
     public function localitate()
     {
