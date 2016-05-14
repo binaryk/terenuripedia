@@ -69,28 +69,22 @@
         
     </div>
 </div>
-</div>    
-    
+</div>
+
 <div class="row">
     <div class="col-md-12">
         {!! $controls['detalii'] !!}
     </div>
 </div>
 <div class="row content-tip">
-    <div class="col-md-12">
+    <div class="col-md-6">
         {!! $controls['front_stradal'] !!}
     </div>
-</div>
-<div class="lista-label">
-    <div class="row">
-        <div class="col-md-6">
-            {!! $controls['nr_fronturi'] !!}
-        </div>
-        <div class="col-md-6">
-            {!! $controls['constructie_teren'] !!}
-        </div>
+
+    <div class="col-md-6">
+        {!! $controls['nr_fronturi'] !!}
     </div>
-</div>
+</div> 
 <div class="col-md-12 clearfix" ng-if="ADD">
     {!! $controls['photo'] !!}
     <input type="hidden" id="inserted_terrain">
