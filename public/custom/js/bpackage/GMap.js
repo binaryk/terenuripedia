@@ -227,7 +227,7 @@ var GMap = (function () {
             zoom: 12,
             center: new google.maps.LatLng(44.42684, 26.1025),
             disableDefaultUI: false,
-            mapTypeControl: false,
+            mapTypeControl: true,
             mapTypeControlOptions: {
                 style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
                 position: google.maps.ControlPosition.TOP_CENTER

@@ -59,18 +59,24 @@ class Terrain extends BModel
 	public static function destinatie(){
     	return [
     		'' => 'Alege destinatia terenului ',
-    		'1' =>	'Terenurile cu destinatie agricola',
-    		'2' =>	'Terenurile cu destinatie forestiera',
-    		'3' =>	'Terenurile aflate permanent sub ape',
-    		'4' =>	'Terenurile cu destinatie speciala',
+			'1' => 'agrement',
+			'2' => 'forestier',
+			'3' => 'industrial',
+			'4' => 'mixt',
+			'5' => 'retail',
+			'6' => 'rezidential',
+//    		'1' =>	'Terenurile cu destinatie agricola',
+//    		'2' =>	'Terenurile cu destinatie forestiera',
+//    		'3' =>	'Terenurile aflate permanent sub ape',
+//    		'4' =>	'Terenurile cu destinatie speciala',
 
     	];
     }
 
 	public static function front(){
     	return [
-    		'1' =>	'Are front stradal',
-    		'2' =>	'Nu are front stradal',
+    		'1' =>	'Da',
+    		'2' =>	'Nu',
     	];
     }
 
@@ -151,7 +157,7 @@ class Terrain extends BModel
 	{
 		return [
 			/*AppServiceProvider ==> custom rules*/
-			'title'   			      => 'required',
+			'title'   			      => 'required|min:50',
 			'id_tip_caracteristici'   => 'required|not_in:0',
 			'id_locatie'   			  => 'required|not_in:0',
 			'pret'   				  => 'required|not_in:0',
@@ -163,8 +169,9 @@ class Terrain extends BModel
 	{
 		return [
 			'title.required'        			  => 'Titlul anuntului trebuie completat.',
-			'id_tip_caracteristici.required'      => 'Caracteristicile trebuiesc completate.',
-			'id_tip_caracteristici.not_in'        => 'Caracteristicile trebuiesc completate.',
+			'title.min'        			  => 'Titlul anuntului trebuie sa aiba minim 50 caractere.',
+	/*		'id_tip_caracteristici.required'      => 'Caracteristicile trebuiesc completate.',
+			'id_tip_caracteristici.not_in'        => 'Caracteristicile trebuiesc completate.',*/
 			'id_locatie.required'        		  => 'Locatia trebuie completata.',
 			'id_locatie.not_in'        			  => 'Locatia trebuie completata.',
 			'pret.required'        				  => 'Pretul trebuie completat.',
