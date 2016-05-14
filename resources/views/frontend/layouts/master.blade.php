@@ -59,6 +59,8 @@
         ->footer('<button type="button" class="btn btn-default" data-dismiss="modal">Renunţă</button>')
         ->out()
         !!}
+        
+        
 
         <script>
             $(document).ready( function(){
@@ -77,6 +79,7 @@
                     e.preventDefault();
                     faq.show();
                 });
+                
             });
         </script>
     </body>

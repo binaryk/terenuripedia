@@ -75,7 +75,7 @@
                             @if(env('APP_ENV') == 'local')
                                 <a href="#" id="simulare" class="btn btn-warning pull-left row">Simuleaza plata</a>
                             @endif
-                            <p><a class="btn btn-confirm pull-right row" href="javascript:gateway.submit();" class="txtCheckout">Plătește acum</a></p>
+                            <a class="btn btn-confirm pull-right row" href="javascript:gateway.submit();" class="txtCheckout" style="margin-bottom:8px; margin-top:0;">Plătește acum</a>
                         </form>
                     </div>
 

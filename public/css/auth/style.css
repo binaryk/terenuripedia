@@ -7003,7 +7003,19 @@ article.tabs section h2
 	-o-transition: all 500ms ease;
 	transition: all 500ms ease;
 }
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+@media (max-width: 767px) { 
+     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-bottom: 1px solid rgba(87, 97, 108, 0.18)!important;
+    display: none !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+    color: #333333;
+    background: #fff;
+    }
+}
+@media (min-width: 768px){
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-bottom: 1px solid rgba(87, 97, 108, 0.18)!important;
     display: block !important;
     height: auto !important;
@@ -7011,7 +7023,8 @@ article.tabs section h2
     overflow: visible !important;
     color: #333333;
     background: #fff;
-}
+    }
+    }
 
 /*
 *EDU, e ok si cu acest css, fara cel de sus, ala e folosit doar pentru butoanele alea cu sageti de la tip vanzator,
@@ -7036,6 +7049,7 @@ article{
 .navbar.navbar-default, .navbar .container-fluid{
   z-index: 5;
 }
+
 .container-fluid {padding: 0px!important;}
 .nav-tabs li a{color: #fff;font-weight: 500;}
 .nav-tabs .active a{color: #fff!important;font-weight: 500}
@@ -7078,28 +7092,119 @@ i.tab-i {
 
 .log-heading {
     text-align: center;
-    padding: 15px 0px 25px 0px;
+    padding: 15px 0px 5px 0px;
     border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 768px){
+    .log-heading img {
+        width:15%;
+    }
+    .log-title {
+    padding: 0px;
+    font-weight: 100;
+    font-size: 1.5em;
+    color: #333947;
+    font-family: 'roboto', arial, helvetica;
+    }
+    input.log-control {
+    background-color: white;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 4px 4px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    }
+    .log-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 24px;
+    }
+    select#type_id {
+    width: 100%;
+    cursor: pointer;
+    font-size: 0.92em;
+    }
+    select#fiz_jur {
+    width: 100%;
+    cursor: pointer;
+    font-size: 0.92em;
+    }
+    div.form-group{
+    margin-bottom: 8px !important;
+    }
+    label.log-label {
+    font-size: 0.94em;
+    font-family: 'Calibri', Arial;
+    color: #828282;
+    }
+    .log {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 22px;
+}
+}
+@media (max-width: 767px) {
+    .log-heading img {
+        width:10%;
+    }
+    .log-title {
+    padding: 0px;
+    font-weight: 100;
+    font-size: 1.3em;
+    color: #333947;
+    font-family: 'roboto', arial, helvetica;
+    }
+    input.log-control {
+    background-color: white;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 1px 1px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    }
+    .log-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 24px;
+    }
+    select#type_id {
+    width: 100%;
+    cursor: pointer;
+    font-size: 0.88em;
+    }
+    select#fiz_jur {
+    width: 100%;
+    cursor: pointer;
+    font-size: 0.88em;
+    }
+    div.form-group{
+    margin-bottom: 6px !important;
+    }
+    label.log-label {
+    font-size: 0.88em;
+    font-family: 'Calibri', Arial;
+    color: #828282;
+    }
+    .log {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 33px;
+}
 }
 .log-body {
     padding: 6% 15%;
 }
 
-label.log-label {
-    font-size: 1em;
-    font-family: 'Calibri', Arial;
-    color: #828282;
-}
-.log-control {
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    height: 33px;
-}
-.log {
-    width: 400px;
-    margin: 0 auto;
-    margin-top: 50px;
-}
+
+
+
 .log-pre:before {
     content: " ";
     display: block;
@@ -7135,19 +7240,13 @@ label.log-label {
     display: block;
     background: #eee;
 }
-.log-title {
-    padding: 0px;
-    font-weight: 100;
-    font-size: 2em;
-    color: #333947;
-    font-family: 'roboto', arial, helvetica;
-}
+
 .btn-confirm {
     background-color: #389BFF;
     border-color: #1ab394;
     color: #fff;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: 'roboto', arial, helvetica;
 }
 .btn-confirm:hover {
@@ -7161,10 +7260,7 @@ label.log-label {
     height: 53px;
 }
 
-select#type_id {
-    width: 100%;
-    cursor: pointer;
-}
+
 .panel-default > .panel-heading {
     color: #333947!important;
     background-color: #FFF!important;
@@ -7562,19 +7658,19 @@ li.active .icon-save {
     height: 39px;
 }
 .icon-anunt {
-    background-position: -498px -303px;
+    background-position: -501px -296px;
     width: 39px;
     height: 39px;
 }
 li.active .icon-anunt {
-    background-position: -498px -345px;
+    background-position: -498px -338px; /* -498px -345px */
     width: 39px;
     height: 39px;
 }
 .icon-lista {
-    background-position: -454px -301px;
-    width: 39px;
-    height: 39px;
+    background-position: -301px -510px; /* -454px -301px  w-39, h39*/
+    width: 35px;
+    height: 36px;
 }
 .icon-cautari {
     background-position: -13px -147px;
@@ -7592,7 +7688,7 @@ li.active .icon-anunt {
     height: 20px;
 }
 li.active .icon-lista {
-    background-position: -454px -345px;
+    background-position: -73px -468px; /* -454px -344px */
     width: 39px;
     height: 39px;
 }
@@ -7734,17 +7830,9 @@ li.active .icon-lista {
 
 .panel-default { border: none!important;}
 
-input.log-control {
-    background-color: white;
-    background-image: none;
-    border: 1px solid #e5e6e7;
-    border-radius: 1px;
-    color: inherit;
-    display: block;
-    padding: 6px 12px;
-    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    width: 100%;
-}
+
+
+
 .log-fundal-image {
     background-image: url(../../img/fundal-page.png);
     /*height: 100vh;*/
@@ -8053,4 +8141,4 @@ a.btn-signup:hover {
 .tab-content>.active {
     display: block;
     overflow: hidden;
-}
+} 
