@@ -16,14 +16,14 @@
                         <div class="form-group">
                             {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'log-label']) !!}
                             <div class="md-6">
-                                {!! Form::input('email', 'email', old('email'), ['class' => 'log-control']) !!}
+                                {!! Form::input('email', 'email', old('email'), ['class' => 'log-control form-control']) !!}
                             </div>
                         </div>
 
                         <div class="form-group">
                             {!! Form::label('password', trans('validation.attributes.password'), ['class' => 'log-label']) !!}
                             <div class="md-6">
-                                {!! Form::input('password', 'password', null, ['class' => 'log-control']) !!}
+                                {!! Form::input('password', 'password', null, ['class' => 'log-control form-control']) !!}
                             </div>
                         </div>
 

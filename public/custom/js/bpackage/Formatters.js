@@ -22,7 +22,7 @@ var Formatters;
             this.selectors = selectors;
         };
         return Inputs;
-    })();
+    }());
     Formatters.Inputs = Inputs;
     var Combobox = (function (_super) {
         __extends(Combobox, _super);
@@ -39,9 +39,9 @@ var Formatters;
                 }
             });
         };
-        Combobox.prototype.request = function () {
+        Combobox.prototype.request = function (selector) {
             var _that = this;
-            var $select = $("#id_locatie");
+            var $select = $(selector);
             $select.select2({
                 minimumInputLength: 4,
                 tags: [],
@@ -72,7 +72,7 @@ var Formatters;
             });
         };
         return Combobox;
-    })(Inputs);
+    }(Inputs));
     Formatters.Combobox = Combobox;
     var Textbox = (function (_super) {
         __extends(Textbox, _super);
@@ -84,7 +84,7 @@ var Formatters;
             });
         };
         return Textbox;
-    })(Inputs);
+    }(Inputs));
     Formatters.Textbox = Textbox;
 })(Formatters || (Formatters = {}));
 var fm = new Formatters.Combobox();

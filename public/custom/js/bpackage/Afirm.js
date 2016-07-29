@@ -38,7 +38,7 @@ var App;
             console.log('confirm');
         };
         return Afirm;
-    })();
+    }());
     App.Afirm = Afirm;
 })(App || (App = {}));
 //# sourceMappingURL=Afirm.js.map

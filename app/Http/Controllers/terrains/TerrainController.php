@@ -137,19 +137,24 @@ class TerrainController extends PreTerrainController
     public function photo()
     {
         $input = Input::all();
-        $id =   $input['terrain_id'];
-        $file    = $input['file_data'];
-        $path = 'photos/terrains/'.$id;
-        $res = $file->move(public_path($path), $file->getClientOriginalName());
-        $data = [];
-        $data['terrain_id'] = $id;
-        $data['author']     = access()->user()->id;
-        $data['path']       = $res->getPathName();
-        $data['extention']  = $res->getExtension();
-        $data['storage']    = $res->getSize();
-        $data['location']   = asset($path . '/' .$res->getFileName());
-        $photo = Photo::create($data);
-        return success(['photo' => $photo]);
+
+        if(array_key_exists('file_data', $input)){
+            $id =   $input['terrain_id'];
+            $file    = $input['file_data'];
+            $path = 'photos/terrains/'.$id;
+            $res = $file->move(public_path($path), $file->getClientOriginalName());
+            $data = [];
+            $data['terrain_id'] = $id;
+            $data['author']     = access()->user()->id;
+            $data['path']       = $res->getPathName();
+            $data['extention']  = $res->getExtension();
+            $data['storage']    = $res->getSize();
+            $data['location']   = asset($path . '/' .$res->getFileName());
+            $photo = Photo::create($data);
+            return success(['photo' => $photo]);
+        };
+
+        return success();
     }
 
     public function photoDelete()

@@ -38,9 +38,9 @@ module Formatters{
             });
         }
 
-        request():void{
+        request(selector):void{
             var _that = this;
-            var $select = $("#id_locatie");
+            var $select = $(selector);
             $select.select2({
                 minimumInputLength: 4,
                 tags: [],

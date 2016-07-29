@@ -30,6 +30,14 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-6">
+        {!! $controls['pot'] !!}
+    </div>
+    <div class="col-md-6">
+        {!! $controls['cut'] !!}
+    </div>
+</div>
+<div class="row">
     <div class="col-md-12">
         {!! $controls['id_tip_caracteristici'] !!}
     </div>

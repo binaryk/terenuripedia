@@ -63,7 +63,7 @@ var App;
             this.inited = true;
         };
         return FileInput;
-    })();
+    }());
     App.FileInput = FileInput;
 })(App || (App = {}));
 //# sourceMappingURL=FileInput.js.map

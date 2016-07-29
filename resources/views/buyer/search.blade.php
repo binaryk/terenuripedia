@@ -11,11 +11,12 @@
                         ->name('id_locatie')
                         ->caption('Locație')
                         ->ng_model('f_locatie')
-                        ->class('form-control data-source input-group form-select')
+                        ->class(' form-control data-source input-group form-select')
                         ->controlsource('id_locatie')
                         ->controltype('combobox')
-                        ->options(\App\Models\Terrain::locatie())
+                        ->options([])
                         ->out()
+
             !!}
     </div>
     <div class="col-md-12">

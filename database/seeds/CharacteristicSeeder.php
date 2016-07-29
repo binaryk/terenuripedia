@@ -15,24 +15,17 @@ class CharacteristicSeeder extends Seeder
 {
     public static function caracteristici(){
         return [
-            '1'	   =>  'acces drum asfalt',
-            '2'	   =>  'alimentare apa',
-            '3'	   =>  'cadastru',
-            '4'	   =>  'canalizare',
-            '5'	   =>  'autoriz. construct.',
-            '6'	   =>  'certificat urbanism',
-            '7'	   =>  'constructie teren',
-            '8'	   =>  'curent electric',
-            '9'	   =>  'CUT',
-            '10'   =>  'ingradit',
-            '11'   =>  'intabulare',
-            '12'   =>  'gaze',
-            '13'   =>  'liber',
-            '14'   =>  'parcelabil',
-            '15'   =>  'POT',
-            '16'   =>  'stradal',
-            '17'   =>  'PUZ',
-            '18'   =>  'PUD',
+            '1'	   => 'acces drum asfaltat',
+            '2'	   => 'apa curenta,',
+            '3'	   => 'autorizatie constructie,',
+            '4'	   => 'cadastru, canalizare,',
+            '5'	   => 'certificat de urbanismn,',
+            '6'	   => 'energie electrica,',
+            '7'	   => 'intabulare,',
+            '8'	   => 'liber pentru contstructii,',
+            '9'	   => 'parcelabil,',
+            '10'   => 'racord gaz,',
+            '11'   => 'teren ingradit',
         ];
     }
 

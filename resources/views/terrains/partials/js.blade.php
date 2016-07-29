@@ -23,7 +23,7 @@
 
         var combo = new Formatters.Combobox();
         combo.url = "{!! route('terrain.dinamic_locality') !!}";
-        combo.request();
+        combo.request("#id_locatie");
     </script>
     <script type="text/javascript" src ="{!! asset('packages/fileinput/js/fileinput.min.js') !!}"></script>
     <script type="text/javascript" src ="{!! asset( 'packages/inputmask/js/jquery.inputmask.js') !!}"></script>

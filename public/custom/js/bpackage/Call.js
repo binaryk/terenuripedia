@@ -35,7 +35,7 @@ var App;
                 this.dataType = 'json';
         }
         return Call;
-    })();
+    }());
     App.Call = Call;
 })(App || (App = {}));
 //# sourceMappingURL=Call.js.map

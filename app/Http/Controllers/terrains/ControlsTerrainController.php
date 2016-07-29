@@ -107,6 +107,28 @@ class ControlsTerrainController extends Controller
                     ->controltype('textbox')
                     ->maxlength(255)
                     ->out(),
+            'pot' =>
+                \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
+                    ->name('pot')
+                    ->ng_model('currentTerrain.pot')
+                    ->caption('POT (%) (?)')
+                    ->title('Procentul de ocupare al terenului.')
+                    ->class('form-control data-source decimal')
+                    ->controlsource('pot')
+                    ->controltype('textbox')
+                    ->maxlength(255)
+                    ->out(),
+            'cut' =>
+                \Easy\Form\Textbox::make('~layouts.form.controls.textboxes.textbox')
+                    ->name('cut')
+                    ->ng_model('currentTerrain.cut')
+                    ->caption('CUT (%) (?)')
+                    ->title('Coeficientul de utilizare al terenului.')
+                    ->class('form-control data-source decimal')
+                    ->controlsource('cut')
+                    ->controltype('textbox')
+                    ->maxlength(255)
+                    ->out(),
             'id_tip_caracteristici' =>
                 \Easy\Form\Combobox::make('~layouts.form.controls.comboboxes.combobox')
                     ->name('characteristics')
@@ -145,7 +167,7 @@ class ControlsTerrainController extends Controller
                     ->name('pret_mp')
                     ->ng_model('currentTerrain.pret_mp')
                     ->caption('Pret Euro/mp')
-                    ->class('form-control'/*data-source*/)
+                    ->class('form-control decimal'/*data-source*/)
                     ->controlsource('pret_mp')
                     ->controltype('textbox')
                     ->readonly(true)

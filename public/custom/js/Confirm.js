@@ -19,7 +19,7 @@ var App;
             });
         };
         return Confirm;
-    })();
+    }());
     App.Confirm = Confirm;
 })(App || (App = {}));
 //# sourceMappingURL=Confirm.js.map

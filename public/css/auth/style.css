@@ -7445,7 +7445,8 @@ input#front_stradal_2 {
     width: 25px;
     margin-top: 7px;
 }
-#proiect, #poze {
+/*taburile*/
+#proiect, #poze/* #lista, #data*/ {
     position: fixed;
     width: 632px;
     top: 137px;
@@ -7883,7 +7884,7 @@ li.active .icon-lista {
     transition: border 0.2s linear, box-shadow 0.2s linear;
     -webkit-tap-highlight-color: transparent;
 }
-#search_div select.form-control {
+#search_div select.form-control  {
     padding: 0px;
     background: #4C5262;
     border-color: #343946;
@@ -7893,6 +7894,14 @@ li.active .icon-lista {
     font-family: arial;
     font-size: 12px;
     padding-left: 6px;
+}
+
+#search_div span.select2-selection{
+    background: #4C5262;
+    border-color: #343946;
+}
+#search_div span.select2-selection  >.select2-selection__rendered{
+    color: white !important;
 }
 
 .btn-default {

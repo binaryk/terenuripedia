@@ -14,6 +14,7 @@
     {!! HTML::script('//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js') !!}
     <link rel="stylesheet" href="{!! asset('custom/css/list.css') !!}">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1-rc.1/css/select2.min.css" rel="stylesheet" />
 @stop
 
 @section('custom-scripts')
@@ -41,18 +42,25 @@
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/controllers/BuyerCtrl.js') !!}"></script>
     <script type="text/javascript" src="{!! asset( 'custom/js/angular/controllers/terrain_coords.js') !!}"></script>
 
+
+    <script type="text/javascript" src ="{!! asset('packages/select2/js/select2.min.js') !!}"></script>
+    <script type="text/javascript" src ="{!! asset( 'custom/js/bpackage/Formatters.js') !!}"></script>
     <script> 
         var init_carouser = function(){
             console.log('init carousel');
             return jQuery('.carousel').slick({
-  infinite: true,
-  speed: 500,
-  fade: true,
-  cssEase: 'linear',
-  nextArrow: '<i class="fa fa-arrow-right"></i>',
-  prevArrow: '<i class="fa fa-arrow-left"></i>',               
+              infinite: true,
+              speed: 500,
+              fade: true,
+              cssEase: 'linear',
+              nextArrow: '<i class="fa fa-arrow-right"></i>',
+              prevArrow: '<i class="fa fa-arrow-left"></i>',
         });
     }
+
+        var combo = new Formatters.Combobox();
+        combo.url = "{!! route('terrain.dinamic_locality') !!}";
+        combo.request("#id_locatie");
     </script>
 
 @stop

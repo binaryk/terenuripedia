@@ -252,7 +252,7 @@ var GMap = (function () {
         this.selected_shape = null;
     }
     return GMap;
-})();
+}());
 var gmap = new GMap('btnPolygon', 'btnHand', 'clear_shapes');
 gmap.init();
 gmap.hanlders();

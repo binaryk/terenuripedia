@@ -38,7 +38,7 @@ var Numeric = (function () {
         });
     };
     return Numeric;
-})();
+}());
 var nm = new Numeric();
 nm.decimal();
 nm.currency();

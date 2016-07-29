@@ -158,7 +158,6 @@ app.controller(
     $scope.edit = function(item){
         $scope.currentTerrain=item;
         initLocation($scope.currentTerrain);
-        console.log($scope.currentTerrain.localitate.localitate);
         $scope.EDIT           = true;
         $scope.ADD            = false;
         fileinput.init(item.id, $scope.afterUpload);
