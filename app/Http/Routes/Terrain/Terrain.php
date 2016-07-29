@@ -23,7 +23,6 @@ $router->group(['middleware' => 'auth'], function () {
         ->name('terrain.open');
 });
 
-$router->group(['middleware' => 'web'], function () {
     get('terrain-dinamic-locality/{txt?}',  'TerrainController@locality')
         ->name('terrain.dinamic_locality');
-});
+ 
